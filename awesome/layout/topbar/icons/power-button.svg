@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 367.9 406"
+	 style="enable-background:new 0 0 367.9 406;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#a);}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#666666;}
+</style>
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="487" width="441" x="92.8" y="6.3"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<filter  id="a">
+	<feGaussianBlur  in="SourceGraphic" stdDeviation="1"></feGaussianBlur>
+</filter>
+<g class="st0">
+	<path class="st1" d="M184,406C82.4,406,0,323.6,0,222c0-50.6,20.5-96.3,53.6-129.6l0.2,0.2c6.7-9.2,17.5-15.3,29.7-15.3
+		c20.3,0,36.8,16.5,36.8,36.8c0,12.5-6.2,23.4-15.7,30.1l0.1,0.1c-19.9,20-32.3,47.3-32.3,77.7c0,61.2,49.9,110.9,111.4,110.9
+		c61.5,0,111.4-49.7,111.4-110.9c0-27.7-10.4-52.8-27.3-72.2c-10.1-6.6-16.8-17.9-16.8-30.8c0-20.3,16.5-36.8,36.8-36.8
+		c9.9,0,18.9,4,25.5,10.4l0.5-0.5c33.3,33.3,53.9,79.2,53.9,129.9C367.9,323.6,285.5,406,184,406L184,406z M183.9,223.3
+		c-20.4,0-36.8-16.7-36.8-37.5V37.5c0-20.8,16.4-37.5,36.8-37.5c20.4,0,36.8,16.7,36.8,37.5v148.4
+		C220.8,206.6,204.3,223.3,183.9,223.3z"/>
+</g>
+</svg>
