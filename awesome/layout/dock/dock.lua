@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 --Color
 local color = require("layout.dock.color")
@@ -32,8 +33,8 @@ local layoutbox = require("layout.dock.widgets.layout_switcher")
 --Separator line
 local vertical_separator = wibox.widget {
   orientation = 'vertical',
-  forced_height = 1.5,
-  forced_width = 1.5,
+  forced_height = dpi(1.5),
+  forced_width = dpi(1.5),
   span_ratio = 0.55,
   widget = wibox.widget.separator,
   color = "#a9b1d6",
@@ -43,7 +44,7 @@ local vertical_separator = wibox.widget {
 
 --Separator
 local Separator = wibox.widget.textbox("   ")
-Separator.forced_height = 60
+Separator.forced_height = dpi(60)
 
 local Separator2 = wibox.widget.textbox(" ")
 
@@ -54,10 +55,10 @@ local dock = awful.popup {
   ontop = true,
   bg = "#00000000",
   visible = true,
-  maximum_height = 60,
+  maximum_height = dpi(60),
   placement = function(c)
     awful.placement.bottom(c,
-      { margins = { top = 8, bottom = 5, left = 0, right = 0 } })
+      { margins = { top = dpi(8), bottom = dpi(5), left = 0, right = 0 } })
   end,
   shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 15)
@@ -65,7 +66,7 @@ local dock = awful.popup {
 }
 
 dock:struts {
-  bottom = 64
+  bottom = dpi(64)
 }
 
 dock:setup {

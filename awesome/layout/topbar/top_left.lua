@@ -11,6 +11,7 @@ local separator2 = wibox.widget.textbox("    ")
 --Battery Widget
 local batteryarc_widget = require("deco.batteryarc")
 
+
 --Screenshot button
 local screenshot = wibox.widget {
   {

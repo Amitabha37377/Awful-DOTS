@@ -34,6 +34,9 @@ local main = {
 	rules = require("main.rules"),
 }
 
+--Notifications
+-- require("deco.notifications")
+
 -- Custom Local Library: Keys and Mouse Binding
 local binding = {
 	globalbuttons = require("binding.globalbuttons"),
@@ -188,8 +191,8 @@ end)
 
 --Autostart Applications
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("nitrogen --restore")
--- awful.spawn.with_shell("feh --bg-scale ~/Downloads/Wallpapers/desktop-1920x1080.png")
+-- awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
 awful.util.spawn("nm-applet")
 awful.spawn.with_shell('xinput set-prop "ELAN0791:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1')
 

@@ -1,49 +1,60 @@
-local theme              = {}
+local theme                                           = {}
 
-theme.font               = "CaskaydiaCove Nerd Font 12"
-theme.bg_normal          = "#24283b"
-theme.fg_normal          = "#aaaaaa"
-theme.bg_focus           = "#535d6c"
-theme.fg_focus           = "#ffffff"
-theme.border_width       = 1
-theme.border_normal      = "#000000"
-theme.border_focus       = "#535d6c"
+theme.font                                            = "CaskaydiaCove Nerd Font 12"
+theme.bg_normal                                       = "#24283b"
+theme.fg_normal                                       = "#aaaaaa"
+theme.bg_focus                                        = "#535d6c"
+theme.fg_focus                                        = "#ffffff"
+theme.border_width                                    = 1
+theme.border_normal                                   = "#000000"
+theme.border_focus                                    = "#535d6c"
 
-theme.logout_box_bg      = "#00000090"
+theme.logout_box_bg                                   = "#00000090"
 
 --Colorscheme
-theme.background_dark    = "#1a1b26"
-theme.background_lighter = "#24283b"
-theme.white              = "#a9b1d6"
-theme.blueish_white      = "#89b4fa"
-theme.red                = "#F7768E"
-theme.green              = "#73daca"
-theme.yellow             = "#E0AF68"
-theme.blue               = "#7AA2F7"
-theme.magenta            = "#BB9AF7"
-theme.cyan               = "#7dcfff"
+theme.background_dark                                 = "#1a1b26"
+theme.background_lighter                              = "#24283b"
+theme.white                                           = "#a9b1d6"
+theme.blueish_white                                   = "#89b4fa"
+theme.red                                             = "#F7768E"
+theme.green                                           = "#73daca"
+theme.yellow                                          = "#E0AF68"
+theme.blue                                            = "#7AA2F7"
+theme.magenta                                         = "#BB9AF7"
+theme.cyan                                            = "#7dcfff"
 
-
--- $green: #73DACA;
--- $yellow: #E0AF68;
--- $blue: #7AA2F7;
--- $magenta: #BB9AF7;
--- $cyan: #7DCFFF;
+--Default wallpaper
+theme.wallpaper                                       = os.getenv("HOME") .. "/.config/awesome/Wallpapers/catMachup.jpg"
 
 --Close Button
-theme.titlebar_close_button_normal              = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
-theme.titlebar_close_button_focus               = "~/.config/awesome/themes/mytheme/titlebar_icons/close.png"
+theme.titlebar_close_button_normal                    = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
+theme.titlebar_close_button_focus                     = "~/.config/awesome/themes/mytheme/titlebar_icons/close.png"
+theme.titlebar_close_button_normal_hover              = "~/.config/awesome/themes/mytheme/titlebar_icons/close_hover.png"
+theme.titlebar_close_button_focus_hover               = "~/.config/awesome/themes/mytheme/titlebar_icons/close_hover.png"
 
 --Maximized Button
-theme.titlebar_maximized_button_normal_inactive = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = "~/.config/awesome/themes/mytheme/titlebar_icons/maximize.png"
-theme.titlebar_maximized_button_normal_active   = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
-theme.titlebar_maximized_button_focus_active    = "~/.config/awesome/themes/mytheme/titlebar_icons/maximize.png"
+theme.titlebar_maximized_button_normal_inactive       = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
+theme.titlebar_maximized_button_focus_inactive        = "~/.config/awesome/themes/mytheme/titlebar_icons/maximize.png"
+theme.titlebar_maximized_button_normal_active         = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
+theme.titlebar_maximized_button_focus_active          = "~/.config/awesome/themes/mytheme/titlebar_icons/maximize.png"
+theme.titlebar_maximized_button_normal_inactive_hover =
+"~/.config/awesome/themes/mytheme/titlebar_icons/maximize-hover.png"
+theme.titlebar_maximized_button_focus_inactive_hover  =
+"~/.config/awesome/themes/mytheme/titlebar_icons/maximize-hover.png"
+theme.titlebar_maximized_button_normal_active_hover   =
+"~/.config/awesome/themes/mytheme/titlebar_icons/maximize-hover.png"
+theme.titlebar_maximized_button_focus_active_hover    = "~/.config/awesome/themes/mytheme/titlebar_icons/maximize-hover.png"
+
 
 
 --Minimize Button
-theme.titlebar_minimize_button_normal        = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
-theme.titlebar_minimize_button_focus         = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize.png"
+theme.titlebar_minimize_button_normal       = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
+theme.titlebar_minimize_button_focus        = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize.png"
+theme.titlebar_minimize_button_normal_hover = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize_hover.png"
+
+theme.titlebar_minimize_button_focus_hover  = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize_hover.png"
+
+
 
 --Sticky Button
 theme.titlebar_sticky_button_normal_inactive = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
@@ -123,10 +134,20 @@ theme.taglist_shape_border_width             = 0
 theme.taglist_shape_border_radius            = 20
 theme.taglist_shape_border_color             = "#00000040"
 
-
+-- --Notifications
+-- theme.notification_font                      = "Ubuntu Nerd Font 14"
+-- theme.notification_bg                        = "#1a1b26"
+-- theme.notification_fg                        = "#a9b1d6"
+-- theme.notification_border_width              = 8
+-- theme.notification_width                     = 500
+-- theme.notification_max_width                 = 500
+-- theme.notification_margin                    = 5
+--
+-- theme.notification_max_height                = 100
+-- theme.notification_height                    = 80
 
 --Theme
-theme.font               = "CaskaydiaCove Nerd Font 14"
-theme.icon_empty_notibox = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
+theme.font                                   = "CaskaydiaCove Nerd Font 14"
+theme.icon_empty_notibox                     = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
 
 return theme
