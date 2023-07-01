@@ -3,6 +3,7 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
+local color = require("layout.topbar.colors")
 
 local separator = wibox.widget.textbox("   ")
 local separator2 = wibox.widget.textbox("    ")
@@ -27,7 +28,7 @@ local screenshot = wibox.widget {
     bottom = 6,
     widget = wibox.container.margin
   },
-  bg = "1A1B26",
+  bg = color.background_lighter,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
@@ -55,7 +56,7 @@ local settings = wibox.widget {
     bottom = 5,
     widget = wibox.container.margin
   },
-  bg = "1A1B26",
+  bg = color.background_lighter,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
@@ -74,7 +75,7 @@ local music = wibox.widget {
     bottom = 5,
     widget = wibox.container.margin
   },
-  bg = "1A1B26",
+  bg = color.background_lighter,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
@@ -95,7 +96,7 @@ local system_tray = wibox.widget {
     },
     widget = wibox.container.background,
     shape  = gears.shape.rounded_rect,
-    bg     = "#24283b"
+    bg     = color.background_lighter
   },
   left   = 3,
   right  = 3,

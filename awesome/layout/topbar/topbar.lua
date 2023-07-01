@@ -3,7 +3,6 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 
-
 -- Custom Local Library: Common Functional Decoration
 local deco = {
   wallpaper = require("deco.wallpaper"),
@@ -13,16 +12,14 @@ local deco = {
 
 local taglist_buttons = deco.taglist()
 local tasklist_buttons = deco.tasklist()
-
+local color = require("layout.topbar.colors")
 local _M = {}
 
 --Spacer
 local separator = wibox.widget.textbox("     ")
 
-local battery_widget = require("deco.battery")
 local calendar_widget = require("deco.calendar")
 local batteryarc_widget = require("deco.batteryarc")
-local logout_menu_widget = require("deco.logout-menu")
 
 
 ---------------------------
@@ -30,7 +27,8 @@ local logout_menu_widget = require("deco.logout-menu")
 ---------------------------
 
 --textclock widget
-mytextclock = wibox.widget.textclock('<span color="#A9B1D6" font="Ubuntu Nerd Font Bold 13"> %a %b %d, %H:%M </span>', 10)
+mytextclock = wibox.widget.textclock(
+  '<span color="' .. color.white .. '" font="Ubuntu Nerd Font Bold 13"> %a %b %d, %H:%M </span>', 10)
 
 
 --calendar-widget
@@ -69,7 +67,7 @@ local fancy_taglist = wibox.widget {
     mytaglist,
     widget = wibox.container.background,
     shape  = gears.shape.rounded_rect,
-    bg     = "#24283b"
+    bg     = color.background_lighter
   },
   left   = 3,
   right  = 3,
@@ -95,8 +93,8 @@ mywibox =
       screen = s,
       height = 35,
       opacity = 1,
-      fg = "#89B4FA",
-      bg = "#1A1B26",
+      fg = color.blueish_white,
+      bg = color.background_dark,
       shape = function(cr, width, height)
         gears.shape.rounded_rect(cr, width, height, 8)
       end,

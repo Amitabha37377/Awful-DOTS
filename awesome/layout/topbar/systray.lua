@@ -3,6 +3,7 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local color = require("layout.topbar.colors")
 
 --Separator
 local separator = wibox.widget.textbox("   ")
@@ -37,7 +38,7 @@ local tray_toggle = wibox.widget {
     bottom = 3,
     widget = wibox.container.margin
   },
-  bg = "1A1B26",
+  bg = color.background_dark,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
@@ -54,7 +55,7 @@ local top_left = wibox.widget {
     },
     widget = wibox.container.background,
     shape  = gears.shape.rounded_rect,
-    bg     = "#1A1B26"
+    bg     = color.background_dark
   },
   left   = 3,
   right  = 0,

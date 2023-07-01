@@ -3,10 +3,9 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
--- Widget and layout library
 local wibox = require("wibox")
 
+local color = require("deco.colors")
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
@@ -28,9 +27,9 @@ client.connect_signal("request::titlebars", function(c)
         height    = 20,
         size      = 35,
         position  = "left",
-        bg_normal = '#1a1b26',
+        bg_normal = color.background_dark,
         -- bg_normal = '#00001180',
-        bg_focus  = '#1a1b26',
+        bg_focus  = color.background_dark,
         -- bg_focus  = '#00000099',
     })
     -- buttons for the titlebar

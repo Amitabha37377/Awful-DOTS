@@ -1,3 +1,5 @@
+local color                                           = require("layout.topbar.colors")
+
 local theme                                           = {}
 
 theme.font                                            = "CaskaydiaCove Nerd Font 12"
@@ -119,13 +121,13 @@ theme.layout_cornerse                        = "/usr/share/awesome/themes/defaul
 -- theme.taglist_fg_focus    = "#2b2b2b"
 
 -- Catppuccino
-theme.taglist_bg_empty                       = "#24283B"
-theme.taglist_fg_empty                       = "#A9B1D6"
+theme.taglist_bg_empty                       = color.background_lighter
+theme.taglist_fg_empty                       = color.white
 -- theme.taglist_bg_occupied                       = "#434c5e"
-theme.taglist_bg_occupied                    = "#24283b"
-theme.taglist_fg_occupied                    = "#A9B1D6"
-theme.taglist_bg_focus                       = "#24283b"
-theme.taglist_fg_focus                       = "#6ab0c1"
+theme.taglist_bg_occupied                    = color.background_lighter
+theme.taglist_fg_occupied                    = color.white
+theme.taglist_bg_focus                       = color.background_lighter
+theme.taglist_fg_focus                       = color.cyan
 
 -- Other Taglist settings
 
