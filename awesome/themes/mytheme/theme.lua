@@ -3,6 +3,7 @@ local color                                           = require("layout.topbar.c
 local theme                                           = {}
 
 theme.font                                            = "CaskaydiaCove Nerd Font 12"
+theme.fg                                              = color.white
 theme.bg_normal                                       = "#24283b"
 theme.fg_normal                                       = "#aaaaaa"
 theme.bg_focus                                        = "#535d6c"

@@ -2,6 +2,8 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 --Main Logo
 local button1 = wibox.widget {
@@ -12,10 +14,10 @@ local button1 = wibox.widget {
       resize = true,
       opacity = 1,
     },
-    left   = 5,
-    right  = 5,
-    top    = 5,
-    bottom = 5,
+    left   = dpi(5),
+    right  = dpi(5),
+    top    = dpi(5),
+    bottom = dpi(5),
     widget = wibox.container.margin
   },
   bg = "1A1B26",

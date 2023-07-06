@@ -2,6 +2,8 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 -- Custom Local Library: Common Functional Decoration
 local deco = {
@@ -69,10 +71,10 @@ local fancy_taglist = wibox.widget {
     shape  = gears.shape.rounded_rect,
     bg     = color.background_lighter
   },
-  left   = 3,
-  right  = 3,
-  top    = 3,
-  bottom = 3,
+  left   = dpi(3),
+  right  = dpi(3),
+  top    = dpi(3),
+  bottom = dpi(3),
   widget = wibox.container.margin
 
 }
@@ -89,9 +91,9 @@ local systray = require("layout.topbar.systray")
 mywibox =
     awful.wibar({
       position = "top",
-      margins = { top = 7, left = 8, right = 8, bottom = 0 },
+      margins = { top = dpi(7), left = dpi(8), right = dpi(8), bottom = 0 },
       screen = s,
-      height = 35,
+      height = dpi(35),
       opacity = 1,
       fg = color.blueish_white,
       bg = color.background_dark,

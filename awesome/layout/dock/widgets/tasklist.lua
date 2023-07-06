@@ -2,6 +2,8 @@
 local gears = require("gears")
 local wibox = require("wibox")
 local awful = require("awful")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 --color and icons
 local color = require("layout.dock.color")
@@ -25,17 +27,17 @@ local popup = awful.popup({
     filter = awful.widget.tasklist.filter.allscreen,
     buttons = tasklist_buttons,
     margins = {
-      top = 10,
-      bottom = 10,
-      left = 10,
-      right = 10,
+      top = dpi(10),
+      bottom = dpi(10),
+      left = dpi(10),
+      right = dpi(10),
     },
     style = {
       shape = gears.shape.rounded_rect,
     },
     layout = {
-      margins = 5,
-      spacing = 5,
+      margins = dpi(5),
+      spacing = dpi(5),
       forced_num_rows = 2,
       layout = wibox.layout.grid.horizontal,
     },
@@ -44,15 +46,15 @@ local popup = awful.popup({
         {
           id = "clienticon",
           widget = awful.widget.clienticon,
-          margins = 4,
+          margins = dpi(4),
           resize = false,
         },
-        margins = 4,
+        margins = dpi(4),
         widget = wibox.container.margin,
       },
       id = "background_role",
-      forced_width = 58,
-      forced_height = 58,
+      forced_width = dpi(58),
+      forced_height = dpi(58),
       widget = wibox.container.background,
       create_callback = function(self, c, index, objects) --luacheck: no unused
         self:get_children_by_id("clienticon")[1].client = c
@@ -61,12 +63,12 @@ local popup = awful.popup({
   }),
   bg = "#1a1b26",
   border_color = "#1a1b26",
-  border_width = 10,
+  border_width = dpi(10),
   ontop = true,
   -- placement    = awful.placement.bottom_left + awful.placement.no_offscreen,
   placement = function(c)
     local screen_geometry = awful.screen.focused().geometry
-    return awful.placement.bottom(c, { margins = { bottom = 75, left = 800 } })
+    return awful.placement.bottom(c, { margins = { bottom = dpi(75), left = dpi(800) } })
   end,
   geometry = { x = 10, y = -10 },
   shape = gears.shape.rounded_rect,
@@ -82,17 +84,17 @@ local button = wibox.widget {
       resize = true,
       opacity = 1,
     },
-    left   = 1.1,
-    right  = 1.1,
-    top    = 1.1,
-    bottom = 1.1,
+    left   = dpi(1.1),
+    right  = dpi(1.1),
+    top    = dpi(1.1),
+    bottom = dpi(1.1),
     widget = wibox.container.margin
   },
   bg = color.background_dark,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
-  forced_height = 48,
-  forced_width = 48,
+  forced_height = dpi(48),
+  forced_width = dpi(48),
 }
 
 --Hover highlight effects

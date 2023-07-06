@@ -4,10 +4,14 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 local color = require("layout.topbar.colors")
+local dpi = beautiful.xresources.apply_dpi
 
 local separator = wibox.widget.textbox("   ")
 local separator2 = wibox.widget.textbox("    ")
 
+
+--Popup Menus
+local control = require("popups.control_center.main")
 
 --Battery Widget
 local batteryarc_widget = require("deco.batteryarc")
@@ -22,10 +26,10 @@ local screenshot = wibox.widget {
       resize = true,
       opacity = 1,
     },
-    left   = 6,
-    right  = 6,
-    top    = 6,
-    bottom = 6,
+    left   = dpi(6),
+    right  = dpi(6),
+    top    = dpi(6),
+    bottom = dpi(6),
     widget = wibox.container.margin
   },
   bg = color.background_lighter,
@@ -50,16 +54,21 @@ local settings = wibox.widget {
       resize = true,
       opacity = 1,
     },
-    left   = 5,
-    right  = 5,
-    top    = 5,
-    bottom = 5,
+    left   = dpi(5),
+    right  = dpi(5),
+    top    = dpi(5),
+    bottom = dpi(5),
     widget = wibox.container.margin
   },
   bg = color.background_lighter,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
+
+settings:connect_signal("button::release", function()
+  control.visible = not control.visible
+end)
+
 
 local music = wibox.widget {
   {
@@ -69,10 +78,10 @@ local music = wibox.widget {
       resize = true,
       opacity = 1,
     },
-    left   = 5,
-    right  = 5,
-    top    = 5,
-    bottom = 5,
+    left   = dpi(5),
+    right  = dpi(5),
+    top    = dpi(5),
+    bottom = dpi(5),
     widget = wibox.container.margin
   },
   bg = color.background_lighter,
@@ -98,10 +107,10 @@ local system_tray = wibox.widget {
     shape  = gears.shape.rounded_rect,
     bg     = color.background_lighter
   },
-  left   = 3,
-  right  = 3,
-  top    = 3,
-  bottom = 3,
+  left   = dpi(3),
+  right  = dpi(3),
+  top    = dpi(3),
+  bottom = dpi(3),
   widget = wibox.container.margin
 
 }

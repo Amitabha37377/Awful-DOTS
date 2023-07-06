@@ -2,6 +2,9 @@
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
+
 
 --Colors
 local color = require("layout.dock.color")
@@ -16,17 +19,17 @@ local button = wibox.widget {
       resize = true,
       opacity = 1,
     },
-    left   = 1,
-    right  = 1,
-    top    = 2,
-    bottom = 2,
+    left   = dpi(1),
+    right  = dpi(1),
+    top    = dpi(2),
+    bottom = dpi(2),
     widget = wibox.container.margin
   },
   bg = color.background_dark,
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
-  forced_height = 48,
-  forced_width = 48,
+  forced_height = dpi(48),
+  forced_width = dpi(48),
 }
 
 --Open app on click

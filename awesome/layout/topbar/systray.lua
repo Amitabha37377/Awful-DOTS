@@ -4,6 +4,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local color = require("layout.topbar.colors")
+local dpi = beautiful.xresources.apply_dpi
 
 --Separator
 local separator = wibox.widget.textbox("   ")
@@ -13,10 +14,10 @@ local separator2 = wibox.widget.textbox("    ")
 local systray = wibox.widget {
   wibox.widget.systray(),
   widget  = wibox.container.margin,
-  left    = 2,
-  right   = 2,
-  top     = 2,
-  bottom  = 2,
+  left    = dpi(2),
+  right   = dpi(2),
+  top     = dpi(2),
+  bottom  = dpi(2),
   visible = true,
 }
 
@@ -32,10 +33,10 @@ local widget = wibox.widget {
 local tray_toggle = wibox.widget {
   {
     widget,
-    left   = 3,
+    left   = dpi(3),
     right  = 0,
-    top    = 3,
-    bottom = 3,
+    top    = dpi(3),
+    bottom = dpi(3),
     widget = wibox.container.margin
   },
   bg = color.background_dark,
@@ -57,10 +58,10 @@ local top_left = wibox.widget {
     shape  = gears.shape.rounded_rect,
     bg     = color.background_dark
   },
-  left   = 3,
-  right  = 0,
-  top    = 3,
-  bottom = 3,
+  left   = dpi(3),
+  right  = dpi(0),
+  top    = dpi(3),
+  bottom = dpi(3),
   widget = wibox.container.margin
 
 }

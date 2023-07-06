@@ -1,5 +1,5 @@
 local user_profile = {
-  name = "Billu",
+  name = "Shehejek",
   image_path = ".."
 }
 
