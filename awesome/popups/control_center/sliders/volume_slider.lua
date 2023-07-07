@@ -10,8 +10,13 @@ local dpi = beautiful.xresources.apply_dpi
 local separator = wibox.widget.textbox("    ")
 
 -----------------------------
---Brightness Slider Widget
+--Volume Slider Widget
 -----------------------------
+
+local volume_percentage = tonumber(io.popen("amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'"):read(
+  "*all"))
+
+
 local volume_slider = wibox.widget({
   widget = wibox.widget.slider,
   bar_shape = function(cr, width, height)
@@ -26,18 +31,32 @@ local volume_slider = wibox.widget({
   handle_width = dpi(25),
   handle_border_width = 1,
   handle_border_color = "#4682b8",
-  minimum = 5,
+  minimum = 0,
   maximum = 100,
-  value = 69, --[[ tonumber(io.popen("light -G"):read("*all")) ]]
+  value = tonumber(io.popen("amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print substr($2, 1, length($2)-1) }'")
+    :read("*all"))
 })
 
---FUnctionality of Brightness Slider
--- brightness_slider:connect_signal("property::value", function(slider)
---   local brightness_level = math.floor(slider.value / 100 * 100)
---   awful.spawn.easy_async("light -S " .. brightness_level, function()
---   end)
--- end)
---
+-- Define a timer to update the volume slider value every second
+local update_volume_slider = function()
+  awful.spawn.easy_async("amixer sget Master", function(stdout)
+    local volume = tonumber(string.match(stdout, "(%d?%d?%d)%%"))
+    volume_slider.value = volume
+  end)
+end
+
+local volume_slider_timer = gears.timer({
+  timeout = 1,
+  call_now = true,
+  autostart = true,
+  callback = update_volume_slider,
+})
+
+-- Add signal to set the Volume using amixer
+volume_slider:connect_signal("property::value", function(slider)
+  local volume_level = math.floor(slider.value / 100 * 100)
+  os.execute("amixer set Master " .. volume_level .. "%")
+end)
 
 local volume_container = {
   {

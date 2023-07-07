@@ -72,10 +72,12 @@ image:connect_signal("button::press", function()
     image:set_bg("#5baddd")
     silent_status:set_markup_silently('<span color="' ..
       color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
+    os.execute("amixer set Master 0%")
   else
     image:set_bg(color.grey)
     silent_status:set_markup_silently('<span color="' ..
       color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
+    os.execute("amixer set Master 69%")
   end
 end)
 
