@@ -3,6 +3,8 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
+
 
 --Custom Modules
 local user = require("popups.user_profile")
@@ -18,10 +20,10 @@ local username = wibox.widget {
     fg = color.white
   },
   widget = wibox.container.margin,
-  top = 5,
-  bottom = 5,
-  right = 5,
-  left = 5,
+  top = dpi(5),
+  bottom = dpi(5),
+  right = dpi(5),
+  left = dpi(5),
 }
 
 --UserImage
@@ -36,11 +38,11 @@ local image = wibox.widget {
 
   },
   widget = wibox.container.margin,
-  top = 3,
-  bottom = 3,
-  right = 10,
-  left = 7,
-  forced_height = 40
+  top = dpi(3),
+  bottom = dpi(3),
+  right = dpi(10),
+  left = dpi(7),
+  forced_height = dpi(40)
 }
 
 --Main Widget
@@ -52,15 +54,15 @@ local profile = wibox.widget {
       layout = wibox.layout.fixed.horizontal,
     },
     widget = wibox.container.margin,
-    top = 3,
-    bottom = 3,
-    right = 3,
-    left = 3,
+    top = dpi(3),
+    bottom = dpi(3),
+    right = dpi(3),
+    left = dpi(3),
   },
   widget = wibox.container.background,
   bg = color.background_lighter,
   -- forced_height = 60,
-  forced_width = 300,
+  forced_width = dpi(300),
   shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 10)
   end,

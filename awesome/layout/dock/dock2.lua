@@ -18,7 +18,7 @@ local Item7 = require("layout.dock.apps.discord")
 local Item8 = require("layout.dock.apps.blender")
 local Item9 = require("layout.dock.apps.unity")
 local Item10 = require("layout.dock.apps.onlyoffice")
-local Item11 = require("layout.dock.apps.vokoscreeng")
+local Item11 = require("layout.dock.apps.android_studio")
 
 --Directories
 local home = require("layout.dock.directories.home")

@@ -19,11 +19,11 @@ local power = wibox.widget {
 
   },
   widget = wibox.container.margin,
-  top = 8,
-  bottom = 8,
-  right = 13,
-  left = 9,
-  forced_height = 40
+  top = dpi(8),
+  bottom = dpi(8),
+  right = dpi(13),
+  left = dpi(9),
+  forced_height = dpi(40)
 }
 
 --notification button
@@ -38,11 +38,11 @@ local notifications = wibox.widget {
 
   },
   widget = wibox.container.margin,
-  top = 7,
-  bottom = 7,
-  right = 6,
-  left = 11,
-  forced_height = 40
+  top = dpi(7),
+  bottom = dpi(7),
+  right = dpi(6),
+  left = dpi(11),
+  forced_height = dpi(40)
 }
 
 --Separator
@@ -67,15 +67,15 @@ local buttons = wibox.widget {
       layout = wibox.layout.fixed.horizontal,
     },
     widget = wibox.container.margin,
-    top = 6,
-    bottom = 6,
-    right = 6,
-    left = 6,
+    top = dpi(6),
+    bottom = dpi(6),
+    right = dpi(6),
+    left = dpi(6),
   },
   widget = wibox.container.background,
   bg = color.background_lighter,
   -- forced_height = 60,
-  forced_width = 104,
+  forced_width = dpi(104),
   halign = center,
   shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 10)

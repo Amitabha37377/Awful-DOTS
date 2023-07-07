@@ -4,6 +4,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local color = require("popups.color")
+local dpi = beautiful.xresources.apply_dpi
 
 --Spacer
 local separator = wibox.widget.textbox("    ")
@@ -13,13 +14,15 @@ local separator = wibox.widget.textbox("    ")
 -----------------------------
 local brightness_slider = wibox.widget({
   widget = wibox.widget.slider,
-  bar_shape = gears.shape.rounded_rect,
-  bar_height = 25,
+  bar_shape = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, 25)
+  end,
+  bar_height = dpi(25),
   bar_color = color.white,
   bar_active_color = color.blue,
   handle_shape = gears.shape.circle,
   handle_color = "#4682b8",
-  handle_width = 25,
+  handle_width = dpi(25),
   handle_border_width = 1,
   handle_border_color = "#4682b8",
   minimum = 5,
@@ -34,36 +37,6 @@ brightness_slider:connect_signal("property::value", function(slider)
   end)
 end)
 
---Image for brightness Slider
-local brightness_pic = {
-  id = "brightness",
-  widget = wibox.widget.imagebox,
-  image = os.getenv("HOME") .. "/.icons/papirus-icon-theme-20230301/Papirus/brightness2.png",
-  resize = true,
-  opacity = 1,
-}
-
--- local brightness_container = wibox.widget {
---   {
---     {
---       brightness_pic,
---       {
---         brightness_slider,
---         widget = wibox.container.margin,
---         margins = 10,
---         forced_width = 250,
---         forced_height = 40,
---       },
---       layout = wibox.layout.fixed.horizontal
---     },
---     bg = "#111111",
---     shape = gears.shape.rounded_rect,
---     widget = wibox.container.background,
---     forced_width = 300,
---     forced_height = 70,
---   }
--- }
-
 local brightness_container = {
   {
     {
@@ -75,23 +48,23 @@ local brightness_container = {
     },
     widget = wibox.container.margin,
     top = 0,
-    bottom = 10,
+    bottom = dpi(10),
     right = 0,
-    left = 5
+    left = dpi(5)
   },
   {
     brightness_slider,
     widget = wibox.container.margin,
-    top = 1,
-    bottom = 10,
-    right = 15,
-    left = 5,
-    forced_width = 360,
-    forced_height = 70,
+    top = dpi(1),
+    bottom = dpi(10),
+    right = dpi(15),
+    left = dpi(5),
+    forced_width = dpi(360),
+    forced_height = dpi(70),
   },
   layout = wibox.layout.fixed.horizontal,
-  forced_width = 410,
-  forced_height = 50,
+  forced_width = dpi(410),
+  forced_height = dpi(50),
 }
 
 

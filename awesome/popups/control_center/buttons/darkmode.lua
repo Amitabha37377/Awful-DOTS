@@ -55,10 +55,10 @@ local text_dark = wibox.widget {
 local image_dark = wibox.widget {
   image,
   widget = wibox.container.margin,
-  top = 13,
-  bottom = 13,
-  right = 10,
-  left = 7,
+  top = dpi(13),
+  bottom = dpi(13),
+  right = dpi(10),
+  left = dpi(7),
   forced_height = dpi(80)
 }
 
@@ -90,23 +90,23 @@ local button = wibox.widget {
           layout = wibox.layout.fixed.horizontal,
         },
         widget = wibox.container.margin,
-        top = 3,
-        bottom = 6,
-        left = 2,
+        top = dpi(3),
+        bottom = dpi(6),
+        left = dpi(2),
         right = 0,
       },
       layout = wibox.layout.fixed.vertical
     },
     widget = wibox.container.margin,
-    top = 3,
-    bottom = 3,
-    right = 3,
-    left = 3,
+    top = dpi(3),
+    bottom = dpi(3),
+    right = dpi(3),
+    left = dpi(3),
   },
   widget = wibox.container.background,
   bg = color.background_lighter,
   -- forced_height = 60,
-  forced_width = 202,
+  forced_width = dpi(202),
   shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 10)
   end,

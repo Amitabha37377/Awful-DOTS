@@ -14,14 +14,14 @@ local button = wibox.widget {
   {
     {
       widget = wibox.widget.imagebox,
-      image = os.getenv("HOME") .. icon_path .. "vokoscreenNG.svg",
+      image = os.getenv("HOME") .. icon_path .. "androidstudio.svg",
       resize = true,
       opacity = 1,
     },
-    left   = dpi(2),
-    right  = dpi(2),
-    top    = dpi(4),
-    bottom = dpi(4),
+    left   = dpi(1),
+    right  = dpi(1),
+    top    = dpi(3),
+    bottom = dpi(3),
     widget = wibox.container.margin
   },
   bg = color.background_dark,
@@ -34,7 +34,7 @@ local button = wibox.widget {
 --Open app on click
 button:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
-    awful.spawn.with_shell("vokoscreenNG")
+    awful.spawn.with_shell("/home/amitabha/Downloads/rpms/android-studio/bin/studio.sh")
   end
 end)
 

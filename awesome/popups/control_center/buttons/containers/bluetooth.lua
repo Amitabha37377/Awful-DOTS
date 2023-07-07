@@ -30,7 +30,7 @@ local bluetooth = wibox.widget {
   widget = wibox.container.background,
   bg = color.grey,
   shape = function(cr, width, height)
-    gears.shape.rounded_bar(cr, 52, 50)
+    gears.shape.rounded_bar(cr, dpi(52), dpi(50))
   end
 }
 
