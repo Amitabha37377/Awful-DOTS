@@ -150,7 +150,7 @@ theme.taglist_shape_border_color             = "#00000040"
 -- theme.notification_height                    = 80
 
 --Theme
-theme.font                                   = "CaskaydiaCove Nerd Font 14"
+theme.font                                   = "Ubuntu Nerd Font 14"
 theme.icon_empty_notibox                     = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
 
 return theme

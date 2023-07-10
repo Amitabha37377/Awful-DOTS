@@ -13,21 +13,21 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local gears = require("gears")
 local naughty = require("naughty")
+local color = require("deco.colors")
 
 local calendar_widget = {}
 
 local function worker(user_args)
     local calendar_themes = {
         nord = {
-            bg = "#2E3440",
-            fg = "#D8DEE9",
-            focus_date_bg = "#88C0D0",
-            focus_date_fg = "#000000",
-            weekend_day_bg = "#3B4252",
-            weekday_fg = "#88C0D0",
-            header_fg = "#E5E9F0",
-            border = "#4C566A",
-            opacity = 0.2,
+            bg = color.background_dark,
+            fg = color.white,
+            focus_date_bg = color.blue,
+            focus_date_fg = color.background_dark,
+            weekend_day_bg = color.background_lighter,
+            weekday_fg = color.blueish_white,
+            header_fg = color.blue,
+            border = color.background_dark,
         },
         outrun = {
             bg = "#0d0221",
@@ -189,7 +189,7 @@ local function worker(user_args)
 
     local cal = wibox.widget({
         date = os.date("*t"),
-        font = "CaskaydiaCove Nerd Font 14",
+        font = "Ubuntu Nerd Font 14",
         fn_embed = decorate_cell,
         long_weekdays = true,
         start_sunday = start_sunday,
@@ -200,8 +200,8 @@ local function worker(user_args)
         ontop = true,
         visible = false,
         shape = rounded_shape(radius),
-        offset = { y = 5 },
-        border_width = 1,
+        offset = { y = 15 },
+        border_width = 9,
         border_color = calendar_themes[theme].border,
         widget = cal,
     })
@@ -226,14 +226,14 @@ local function worker(user_args)
     function calendar_widget.toggle()
         if popup.visible then
             -- to faster render the calendar refresh it and just hide
-            cal:set_date(nil) -- the new date is not set without removing the old one
+            cal:set_date(nil)     -- the new date is not set without removing the old one
             cal:set_date(os.date("*t"))
             popup:set_widget(nil) -- just in case
             popup:set_widget(cal)
             popup.visible = not popup.visible
         else
             if placement == "top" then
-                awful.placement.top(popup, { margins = { top = 30 }, parent = awful.screen.focused() })
+                awful.placement.top(popup, { margins = { top = 50 }, parent = awful.screen.focused() })
             elseif placement == "top_right" then
                 awful.placement.top_right(
                     popup,
@@ -252,7 +252,7 @@ local function worker(user_args)
                     parent = awful.screen.focused(),
                 })
             else
-                awful.placement.top(popup, { margins = { top = 30 }, parent = awful.screen.focused() })
+                awful.placement.top(popup, { margins = { top = 45 }, parent = awful.screen.focused() })
             end
 
             popup.visible = true

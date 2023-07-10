@@ -35,11 +35,12 @@ mytextclock = wibox.widget.textclock(
 
 --calendar-widget
 local cw = calendar_widget({
-  theme = "outrun",
+  theme = "nord",
   placement = "top_center",
   start_sunday = true,
   radius = 8,
   previous_month_button = 1,
+  padding = 5,
   next_month_button = 3,
 })
 mytextclock:connect_signal("button::press", function(_, _, _, button)

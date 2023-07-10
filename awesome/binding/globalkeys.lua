@@ -10,8 +10,9 @@ local menubar = require("menubar")
 local modkey = RC.vars.modkey
 local terminal = RC.vars.terminal
 
---Dock
+--Custom Widgets
 local dock = require("layout.dock.dock")
+local control_center = require("popups.control_center.main")
 
 local _M = {}
 
@@ -115,15 +116,15 @@ function _M.get()
       awful.util.spawn("rofi -show drun")
     end, { description = "rofi", group = "launcher" }),
 
-    awful.key({ modkey }, "x", function()
-      awful.prompt.run({
-        prompt = "Run Lua code: ",
-        textbox = awful.screen.focused().mypromptbox.widget,
-        exe_callback = awful.util.eval,
-        history_path = awful.util.get_cache_dir() .. "/history_eval",
-      })
-    end, { description = "lua execute prompt", group = "awesome" }),
-
+    -- awful.key({ modkey }, "x", function()
+    --   awful.prompt.run({
+    --     prompt = "Run Lua code: ",
+    --     textbox = awful.screen.focused().mypromptbox.widget,
+    --     exe_callback = awful.util.eval,
+    --     history_path = awful.util.get_cache_dir() .. "/history_eval",
+    --   })
+    -- end, { description = "lua execute prompt", group = "awesome" }),
+    --
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Resize
     --awful.key({ modkey, "Control" }, "Left",  function () awful.client.moveresize( 20,  20, -40, -40) end),
@@ -180,7 +181,12 @@ function _M.get()
 
     --Toggle Dock
     awful.key({ "Mod4" }, "z", function() dock.visible = not dock.visible end,
-      { description = "Toggle dock", group = "Custom" }),
+      { description = "Toggle Dock", group = "Custom" }),
+
+    --Toggle control_center
+    awful.key({ "Mod4" }, "x", function() control_center.visible = not control_center.visible end,
+      { description = "Open Control Center", group = "Custom" }),
+
 
     -- Menubar
     awful.key({ modkey }, "p", function()
