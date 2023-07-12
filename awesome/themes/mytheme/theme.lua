@@ -52,14 +52,14 @@ theme.titlebar_maximized_button_normal_active_hover   =
 "~/.config/awesome/themes/mytheme/titlebar_icons/maximize-hover.png"
 theme.titlebar_maximized_button_focus_active_hover    = "~/.config/awesome/themes/mytheme/titlebar_icons/maximize-hover.png"
 
-
+theme.bg_systray                                      = color.background_dark
 
 --Minimize Button
-theme.titlebar_minimize_button_normal       = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
-theme.titlebar_minimize_button_focus        = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize.png"
-theme.titlebar_minimize_button_normal_hover = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize_hover.png"
+theme.titlebar_minimize_button_normal                 = "~/.config/awesome/themes/mytheme/titlebar_icons/inactive.png"
+theme.titlebar_minimize_button_focus                  = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize.png"
+theme.titlebar_minimize_button_normal_hover           = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize_hover.png"
 
-theme.titlebar_minimize_button_focus_hover  = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize_hover.png"
+theme.titlebar_minimize_button_focus_hover            = "~/.config/awesome/themes/mytheme/titlebar_icons/minimize_hover.png"
 
 
 
@@ -78,9 +78,6 @@ theme.tasklist_bg_focus                      = "#222222"
 
 theme.tasklist_shape_border_width            = 3
 theme.tasklist_shape_border_color            = "#000000"
-
---Systray
-theme.bg_systray                             = "#00000080"
 
 -- Default layout icons
 theme.layout_fairh                           = "/usr/share/awesome/themes/default/layouts/fairhw.png"
