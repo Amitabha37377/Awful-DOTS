@@ -1,3 +1,7 @@
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
+
+
 local color                                           = require("layout.topbar.colors")
 
 local theme                                           = {}
@@ -5,7 +9,7 @@ local theme                                           = {}
 theme.font                                            = "CaskaydiaCove Nerd Font 12"
 theme.fg                                              = color.white
 theme.bg_normal                                       = "#24283b"
-theme.fg_normal                                       = "#aaaaaa"
+theme.fg_normal                                       = color.white
 theme.bg_focus                                        = "#535d6c"
 theme.fg_focus                                        = "#ffffff"
 theme.border_width                                    = 1
@@ -138,7 +142,7 @@ theme.taglist_shape_border_radius            = 20
 theme.taglist_shape_border_color             = "#00000040"
 
 -- --Notifications
--- theme.notification_font                      = "Ubuntu Nerd Font 14"
+theme.notification_font                      = "Ubuntu Nerd Font 14"
 -- theme.notification_bg                        = "#1a1b26"
 -- theme.notification_fg                        = "#a9b1d6"
 -- theme.notification_border_width              = 8
@@ -149,8 +153,16 @@ theme.taglist_shape_border_color             = "#00000040"
 -- theme.notification_max_height                = 100
 -- theme.notification_height                    = 80
 
+theme.notification_position                  = 'top_right'
+theme.notification_margin                    = dpi(10)
+theme.notification_border_width              = dpi(0)
+theme.notification_spacing                   = dpi(5)
+theme.notification_icon_resize_strategy      = 'center'
+theme.notification_icon_size                 = dpi(300)
+
+
 --Theme
-theme.font                                   = "Ubuntu Nerd Font 14"
-theme.icon_empty_notibox                     = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
+theme.font               = "Ubuntu Nerd Font 14"
+theme.icon_empty_notibox = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
 
 return theme

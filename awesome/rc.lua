@@ -35,7 +35,7 @@ local main = {
 }
 
 --Notifications
--- require("deco.notifications")
+require("deco.notifications")
 
 -- Custom Local Library: Keys and Mouse Binding
 local binding = {
