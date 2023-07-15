@@ -13,6 +13,8 @@ local terminal = RC.vars.terminal
 --Custom Widgets
 local dock = require("layout.dock.dock")
 local control_center = require("popups.control_center.main")
+local app_launcher = require("popups.launcher.launcher")
+-- local launcher = require("popups.launcher.spotlight")
 
 local _M = {}
 
@@ -113,8 +115,17 @@ function _M.get()
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Prompt
     awful.key({ modkey }, "d", function()
-      awful.util.spawn("rofi -show drun")
-    end, { description = "rofi", group = "launcher" }),
+      -- awful.util.spawn("rofi -show drun")
+      app_launcher:toggle()
+    end, { description = "App Launcher", group = "launcher" }),
+
+    awful.key(
+      { modkey }, "q", function()
+        awesome.emit_signal("widget::launcher")
+      end,
+      { description = "show launcher", group = "awesome" }
+    ),
+
 
     -- awful.key({ modkey }, "x", function()
     --   awful.prompt.run({

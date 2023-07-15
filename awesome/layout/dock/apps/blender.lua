@@ -31,7 +31,7 @@ local button = wibox.widget {
   forced_width = dpi(48),
 }
 
---Open app on click
+-- Open app on click
 button:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
     awful.spawn.with_shell("blender")

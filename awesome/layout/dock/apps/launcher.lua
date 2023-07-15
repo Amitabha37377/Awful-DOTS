@@ -64,6 +64,7 @@ local args = {
   border_color = color.blue,
   wrap_page_scrolling = true,
   wrap_app_scrolling = true,
+  search_commands = true
 }
 
 --App Launcher

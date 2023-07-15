@@ -34,7 +34,7 @@ local button = wibox.widget {
 --Open app on click
 button:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
-    awful.spawn.with_shell("Discord")
+    awful.spawn.with_shell("flatpak run com.discordapp.Discord")
   end
 end)
 

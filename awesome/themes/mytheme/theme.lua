@@ -8,6 +8,7 @@ local theme                                           = {}
 
 theme.font                                            = "CaskaydiaCove Nerd Font 12"
 theme.fg                                              = color.white
+theme.bg                                              = "#24283b"
 theme.bg_normal                                       = "#24283b"
 theme.fg_normal                                       = color.white
 theme.bg_focus                                        = "#535d6c"

@@ -101,7 +101,9 @@ require("layout.dock.dock")
 require("layout.dock.dock2")
 
 -- }}}
-
+--Popup Launcher
+require("popups.launcher.launcher")
+require("popups.launcher.spotlight")
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
