@@ -14,6 +14,7 @@ local terminal = RC.vars.terminal
 local dock = require("layout.dock.dock")
 local control_center = require("popups.control_center.main")
 local app_launcher = require("popups.launcher.launcher")
+local powermenu = require("popups.powermenu.main")
 -- local launcher = require("popups.launcher.spotlight")
 
 local _M = {}
@@ -75,7 +76,13 @@ function _M.get()
       awful.spawn(terminal)
     end, { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-    awful.key({ modkey, "Shift" }, "c", awesome.quit, { description = "quit awesome", group = "awesome" }),
+    -- awful.key({ modkey, "Shift" }, "c", awesome.quit, { description = "quit awesome", group = "awesome" }),
+    awful.key({ modkey, "Shift" }, "c", function()
+      powermenu.visible = true
+      -- awesome.emit_signal("widget::powermenu")
+    end, { description = "quit awesome", group = "awesome" }),
+
+
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Layout manipulation

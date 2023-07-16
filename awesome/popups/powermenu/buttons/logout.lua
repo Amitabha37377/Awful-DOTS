@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 local color = require("popups.color")
+local text = require("popups.powermenu.text")
 
 --Image widget
 local image = wibox.widget {
@@ -37,12 +38,24 @@ local button = wibox.widget {
 button:connect_signal("mouse::enter", function()
   button.border_color = color.magenta
   image.image = os.getenv("HOME") .. "/.config/awesome/popups/powermenu/assets/logout-hover.png"
+  text:set_markup_silently('<span color="' ..
+    color.magenta .. '" font="Ubuntu Nerd Font bold 28">' .. "Logout" .. '</span>')
 end)
 --
 button:connect_signal("mouse::leave", function()
   button.border_color = color.grey
   image.image = os.getenv("HOME") .. "/.config/awesome/popups/powermenu/assets/logout.png"
+  text:set_markup_silently('<span color="' ..
+    color.white .. '" font="Ubuntu Nerd Font 28">' .. " " .. '</span>')
 end)
+
+button:connect_signal("button::press", function(_, _, _, button)
+  if button == 1 then
+    awesome.emit_signal("widget::powermenu")
+    awesome.quit()
+  end
+end)
+
 
 -- --Open app on click
 -- button:connect_signal("button::press", function(_, _, _, button)

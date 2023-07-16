@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 local color = require("popups.color")
+local text = require("popups.powermenu.text")
 
 --Image widget
 local image = wibox.widget {
@@ -36,11 +37,22 @@ local button = wibox.widget {
 button:connect_signal("mouse::enter", function()
   button.border_color = color.yellow
   image.image = os.getenv("HOME") .. "/.config/awesome/popups/powermenu/assets/restart-hover.png"
+  text:set_markup_silently('<span color="' ..
+    color.yellow .. '" font="Ubuntu Nerd Font bold 28">' .. "Reboot" .. '</span>')
 end)
 --
 button:connect_signal("mouse::leave", function()
   button.border_color = color.grey
   image.image = os.getenv("HOME") .. "/.config/awesome/popups/powermenu/assets/restart.png"
+  text:set_markup_silently('<span color="' ..
+    color.white .. '" font="Ubuntu Nerd Font 28">' .. " " .. '</span>')
+end)
+
+button:connect_signal("button::press", function(_, _, _, button)
+  if button == 1 then
+    awesome.emit_signal("widget::powermenu")
+    awful.spawn.with_shell("reboot")
+  end
 end)
 
 -- --Open app on click

@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 local color = require("popups.color")
+local text = require("popups.powermenu.text")
 
 --Buttons
 local shutdown = require("popups.powermenu.buttons.shutdown")
@@ -50,16 +51,24 @@ powermenu:setup {
     Separator,
     {
       {
-        shutdown,
-        Separator2,
-        reboot,
-        Separator2,
-        logout,
-        Separator2,
-        sleep,
-        Separator2,
-        lock,
-        layout = wibox.layout.fixed.horizontal
+        {
+          shutdown,
+          Separator2,
+          reboot,
+          Separator2,
+          logout,
+          Separator2,
+          sleep,
+          Separator2,
+          lock,
+          layout = wibox.layout.fixed.horizontal
+        },
+        {
+          text,
+          widget = wibox.container.margin,
+          top = 40,
+        },
+        layout = wibox.layout.fixed.vertical
       },
       layout = wibox.container.place
     },
@@ -74,6 +83,10 @@ powermenu:connect_signal("button::press", function(_, _, _, button)
     awesome.emit_signal("widget::control")
     powermenu.visible = false
   end
+end)
+
+awesome.connect_signal("widget::powermenu", function()
+  powermenu.visible = false
 end)
 
 
