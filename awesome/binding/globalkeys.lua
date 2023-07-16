@@ -114,13 +114,13 @@ function _M.get()
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Prompt
-    awful.key({ modkey }, "d", function()
-      -- awful.util.spawn("rofi -show drun")
-      app_launcher:toggle()
-    end, { description = "App Launcher", group = "launcher" }),
-
+    -- awful.key({ modkey }, "d", function()
+    --   -- awful.util.spawn("rofi -show drun")
+    --   app_launcher:toggle()
+    -- end, { description = "App Launcher", group = "launcher" }),
+    --
     awful.key(
-      { modkey }, "q", function()
+      { modkey }, "d", function()
         awesome.emit_signal("widget::launcher")
       end,
       { description = "show launcher", group = "awesome" }
