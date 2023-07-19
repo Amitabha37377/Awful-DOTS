@@ -17,11 +17,11 @@ local sleep = require("popups.powermenu.buttons.sleep")
 
 --Separator widget
 local Separator = wibox.widget.textbox("    ")
-Separator.forced_height = dpi(1080) --[[ awful.screen.focused().workarea.height ]]
-Separator.forced_width = dpi(1920) --[[ awful.screen.focused().workarea.width ]]
+Separator.forced_height = dpi(1080)
+Separator.forced_width = dpi(1920)
 
 local Separator2 = wibox.widget.textbox("    ")
-Separator2.forced_width = 90
+Separator2.forced_width = dpi(90)
 
 --Main powermenu wibox
 
@@ -31,7 +31,6 @@ local powermenu = awful.popup {
   ontop = true,
   bg = "#00000000",
   visible = false,
-  -- maximum_width = 200,
   placement = function(c)
     awful.placement.centered(c,
       { margins = { top = dpi(0), bottom = dpi(0), left = dpi(0), right = dpi(0) } })
@@ -41,9 +40,7 @@ local powermenu = awful.popup {
   end,
   opacity = 1,
   forced_height = dpi(1080),
-  -- forced_height = awful.screen.focused().height,
   forced_width = dpi(1920),
-  -- forced_width = awful.screen.focused().width,
 }
 
 powermenu:setup {

@@ -34,13 +34,6 @@ local button = wibox.widget {
   border_width = dpi(5),
   border_color = color.grey
 }
--- --Open app on click
--- button:connect_signal("button::press", function(_, _, _, button)
---   if button == 1 then
---     awful.spawn.with_shell("telegram-desktop")
---   end
--- end)
---
 
 --Hover highlight effects
 button:connect_signal("mouse::enter", function()
@@ -57,13 +50,5 @@ button:connect_signal("mouse::leave", function()
     color.white .. '" font="Ubuntu Nerd Font 28">' .. " " .. '</span>')
 end)
 
--- button:connect_signal("button::press", function()
---   button.bg = color.background_morelight
--- end)
---
--- button:connect_signal("button::release", function()
---   button.bg = color.background_lighter
--- end)
---
 
 return button

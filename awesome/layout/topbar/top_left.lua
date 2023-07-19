@@ -9,6 +9,7 @@ local dpi = beautiful.xresources.apply_dpi
 local separator = wibox.widget.textbox("   ")
 local separator2 = wibox.widget.textbox("    ")
 
+local ss_tool = require("popups.screen_record.screenshot.main")
 
 --Popup Menus
 local control = require("popups.control_center.main")
@@ -39,6 +40,11 @@ local screenshot = wibox.widget {
 
 screenshot:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
+    -- awful.spawn.with_shell(
+    --   'scrot /tmp/screenshot.png && convert /tmp/screenshot.png -resize 20% /tmp/resized_screenshot.png && dunstify -i /tmp/resized_screenshot.png "Screenshot Captured" && cp /tmp/screenshot.png ~/Pictures/file1_`date +"%Y%m%d_%H%M%S"`.png && rm /tmp/resized_screenshot.png && rm /tmp/screenshot.png'
+    -- )
+    ss_tool.visible = not ss_tool.visible
+  elseif button == 3 then
     awful.spawn.with_shell(
       'scrot /tmp/screenshot.png && convert /tmp/screenshot.png -resize 20% /tmp/resized_screenshot.png && dunstify -i /tmp/resized_screenshot.png "Screenshot Captured" && cp /tmp/screenshot.png ~/Pictures/file1_`date +"%Y%m%d_%H%M%S"`.png && rm /tmp/resized_screenshot.png && rm /tmp/screenshot.png'
     )

@@ -57,23 +57,4 @@ button:connect_signal("button::press", function(_, _, _, button)
   end
 end)
 
-
--- --Hover highlight effects
--- button:connect_signal("mouse::enter", function()
---   button.bg = color.background_lighter
--- end)
---
--- button:connect_signal("mouse::leave", function()
---   button.bg = color.background_dark
--- end)
---
--- button:connect_signal("button::press", function()
---   button.bg = color.background_morelight
--- end)
---
--- button:connect_signal("button::release", function()
---   button.bg = color.background_lighter
--- end)
---
-
 return button

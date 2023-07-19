@@ -7,7 +7,6 @@ local dpi = beautiful.xresources.apply_dpi
 local color = require("popups.color")
 
 local text = wibox.widget {
-  -- text = user.name,
   markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font Bold 28">' .. " " .. '</span>',
   font = "Ubuntu Nerd Font Bold ",
   widget = wibox.widget.textbox,
