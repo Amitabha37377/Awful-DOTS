@@ -319,7 +319,7 @@ end)
 --Screenshot Functionalities-----------------
 ---------------------------------------------
 
-local ss_index = 1
+local ss_index = tonumber(io.popen("cat ~/.config/awesome/ss_index.txt"):read("*all"))
 
 local open_pictures = naughty.action {
   name = 'Open Pictures',
@@ -379,6 +379,7 @@ fullscreen:connect_signal("button::release", function(_, _, _, button)
           }
         )
         ss_index = ss_index + 1
+        awful.spawn.with_shell('echo ' .. ss_index + 1 .. ' > ~/.config/awesome/ss_index.txt')
       end)
   end
 end)
@@ -399,6 +400,7 @@ timer_button:connect_signal("button::release", function(_, _, _, button)
           }
         )
         ss_index = ss_index + 1
+        awful.spawn.with_shell('echo ' .. ss_index + 1 .. ' > ~/.config/awesome/ss_index.txt')
       end)
   end
 end)
@@ -419,6 +421,7 @@ selection:connect_signal("button::release", function(_, _, _, button)
           }
         )
         ss_index = ss_index + 1
+        awful.spawn.with_shell('echo ' .. ss_index + 1 .. ' > ~/.config/awesome/ss_index.txt')
       end)
   end
 end)

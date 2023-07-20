@@ -79,9 +79,9 @@ function _M.get()
 
     awful.key({ modkey, "Control" }, "r",
       function()
-        awful.spawn.with_shell(
-          'mkdir ~/Pictures/' ..
-          os.date("%d-%m-%Y-%H:%M:%S") .. ' && mv ~/Pictures/*.png ~/Pictures/' .. os.date("%d-%m-%Y-%H:%M:%S"))
+        -- awful.spawn.with_shell(
+        --   'mkdir ~/Pictures/' ..
+        --   os.date("%d-%m-%Y-%H:%M:%S") .. ' && mv ~/Pictures/*.png ~/Pictures/' .. os.date("%d-%m-%Y-%H:%M:%S"))
         awesome.restart()
       end,
       { description = "reload awesome", group = "awesome" }),
