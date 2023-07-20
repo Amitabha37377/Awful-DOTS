@@ -75,7 +75,18 @@ function _M.get()
     awful.key({ modkey }, "Return", function()
       awful.spawn(terminal)
     end, { description = "open a terminal", group = "launcher" }),
-    awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+
+
+    awful.key({ modkey, "Control" }, "r",
+      function()
+        awful.spawn.with_shell(
+          'mkdir ~/Pictures/' ..
+          os.date("%d-%m-%Y-%H:%M:%S") .. ' && mv ~/Pictures/*.png ~/Pictures/' .. os.date("%d-%m-%Y-%H:%M:%S"))
+        awesome.restart()
+      end,
+      { description = "reload awesome", group = "awesome" }),
+
+
     -- awful.key({ modkey, "Shift" }, "c", awesome.quit, { description = "quit awesome", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "c", function()
       powermenu.visible = true

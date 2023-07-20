@@ -120,20 +120,30 @@ naughty.connect_signal("request::display", function(n)
         {
           {
             {
-              resize_strategy = 'resize',
-              widget = naughty.widget.icon,
+              {
+                resize_strategy = 'center',
+                widget = naughty.widget.icon,
+              },
+              margins       = beautiful.notification_margin,
+              widget        = wibox.container.margin,
+              forced_height = dpi(70),
+              forced_width  = dpi(100),
+              top           = dpi(10),
+              bottom        = dpi(10),
+              left          = dpi(15),
+              right         = dpi(10)
             },
-            margins = beautiful.notification_margin,
-            widget  = wibox.container.margin,
-          },
+            widget = wibox.container.background,
+            bg = color.background_lighter2
 
+          },
           {
             {
               {
                 naughty.widget.message,
                 left = dpi(15),
                 right = dpi(15),
-                top = dpi(0),
+                top = dpi(10),
                 bottom = dpi(10),
                 widget = wibox.container.margin
               },
@@ -145,7 +155,7 @@ naughty.connect_signal("request::display", function(n)
             width = dpi(400),
             widget = wibox.container.constraint
           },
-          layout = wibox.layout.align.vertical
+          layout = wibox.layout.align.horizontal
         },
         {
           actions_template,

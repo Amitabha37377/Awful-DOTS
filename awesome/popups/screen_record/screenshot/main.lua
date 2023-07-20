@@ -321,6 +321,30 @@ end)
 
 local ss_index = 1
 
+local open_pictures = naughty.action {
+  name = 'Open Pictures',
+  icon_only = false,
+}
+
+local delete_ss = naughty.action {
+  name = 'Delete',
+  icon_only = false,
+}
+
+open_pictures:connect_signal(
+  'invoked',
+  function()
+    awful.spawn('thunar ' .. 'Pictures', false)
+  end
+)
+
+delete_ss:connect_signal(
+  'invoked',
+  function()
+    awful.spawn.with_shell('rm ' .. 'Pictures/' .. ss_index .. '.png', false)
+  end
+)
+
 --Fullscreen immediate screenshot
 -- fullscreen:connect_signal("button::release", function(_, _, _, button)
 --   if button == 1 then
@@ -347,10 +371,11 @@ fullscreen:connect_signal("button::release", function(_, _, _, button)
         naughty.notify
         (
           {
-            title = "Screenshot Tool",
-            text = "Screen Captured!",
+            title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            text = "Screenshot Captured!",
             timeout = 5,
-            icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png"
+            icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
+            actions = { open_pictures, delete_ss }
           }
         )
         ss_index = ss_index + 1
@@ -366,10 +391,11 @@ timer_button:connect_signal("button::release", function(_, _, _, button)
         naughty.notify
         (
           {
-            title = "Screenshot Tool",
+            title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
             text = "Screen Captured!",
             timeout = 5,
-            icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png"
+            icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
+            actions = { open_pictures, delete_ss }
           }
         )
         ss_index = ss_index + 1
@@ -377,6 +403,25 @@ timer_button:connect_signal("button::release", function(_, _, _, button)
   end
 end)
 
+selection:connect_signal("button::release", function(_, _, _, button)
+  if button == 1 then
+    ss_tool.visible = false
+    awful.spawn.easy_async_with_shell('sleep 0.3 && scrot -s ' .. '~/Pictures/' .. ss_index .. '.png',
+      function()
+        naughty.notify
+        (
+          {
+            title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            text = "Screen Captured!",
+            timeout = 5,
+            icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
+            actions = { open_pictures, delete_ss }
+          }
+        )
+        ss_index = ss_index + 1
+      end)
+  end
+end)
 
 
 return ss_tool

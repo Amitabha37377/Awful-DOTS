@@ -154,7 +154,7 @@ theme.notification_font                      = "Ubuntu Nerd Font 14"
 theme.notification_position                  = 'top_right'
 theme.notification_margin                    = dpi(10)
 theme.notification_border_width              = dpi(0)
-theme.notification_spacing                   = dpi(5)
+theme.notification_spacing                   = dpi(15)
 theme.notification_icon_resize_strategy      = 'center'
 theme.notification_icon_size                 = dpi(300)
 

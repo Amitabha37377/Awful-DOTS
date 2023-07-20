@@ -28,7 +28,8 @@ local ss_text = wibox.widget { {
   forced_width = dpi(190),
   forced_height = dpi(36),
   shape = function(cr, width, height)
-    gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 5)
+    -- gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 5)
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 5)
   end,
 
 }
@@ -75,13 +76,13 @@ local titlebar = wibox.widget {
     {
       {
         ss_text,
-        sr_text,
+        -- sr_text,
         layout = wibox.layout.fixed.horizontal
       },
       widget = wibox.container.margin,
       top = dpi(9),
       bottom = dpi(9),
-      left = dpi(9),
+      left = dpi(9 + 6),
       right = dpi(3)
     },
     {
@@ -90,7 +91,7 @@ local titlebar = wibox.widget {
       top = dpi(0),
       bottom = dpi(0),
       right = dpi(0),
-      left = dpi(87)
+      left = dpi(87 + 190 - 6)
     },
     layout = wibox.layout.fixed.horizontal
   },
