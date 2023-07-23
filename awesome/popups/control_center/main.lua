@@ -114,4 +114,7 @@ awesome.connect_signal("widget::control", function()
   control.visible = false
 end)
 
+
+
+
 return control

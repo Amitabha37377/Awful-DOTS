@@ -7,14 +7,14 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 --Color
-local color = require("deco.colors")
+local color = require("popups.color")
 
 -- Config
 
 naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()
 naughty.config.defaults.border_width = 0
-naughty.config.defaults.position = "top_right"
+naughty.config.defaults.position = "top_left"
 naughty.config.defaults.title = "Notification"
 naughty.config.defaults.margin = dpi(16)
 
@@ -134,7 +134,7 @@ naughty.connect_signal("request::display", function(n)
               right         = dpi(10)
             },
             widget = wibox.container.background,
-            bg = color.background_lighter2
+            bg = color.background_lighter
 
           },
           {

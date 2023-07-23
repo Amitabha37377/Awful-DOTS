@@ -196,6 +196,7 @@ awful.spawn.with_shell("picom")
 -- awful.spawn.with_shell("nitrogen --restore")
 -- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
 awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/hyprland_kitty.jpeg")
+-- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/cat1.jpeg")
 awful.util.spawn("nm-applet")
 awful.spawn.with_shell('xinput set-prop "ELAN0791:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1')
 

@@ -28,8 +28,7 @@ local ss_text = wibox.widget { {
   forced_width = dpi(190),
   forced_height = dpi(36),
   shape = function(cr, width, height)
-    -- gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 5)
-    gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, 5)
+    gears.shape.partially_rounded_rect(cr, width, height, true, false, false, true, 5)
   end,
 
 }
@@ -39,7 +38,7 @@ local sr_text = wibox.widget { {
   {
     -- text = user.name,
     markup = '<span color="' ..
-        color.white .. '" font="Ubuntu Nerd Font Bold 15">' .. "  Screen record" .. '</span>',
+        color.blueish_white .. '" font="Ubuntu Nerd Font Bold 15">' .. "  Screen record" .. '</span>',
     font = "Ubuntu Nerd Font Bold 14",
     widget = wibox.widget.textbox,
     fg = color.white
@@ -76,13 +75,13 @@ local titlebar = wibox.widget {
     {
       {
         ss_text,
-        -- sr_text,
+        sr_text,
         layout = wibox.layout.fixed.horizontal
       },
       widget = wibox.container.margin,
       top = dpi(9),
       bottom = dpi(9),
-      left = dpi(9 + 6),
+      left = dpi(9),
       right = dpi(3)
     },
     {
@@ -91,7 +90,7 @@ local titlebar = wibox.widget {
       top = dpi(0),
       bottom = dpi(0),
       right = dpi(0),
-      left = dpi(87 + 190 - 6)
+      left = dpi(87)
     },
     layout = wibox.layout.fixed.horizontal
   },

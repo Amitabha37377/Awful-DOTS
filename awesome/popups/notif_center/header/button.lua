@@ -5,15 +5,15 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 local color = require("popups.color")
-local icon_path = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/"
+local icon_path = os.getenv("HOME") .. "/.config/awesome/popups/notif_center/assets/"
 
-local powermenu = require("popups.powermenu.main")
-local notif_center = require("popups.notif_center.main")
+-- local powermenu = require("popups.powermenu.main")
+-- local notif_center = require("popups.notif_center.main")
 
 --Powerbutton
-local power = wibox.widget { {
+local clear = wibox.widget { {
   {
-    image = icon_path .. "power3.png",
+    image = icon_path .. "clear_all.png",
     widget = wibox.widget.imagebox,
     resize = true,
     shape = function(cr, width, height)
@@ -37,35 +37,42 @@ local power = wibox.widget { {
 }
 
 --Hover highlight effects
-power:connect_signal("mouse::enter", function()
-  power.bg = "#343b58"
+clear:connect_signal("mouse::enter", function()
+  clear.bg = "#343b58"
 end)
 
-power:connect_signal("mouse::leave", function()
-  power.bg = color.background_lighter
+clear:connect_signal("mouse::leave", function()
+  clear.bg = color.background_lighter
 end)
 
-power:connect_signal("button::press", function()
-  power.bg = color.background_morelight
+clear:connect_signal("button::press", function()
+  clear.bg = color.background_morelight
 end)
 
-power:connect_signal("button::release", function()
-  power.bg = "#343b58"
+clear:connect_signal("button::release", function()
+  clear.bg = "#343b58"
 end)
 
-power:connect_signal("button::press", function(_, _, _, button)
+clear:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
-    powermenu.visible = not powermenu.visible
-    awesome.emit_signal("widget::control")
+    awesome.emit_signal("widget::swap_notifs")
   end
 end)
 
 
+-- power:connect_signal("button::press", function(_, _, _, button)
+--   if button == 1 then
+--     powermenu.visible = not powermenu.visible
+--     awesome.emit_signal("widget::control")
+--   end
+-- end)
+--
+
 
 --notification button
-local notifications = wibox.widget { {
+local close = wibox.widget { {
   {
-    image = icon_path .. "notification.png",
+    image = icon_path .. "close.png",
     widget = wibox.widget.imagebox,
     resize = true,
     shape = function(cr, width, height)
@@ -89,28 +96,35 @@ local notifications = wibox.widget { {
 }
 
 --Hover highlight effects
-notifications:connect_signal("mouse::enter", function()
-  notifications.bg = "#343b58"
+close:connect_signal("mouse::enter", function()
+  close.bg = "#343b58"
 end)
 
-notifications:connect_signal("mouse::leave", function()
-  notifications.bg = color.background_lighter
+close:connect_signal("mouse::leave", function()
+  close.bg = color.background_lighter
 end)
 
-notifications:connect_signal("button::press", function()
-  notifications.bg = color.background_morelight
+close:connect_signal("button::press", function()
+  close.bg = color.background_morelight
 end)
 
-notifications:connect_signal("button::release", function()
-  notifications.bg = "#343b58"
+close:connect_signal("button::release", function()
+  close.bg = "#343b58"
 end)
 
-notifications:connect_signal("button::press", function(_, _, _, button)
+close:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
-    notif_center.visible = not notif_center.visible
-    awesome.emit_signal("widget::control")
+    awesome.emit_signal("widget::notif_close")
   end
 end)
+
+
+-- notifications:connect_signal("button::press", function(_, _, _, button)
+--   if button == 1 then
+--     notif_center.visible = not notif_center.visible
+--     awesome.emit_signal("widget::control")
+--   end
+-- end)
 
 
 --Separator
@@ -129,9 +143,9 @@ local vertical_separator = wibox.widget {
 local buttons = wibox.widget {
   {
     {
-      power,
+      clear,
       vertical_separator,
-      notifications,
+      close,
       layout = wibox.layout.fixed.horizontal,
     },
     widget = wibox.container.margin,
@@ -144,7 +158,7 @@ local buttons = wibox.widget {
   bg = color.background_lighter,
   -- forced_height = 60,
   forced_width = dpi(104),
-  halign = center,
+  -- halign = 'center',
   shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 10)
   end,

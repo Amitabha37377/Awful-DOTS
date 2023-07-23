@@ -143,7 +143,7 @@ local function worker(user_args)
                 naughty.destroy(notification)
                 notification = naughty.notify {
                     text = stdout,
-                    title = '<span font="Ubuntu Nerd Font Bold 13">Battery status </span>',
+                    title = '<span font="Ubuntu Nerd Font Bold 14" color="#a9b1d6">Battery status </span>',
                     timeout = 5,
                     width = 200,
                     position = notification_position,

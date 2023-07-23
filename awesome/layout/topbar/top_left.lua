@@ -13,6 +13,7 @@ local ss_tool = require("popups.screen_record.screenshot.main")
 
 --Popup Menus
 local control = require("popups.control_center.main")
+local notif_center = require("popups.notif_center.main")
 
 --Battery Widget
 local batteryarc_widget = require("deco.batteryarc")
@@ -73,6 +74,7 @@ local settings = wibox.widget {
 
 settings:connect_signal("button::release", function()
   control.visible = not control.visible
+  notif_center.visible = false
 end)
 
 

@@ -371,8 +371,8 @@ fullscreen:connect_signal("button::release", function(_, _, _, button)
         naughty.notify
         (
           {
-            title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
-            text = "Screenshot Captured!",
+            title = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            text = '<span color="' .. color.white .. '"> Screenshot Captured!</span>',
             timeout = 5,
             icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
             actions = { open_pictures, delete_ss }
@@ -392,8 +392,11 @@ timer_button:connect_signal("button::release", function(_, _, _, button)
         naughty.notify
         (
           {
-            title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
-            text = "Screen Captured!",
+            -- title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            -- text = "Screen Captured!",
+            title = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            text = '<span color="' .. color.white .. '"> Screenshot Captured!</span>',
+
             timeout = 5,
             icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
             actions = { open_pictures, delete_ss }
@@ -413,8 +416,10 @@ selection:connect_signal("button::release", function(_, _, _, button)
         naughty.notify
         (
           {
-            title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
-            text = "Screen Captured!",
+            title = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            text = '<span color="' .. color.white .. '"> Screenshot Captured!</span>',
+            -- title = '<span font="Ubuntu Nerd Font Bold 14">  Screenshot Tool</span>',
+            -- text = "Screen Captured!",
             timeout = 5,
             icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
             actions = { open_pictures, delete_ss }
