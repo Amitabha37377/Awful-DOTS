@@ -152,11 +152,11 @@ After following all the steps restart awesome wm. Hopefully everything will work
 ---
 
 ## Credits
-- <a src="https://github.com/Stardust-kyun">Stardust kyun</a> (His absolutely amazing beginner friendly dotfiles. Stole some part of code from his notification center, app launcher, notification settings)
-- <a src="https://github.com/rxyhn">rxyhn</a> (Used his colorscheme from yoru in many places)
-- <a src="https://github.com/manilarome">Manilarome</a> (Stole some widgets. )
-- <a src="https://github.com/BlingCorp/bling">Bling</a> (Used the app launcher and playerctl widget)
-- <a src="https://github.com/streetturtle/awesome-wm-widgets">Awesome wm widgets by streetturtle</a> (Used the calendar widget and battery widget)
+- <a src="https://github.com/Stardust-kyun"><b>Stardust kyun</b></a> (His absolutely amazing beginner friendly dotfiles. Stole some part of code from his notification center, app launcher, notification settings)
+- <a src="https://github.com/rxyhn"><b>rxyhn</b></a> (Used his colorscheme from yoru in many places)
+- <a src="https://github.com/manilarome"><b>Manilarome</b></a> (Stole some widgets. )
+- <a src="https://github.com/BlingCorp/bling"><b>Bling</b></a> (Used the app launcher and playerctl widget)
+- <a src="https://github.com/streetturtle/awesome-wm-widgets"><b>Awesome wm widgets by streetturtle</b></a> (Used the calendar widget and battery widget)
 
 And many other awesome people from whom I got inspiration and design ideas. 
 
