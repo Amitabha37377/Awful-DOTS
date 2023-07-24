@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Lavanda-Dark-Compact
+Comment=An Clean Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Lavanda-Dark-Compact
+MetacityTheme=Lavanda-Dark-Compact
+IconTheme=Tela-circle-Dark
+CursorTheme=Lavanda-cursors
+ButtonLayout=close,minimize,maximize:menu

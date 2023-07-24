@@ -1,0 +1,5 @@
+<svg width="32" height="32" version="1" xmlns="http://www.w3.org/2000/svg">
+ <rect x="2" y="5" width="28" height="22" rx="1.077" ry="1.023" fill="#2f3337"/>
+ <rect transform="matrix(0 -1 -1 0 0 0)" x="-27" y="-32" width="1" height="32" rx=".5" ry=".5" fill="#c4c7cc"/>
+ <rect transform="matrix(0 -1 -1 0 0 0)" x="-25" y="-29" width="19" height="26" rx="0" ry="0" fill="#5294e2"/>
+</svg>
