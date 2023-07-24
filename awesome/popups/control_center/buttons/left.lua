@@ -4,7 +4,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-
+local naughty = require("naughty")
 
 --Custom Modules
 local user = require("popups.user_profile")
@@ -227,7 +227,9 @@ dnd:connect_signal("button::press", function()
   end
 end)
 
-
+if dnd_on then
+  naughty.destroy_all_notifications(nil, 1)
+end
 
 --------------------------------
 --Final container

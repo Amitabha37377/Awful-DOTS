@@ -141,13 +141,13 @@ local function worker(user_args)
         awful.spawn.easy_async([[bash -c 'acpi']],
             function(stdout, _, _, _)
                 naughty.destroy(notification)
-                notification = naughty.notify {
-                    text = stdout,
-                    title = '<span font="Ubuntu Nerd Font Bold 14" color="#a9b1d6">Battery status </span>',
-                    timeout = 5,
-                    width = 200,
-                    position = notification_position,
-                }
+                -- notification = naughty.notify {
+                --     text = stdout,
+                --     title = '<span font="Ubuntu Nerd Font Bold 14" color="#a9b1d6">Battery status </span>',
+                --     timeout = 5,
+                --     width = 200,
+                --     position = notification_position,
+                -- }
             end)
     end
 

@@ -275,7 +275,7 @@ notif_center_popup:setup { {
 }
 
 awesome.connect_signal("widget::notif_close", function()
-  notif_center_popup.visible = false
+  notif_center_popup.visible = not notif_center_popup.visible
 end)
 
 

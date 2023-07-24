@@ -19,27 +19,27 @@ Separator.forced_height = dpi(4)
 -----------------------------------------
 --DarkMode Button
 -----------------------------------------
-local dark_status = wibox.widget {
+local blf_status = wibox.widget {
   -- text = user.name,
-  markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font 11">' .. "On" .. '</span>',
+  markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font 11">' .. "Off" .. '</span>',
   font = "Ubuntu Nerd Font Bold 14",
   widget = wibox.widget.textbox,
   fg = color.white
 }
 
 --text
-local text_dark = wibox.widget {
+local text_blf = wibox.widget {
   {
     {
       -- text = user.name,
       markup = '<span color="' ..
-          color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "Dark Mode" .. '</span>',
+          color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "Blue Light" .. '</span>',
       font = "Ubuntu Nerd Font Bold 14",
       widget = wibox.widget.textbox,
       fg = color.white
     },
     Separator,
-    dark_status,
+    blf_status,
     layout = wibox.layout.fixed.vertical
 
   },
@@ -52,7 +52,7 @@ local text_dark = wibox.widget {
 }
 
 --UserImage
-local image_dark = wibox.widget {
+local image_blf = wibox.widget {
   image,
   widget = wibox.container.margin,
   top = dpi(13),
@@ -63,20 +63,23 @@ local image_dark = wibox.widget {
 }
 
 --Button Functionality
-local dark_on = true
+local blf_on = false
 
 image:connect_signal("button::press", function()
-  dark_on = not dark_on
-  if dark_on then
+  blf_on = not blf_on
+  if blf_on then
     image:set_bg("#5680b8")
-    dark_status:set_markup_silently('<span color="' ..
-      color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
+    blf_status:set_markup_silently('<span color="' ..
+      color.white .. '" font="Ubuntu Nerd Font 11">' .. "On" .. '</span>')
+    awful.spawn.with_shell('redshift -l 0:0 -t 4500:4500 -r')
   else
     image:set_bg(color.grey)
-    dark_status:set_markup_silently('<span color="' ..
-      color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
+    blf_status:set_markup_silently('<span color="' ..
+      color.white .. '" font="Ubuntu Nerd Font 11">' .. "Off" .. '</span>')
+    awful.spawn.with_shell("redshift -x && killall redshift")
   end
 end)
+
 
 
 --Main Widget
@@ -85,8 +88,8 @@ local button = wibox.widget {
     {
       {
         {
-          image_dark,
-          text_dark,
+          image_blf,
+          text_blf,
           layout = wibox.layout.fixed.horizontal,
         },
         widget = wibox.container.margin,

@@ -28,7 +28,7 @@ local dark = wibox.widget {
     right = dpi(16),
   },
   widget = wibox.container.background,
-  bg = "#5680b8",
+  bg = color.grey,
   shape = function(cr, width, height)
     gears.shape.rounded_bar(cr, dpi(56), dpi(54))
   end
