@@ -1,7 +1,7 @@
 <p align="center"><img src="assets/text_logo.png"></p>
 <h4 align="center">Featuring AwesomeWM</h4><br/><br/>
 
-<p align="center"><img src="assets/132.png" height="430" width="764"></p><br>
+<p align="center"><img src="assets/132.png"></p><br>
 
 Welcome to my stash of dotfiles of my awesomewm setup featuring tons of bugs and lots of incomplete stuffs. Note that things are likely to be changed in future as I am still working on this setup.
 Feel free to give a :star: to this repo if you liked the setup. It is much appreciated :3  
@@ -132,7 +132,7 @@ After following all the steps restart awesome wm. Hopefully everything will work
 
 - #### Control Center & Calendar
   <i>(Yes I copied from apple)</i>
-<p align="center"><img src="assets/128.png" height="430" width="764"></p>
+<p align="center"><img src="assets/128.png" ></p>
 
 - #### Notification Center
 <p align="center">
@@ -147,7 +147,7 @@ After following all the steps restart awesome wm. Hopefully everything will work
 <p align="center"><img src="assets/powermenu.gif"></p>
 
 - #### App Launcher(Bling)
-<p align="center"><img src="assets/launcher.jpg" height="430" width="764"></p>
+<p align="center"><img src="assets/launcher.jpg" ></p>
 
 ---
 
