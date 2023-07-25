@@ -81,6 +81,7 @@ nm-applet light alsa-utils feh nitrogen acpi playerctl redshift scrot
 ```
 
 The name of some packages may vary based on your distro.
+<i> <b>Note</b>: For Ubuntu and ubuntu/debian based distros additional dependency `libplayerctl-dev` </i>
 
 </details>
 <br>
