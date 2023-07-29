@@ -5,24 +5,20 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
--- Theme handling library
 local beautiful = require("beautiful")
 
--- Miscellanous awesome library
+-- Menubar
 local menubar = require("menubar")
 
 RC = {} -- global namespace, on top before require any modules
 RC.vars = require("main.user-variables")
 
--- {{{ Error handling -- }}}
+-- Error handling
 require("main.error-handling")
 
--- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.wallpaper = RC.vars.wallpaper
--- }}}
 
 modkey = RC.vars.modkey
 
@@ -37,7 +33,7 @@ local main = {
 --Notifications
 require("deco.notifications")
 
--- Custom Local Library: Keys and Mouse Binding
+-- Keys and Mouse Binding
 local binding = {
 	globalbuttons = require("binding.globalbuttons"),
 	clientbuttons = require("binding.clientbuttons"),
@@ -46,20 +42,17 @@ local binding = {
 	clientkeys = require("binding.clientkeys"),
 }
 
--- {{{ Layouts
+-- Layouts
 -- Table of layouts to cover with awful.layout.inc, order matters.
 -- a variable needed in main.tags, and statusbar
--- awful.layout.layouts = { ... }
 RC.layouts = main.layouts()
--- }}}
 
--- {{{ Tags
+-- Tags
 -- Define a tag table which hold all screen tags.
 -- a variable needed in rules, tasklist, and globalkeys
 RC.tags = main.tags()
--- }}}
 
--- {{{ Menu
+--  Menu
 -- Create a laucher widget and a main menu
 RC.mainmenu = awful.menu({
 	items = main.menu(),
@@ -72,52 +65,50 @@ RC.mainmenu = awful.menu({
 		border_width = 3,
 		border_color = "#000000",
 	},
-}) -- in globalkeys
-
+})
 -- a variable needed in statusbar (helper)
 RC.launcher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = RC.mainmenu })
-
 -- Menubar configuration
--- Set the terminal for applications that require it
 menubar.utils.terminal = RC.vars.terminal
 
--- }}}
 
--- {{{ Mouse and Key bindings
+-- Mouse and Key bindings
 RC.globalkeys = binding.globalkeys()
 RC.globalkeys = binding.bindtotags(RC.globalkeys)
 
 -- Set root
 root.buttons(binding.globalbuttons())
 root.keys(RC.globalkeys)
--- }}}
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Statusbar: Wibar
+-- Statusbar: Wibar
 require("layout.topbar.topbar")
 require("layout.dock.dock")
 require("layout.dock.dock2")
 
--- }}}
 --Popup Launcher
 require("popups.launcher.launcher")
-require("popups.launcher.spotlight")
--- {{{ Rules
+require("popups.launcher.launcher2")
+
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
--- }}}
 
--- {{{ Signals
+-- Signals
 require("main.signals")
--- }}}
 
 --Link the themes directory
 beautiful.init("~/.config/awesome/themes/mytheme/theme.lua")
 
 --Gaps
 beautiful.useless_gap = 4
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+--Too lazy to make a separate file for these-------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
 
 --Add window borders
 client.connect_signal("mouse::enter", function(c)
@@ -191,12 +182,19 @@ client.connect_signal("unmanage", function(c)
 	end
 end)
 
+
+
 --Autostart Applications
+
+-- Compositor
 awful.spawn.with_shell("picom")
+
+--Wallpaper
 -- awful.spawn.with_shell("nitrogen --restore")
--- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
-awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/hyprland_kitty.jpeg")
--- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/cat1.jpeg")
+awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
+-- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/hyprland_kitty.jpeg")
+
+--Other utilities
 awful.util.spawn("nm-applet")
 awful.spawn.with_shell('xinput set-prop "ELAN0791:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1')
 

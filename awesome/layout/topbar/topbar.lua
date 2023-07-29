@@ -121,11 +121,11 @@ mywibox:setup({
       fancy_taglist,
       separator,
       mypromptbox,
-      wibox.widget({
-        image = "home/amitabha/.icons/papirus-icon-theme-20230301/Papirus/22x22/apps/launch.svg",
-        resize_allowed = true,
-        widget = wibox.widget.imagebox,
-      }),
+      -- wibox.widget({
+      --   image = "home/amitabha/.icons/papirus-icon-theme-20230301/Papirus/22x22/apps/launch.svg",
+      --   resize_allowed = true,
+      --   widget = wibox.widget.imagebox,
+      -- }),
     },
     nil,
     {

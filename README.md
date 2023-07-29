@@ -3,7 +3,7 @@
 
 <p align="center"><img src="assets/132.png"></p><br>
 
-Welcome to my stash of dotfiles of my awesomewm setup featuring tons of bugs and lots of incomplete stuffs. Note that things are likely to be changed in future as I am still working on this setup.
+Welcome to my stash of dotfiles of my awesomewm setup. Note that things are likely to be changed in future as I am still working on this setup.
 Feel free to give a :star: to this repo if you liked the setup. It is much appreciated :3
 
 ---
@@ -37,7 +37,7 @@ These are all I remember right now. If there is any other dependencies that I mi
 
 ## Installation
 
-It is probably not a good idea to install these configs in your pc as things may break. But in case you want to use them anyway, follow the bellow steps:-
+Installing the config may break somethings in your pc as I can only try them in my computer. But in case you want to use them anyway, follow the bellow steps:-
 
 <details>
 <summary><b style="font-size:20px">Install Awesome-git</b></summary>
@@ -116,31 +116,7 @@ cp -r Misc/icon_packs/* ~/.icons/
 </details>
 <br>
 After following all the steps restart awesome wm. Hopefully everything will work.
-
----
-
-## Featured and Widgets
-
-- Dock with always visible and auto hide mode interchangable by pressing mod+z
-- Control Center
-- Notification Center
-- Fancy taglist for tag+tasklist preview
-- Bling app launcher
-- Non bling app launcher
-- Screenshot tool(WIP)
-- Lots of bugs
-- Lots of incomplete stuffs
-
-## To Do
-
-- Screen recording widget
-- A good looking Dashboard
-- System monitor widget
-- To do widget
-- Music player widget outside the control center
-- Improve animations (maybe)
-- Remove the last feature
-
+Feel free to open a github issue if you face any problem. I am nowhere near an awesomewm/lua expert but I will try my best to help.
 ---
 
 ## Gallery
@@ -166,7 +142,41 @@ After following all the steps restart awesome wm. Hopefully everything will work
 <p align="center"><img src="assets/powermenu.gif"></p>
 
 - #### App Launcher(Bling)
+
 <p align="center"><img src="assets/launcher.jpg" ></p>
+
+- #### Media Player (Supports Youtube, Idk what else it supports)
+<p align="center"><img src="assets/mplayer.png" ></p>
+
+---
+
+## Featured and Widgets
+
+- Dock with always visible and auto hide mode interchangable by pressing mod+z
+- Control Center
+- Notification Center
+- Fancy taglist for tag+tasklist preview
+- Bling app launcher
+- Non bling app launcher
+- Screenshot tool(WIP)
+- Lots of bugs
+- Lots of incomplete stuffs
+
+## To Do
+
+- Screen recording widget
+- A good looking Dashboard
+- System monitor widget
+- To do widget
+- <s>Music player widget outside the control center</s>
+- Improve animations (maybe)
+- Remove the last feature
+
+---
+
+- #### How to make the media player functional?
+  First make sure that `plasma-browser-integration` package is installed in your system. Install `plasma integration` browser extension in firefox.
+  Go to the manage extension settings of the `plasma integration` extension and uncheck `Enhanced Media Control`. Hopefully it will work.
 
 ---
 
@@ -178,6 +188,6 @@ After following all the steps restart awesome wm. Hopefully everything will work
 - <a href="https://github.com/BlingCorp/bling"><b>Bling</b></a> (Used the app launcher and playerctl widget)
 - <a href="https://github.com/streetturtle/awesome-wm-widgets"><b>Awesome wm widgets by streetturtle</b></a> (Used the calendar widget and battery widget)
 
-And many other awesome people from whom I got inspiration and design ideas.
+And many other awesome people who answered my stupid questions and from whom I got inspiration and design ideas.
 
 ---

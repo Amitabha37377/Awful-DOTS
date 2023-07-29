@@ -1,8 +1,8 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
--- local hotkeys_popup = require("awful.hotkeys_popup").widget
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Menubar library
 local menubar = require("menubar")
 
@@ -19,8 +19,6 @@ local powermenu = require("popups.powermenu.main")
 
 local _M = {}
 
--- reading
--- https://awesomewm.org/wiki/Global_Keybindings
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -36,9 +34,11 @@ function _M.get()
     awful.key({ modkey }, "j", function()
       awful.client.focus.byidx(1)
     end, { description = "focus next by index", group = "client" }),
+
     awful.key({ modkey }, "k", function()
       awful.client.focus.byidx(-1)
     end, { description = "focus previous by index", group = "client" }),
+
     awful.key({ modkey }, "w", function()
       RC.mainmenu:show()
     end, { description = "show main menu", group = "awesome" }),
@@ -54,15 +54,18 @@ function _M.get()
     awful.key({ modkey, "Control" }, "j", function()
       awful.screen.focus_relative(1)
     end, { description = "focus the next screen", group = "screen" }),
+
     awful.key({ modkey, "Control" }, "k", function()
       awful.screen.focus_relative(-1)
     end, { description = "focus the previous screen", group = "screen" }),
+
     awful.key(
       { modkey },
       "u",
       awful.client.urgent.jumpto,
       { description = "jump to urgent client", group = "client" }
     ),
+
     awful.key({ modkey }, "Tab", function()
       awful.client.focus.history.previous()
       if client.focus then
@@ -79,18 +82,13 @@ function _M.get()
 
     awful.key({ modkey, "Control" }, "r",
       function()
-        -- awful.spawn.with_shell(
-        --   'mkdir ~/Pictures/' ..
-        --   os.date("%d-%m-%Y-%H:%M:%S") .. ' && mv ~/Pictures/*.png ~/Pictures/' .. os.date("%d-%m-%Y-%H:%M:%S"))
         awesome.restart()
       end,
       { description = "reload awesome", group = "awesome" }),
 
 
-    -- awful.key({ modkey, "Shift" }, "c", awesome.quit, { description = "quit awesome", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "c", function()
       powermenu.visible = true
-      -- awesome.emit_signal("widget::powermenu")
     end, { description = "quit awesome", group = "awesome" }),
 
 
@@ -131,12 +129,6 @@ function _M.get()
     end, { description = "restore minimized", group = "client" }),
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-    -- Prompt
-    -- awful.key({ modkey }, "d", function()
-    --   -- awful.util.spawn("rofi -show drun")
-    --   app_launcher:toggle()
-    -- end, { description = "App Launcher", group = "launcher" }),
-    --
     awful.key(
       { modkey }, "d", function()
         awesome.emit_signal("widget::launcher")
@@ -144,20 +136,8 @@ function _M.get()
       { description = "show launcher", group = "awesome" }
     ),
 
-
-    -- awful.key({ modkey }, "x", function()
-    --   awful.prompt.run({
-    --     prompt = "Run Lua code: ",
-    --     textbox = awful.screen.focused().mypromptbox.widget,
-    --     exe_callback = awful.util.eval,
-    --     history_path = awful.util.get_cache_dir() .. "/history_eval",
-    --   })
-    -- end, { description = "lua execute prompt", group = "awesome" }),
-    --
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Resize
-    --awful.key({ modkey, "Control" }, "Left",  function () awful.client.moveresize( 20,  20, -40, -40) end),
-    --awful.key({ modkey, "Control" }, "Right", function () awful.client.moveresize(-20, -20,  40,  40) end),
     awful.key({ modkey, "Control" }, "Down", function()
       awful.client.moveresize(0, 0, 0, -20)
     end),
@@ -190,12 +170,15 @@ function _M.get()
       awful.util.spawn("cd Pictures && scrot")
     end, { description = "take a screenshot", group = "screenshots" }),
 
+    -- Brightness Control
     awful.key({}, "XF86MonBrightnessUp", function()
-      os.execute("xbacklight -inc 5")
+      os.execute("light -A 5")
     end, { description = "+5", group = "hotkeys" }),
     awful.key({}, "XF86MonBrightnessDown", function()
-      os.execute("xbacklight -dec 5")
+      os.execute("light -U 5")
     end, { description = "-5%", group = "hotkeys" }),
+
+    -- Audio Control
     awful.key({}, "XF86AudioRaiseVolume", function()
       os.execute("amixer set Master 5%+")
     end, { description = "volume up", group = "hotkeys" }),

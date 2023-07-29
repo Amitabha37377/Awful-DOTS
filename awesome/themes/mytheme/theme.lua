@@ -142,7 +142,7 @@ theme.taglist_shape_border_color             = "#00000040"
 -- --Notifications
 theme.notification_font                      = "Ubuntu Nerd Font 14"
 -- theme.notification_bg                        = "#1a1b26"
--- theme.notification_fg                        = "#a9b1d6"
+theme.notification_fg                        = "#a9b1d6"
 -- theme.notification_border_width              = 8
 -- theme.notification_width                     = 500
 -- theme.notification_max_width                 = 500

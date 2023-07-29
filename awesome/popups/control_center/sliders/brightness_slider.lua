@@ -30,6 +30,23 @@ local brightness_slider = wibox.widget({
   value = tonumber(io.popen("light -G"):read("*all")),
 })
 
+--Update brightness value
+local update_brightness_slider = function()
+  awful.spawn.easy_async("light -G", function(stdout)
+    local brightness = tonumber(stdout)
+    brightness_slider.value = brightness
+  end)
+end
+
+local brightness_slider_timer = gears.timer({
+  timeout = 1,
+  call_now = true,
+  autostart = true,
+  callback = update_brightness_slider,
+})
+
+
+
 --FUnctionality of Brightness Slider
 brightness_slider:connect_signal("property::value", function(slider)
   local brightness_level = math.floor(slider.value / 100 * 100)

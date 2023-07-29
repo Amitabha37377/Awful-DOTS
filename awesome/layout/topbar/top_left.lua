@@ -14,6 +14,7 @@ local ss_tool = require("popups.screen_record.screenshot.main")
 --Popup Menus
 local control = require("popups.control_center.main")
 local notif_center = require("popups.notif_center.main")
+local media = require("popups.media_player.main")
 
 --Battery Widget
 local batteryarc_widget = require("deco.batteryarc")
@@ -75,6 +76,7 @@ local settings = wibox.widget {
 settings:connect_signal("button::release", function()
   control.visible = not control.visible
   notif_center.visible = false
+  media.visible = false
 end)
 
 
@@ -96,6 +98,13 @@ local music = wibox.widget {
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
+
+music:connect_signal("button::release", function()
+  media.visible = not media.visible
+  control.visible = false
+end)
+
+
 
 --Main Window
 local system_tray = wibox.widget {
