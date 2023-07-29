@@ -177,6 +177,7 @@ Feel free to open a github issue if you face any problem. I am nowhere near an a
 - #### How to make the media player functional?
   First make sure that `plasma-browser-integration` package is installed in your system. Install `plasma integration` browser extension in firefox.
   Go to the manage extension settings of the `plasma integration` extension and uncheck `Enhanced Media Control`. Hopefully it will work.
+  <i>(The media player might have some bugs/issues right now.)</i>
 
 ---
 
@@ -188,6 +189,6 @@ Feel free to open a github issue if you face any problem. I am nowhere near an a
 - <a href="https://github.com/BlingCorp/bling"><b>Bling</b></a> (Used the app launcher and playerctl widget)
 - <a href="https://github.com/streetturtle/awesome-wm-widgets"><b>Awesome wm widgets by streetturtle</b></a> (Used the calendar widget and battery widget)
 
-And many other awesome people who answered my stupid questions and from whom I got inspiration and design ideas.
+And many other awesome people who answered my stupid questions in discord and from whom I got inspiration and design ideas.
 
 ---
