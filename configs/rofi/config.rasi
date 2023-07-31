@@ -1,0 +1,46 @@
+// @theme "~/.config/rofi/themes/mytheme.rasi"
+
+configuration {
+  display-run: " ";
+  display-drun: " ";
+  display-window: " ";
+  drun-display-format: "{icon} {name}";
+  font: "CaskaydiaCove Nerd Font 13";
+  modi: "window,run,drun";
+  show-icons: true;
+  location: 0;
+  hide-scrollbar : false;
+  }
+
+@theme "~/.config/rofi/themes/rounded-common.rasi"
+
+configuration {
+  display-run: " ";
+  display-drun: " ";
+  display-window: " ";
+  drun-display-format: "{icon} {name}";
+  font: "CaskaydiaCove Nerd Font 13";
+  modi: "window,run,drun";
+  show-icons: true;
+}
+
+* {
+    fg0:    #2E3440F2;
+    fg1:    #151E3D;
+    fg2:    #4C566A80;
+    fg3:    #88C0D0F2;
+    bg0:    #D8DEE9;
+    bg02:    #D8DEE965;
+    bg1:    #ECEFF4;
+    bg2:    #D8DEE9;
+    bg3:    #151E3D;
+}
+
+@import "rounded-common.rasi"
+
+element selected {
+    text-color: @bg1;
+}
+
+
+
