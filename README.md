@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/text_logo.png"></p>
 <h4 align="center">Featuring AwesomeWM</h4><br/><br/>
-
+<p align="center">![](https://komarev.com/ghpvc/?username=your-github-username&color=green)</p><br/>
 <p align="center"><img src="assets/132.png"></p><br>
 
 Welcome to my stash of dotfiles of my awesomewm setup. Note that things are likely to be changed in future as I am still working on this setup.
