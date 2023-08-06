@@ -7,7 +7,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 --Colors
 local color = require("layout.dock.color")
-local icon_path = "/.icons/papirus-icon-theme-20230301/Papirus/48x48/places/"
+local icon_path = "/.icons/Papirus/48x48/places/"
 
 --Main Widget
 local button = wibox.widget {
