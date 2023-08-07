@@ -220,10 +220,12 @@ dnd:connect_signal("button::press", function()
     dnd:set_bg(color.yellow)
     dnd_status:set_markup_silently('<span color="' ..
       color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
+    user.dnd_status = true
   else
     dnd:set_bg(color.grey)
     dnd_status:set_markup_silently('<span color="' ..
       color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
+    user.dnd_status = false
   end
 end)
 

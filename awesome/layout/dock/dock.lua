@@ -179,6 +179,7 @@ dock:setup {
     layout = wibox.layout.fixed.horizontal,
   },
   widget = wibox.container.background,
+  -- bg = color.background_dark,
   bg = color.background_dark,
   shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 15)

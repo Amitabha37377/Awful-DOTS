@@ -52,7 +52,7 @@ end)
 
 button:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
-    awful.spawn.with_shell("i3lock")
+    awful.spawn.with_shell("i3lock -i ~/Downloads/Wallpapers/lock.jpeg")
     awesome.emit_signal("widget::powermenu")
   end
 end)

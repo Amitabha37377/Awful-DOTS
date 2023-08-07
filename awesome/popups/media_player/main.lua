@@ -14,12 +14,13 @@ local Separator = wibox.widget.textbox("    ")
 Separator.forced_height = dpi(500)
 Separator.forced_width = dpi(400)
 
---Media elements
+-------------------------------
+--Media elements---------------
+-------------------------------
 
 --Album art
 local art = wibox.widget {
   image = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/music.svg",
-
   resize = true,
   forced_height = dpi(230),
   forced_width = dpi(375),
@@ -38,7 +39,6 @@ local name_widget = wibox.widget {
   halign = "center"
 }
 
-
 --Title
 local title_widget = wibox.widget {
   markup = '<span color="' ..
@@ -50,7 +50,6 @@ local title_widget = wibox.widget {
   forced_width = dpi(375),
   forced_height = dpi(25),
   halign = "center"
-
 }
 
 --Channel name
@@ -64,7 +63,6 @@ local artist_widget = wibox.widget {
   forced_width = dpi(375),
   forced_height = dpi(20),
   halign = "center"
-
 }
 
 -- Get Song Info
@@ -83,7 +81,10 @@ playerctl:connect_signal("metadata",
   end)
 
 
---Position Slider
+----------------------------
+--Position Slider-----------
+----------------------------
+
 local media_slider = wibox.widget({
   widget = wibox.widget.slider,
   bar_shape = function(cr, width, height)
@@ -102,7 +103,9 @@ local media_slider = wibox.widget({
   value = 0
 })
 
---Update brightness value
+
+
+--Update position value
 local update_media_position = function()
   awful.spawn.easy_async("playerctl position", function(stdout)
     if stdout == "" then
@@ -124,8 +127,6 @@ local media_slider_position_timer = gears.timer({
 
 local update_media_length = function()
   awful.spawn.easy_async("timeout 0.4s playerctl -F metadata -f '{{mpris:length}}'", function(stdout)
-    -- local position = tonumber(stdout)
-    -- media_slider.value = position
     if stdout == "" then
       local position = 100
       media_slider.maximum = position
@@ -143,17 +144,10 @@ local media_length_slider_timer = gears.timer({
   callback = update_media_length,
 })
 
--- media_slider:connect_signal("property::value", function(slider)
---   local media_position_set = math.floor(slider.value)
---   awful.spawn.easy_async("playerctl position " .. media_position_set, function()
---   end)
--- end)
---
+----------------------------------
+-- length and position text-------
+----------------------------------
 
-
-
-
--- length and position text
 local length_text = wibox.widget {
   markup = '<span color="' ..
       color.blueish_white .. '" font="Ubuntu Nerd Font 11">' .. "00:00" .. '</span>',
@@ -161,10 +155,9 @@ local length_text = wibox.widget {
   valign = 'top',
   widget = wibox.widget.textbox,
   font = "CaskaydiaCove Nerd Font 12",
-  forced_width = dpi(115),
+  forced_width = dpi(100),
   forced_height = dpi(15),
   halign = "right"
-
 }
 
 local position_text = wibox.widget {
@@ -174,11 +167,12 @@ local position_text = wibox.widget {
   valign = 'top',
   widget = wibox.widget.textbox,
   font = "CaskaydiaCove Nerd Font 12",
-  forced_width = dpi(115),
+  forced_width = dpi(100),
   forced_height = dpi(15),
   halign = "left"
-
 }
+
+
 
 local update_length_text = function()
   awful.spawn.easy_async("timeout 0.4s playerctl -F metadata -f '{{mpris:length}}'", function(stdout)
@@ -233,6 +227,7 @@ local update_position_text_timer = gears.timer({
   callback = update_position_text,
 })
 
+
 local media_container = {
   {
     media_slider,
@@ -249,12 +244,12 @@ local media_container = {
       {
         position_text,
         widget = wibox.container.margin,
-        right = dpi(70)
+        right = dpi(85)
       },
       {
         length_text,
         widget = wibox.container.margin,
-        left = dpi(70)
+        left = dpi(85)
       },
       layout = wibox.layout.fixed.horizontal
     },
@@ -262,17 +257,15 @@ local media_container = {
     top = dpi(2),
   },
   layout = wibox.layout.fixed.vertical,
-  -- forced_width = dpi(400),
-  -- forced_height = dpi(50)
-
 }
 
+---------------------------------
+--Buttons------------------------
+---------------------------------
 
---Pause button
 --Play pause button
 local button = wibox.widget {
   image = os.getenv("HOME") .. "/.config/awesome/popups/media_player/assets/pause.png",
-
   resize = true,
   forced_height = dpi(40),
   forced_width = dpi(40),
@@ -307,7 +300,6 @@ button:buttons(gears.table.join(
 --Next & previous button
 local next = wibox.widget {
   image = os.getenv("HOME") .. "/.config/awesome/popups/media_player/assets/next-button.png",
-
   resize = true,
   forced_height = dpi(40),
   forced_width = dpi(40),
@@ -325,7 +317,6 @@ end)
 
 local previous = wibox.widget {
   image = os.getenv("HOME") .. "/.config/awesome/popups/media_player/assets/previous.png",
-
   resize = true,
   forced_height = dpi(40),
   forced_width = dpi(40),
@@ -344,7 +335,6 @@ end)
 -- 15s backward forward
 local forward = wibox.widget {
   image = os.getenv("HOME") .. "/.config/awesome/popups/media_player/assets/15sforward.png",
-
   resize = true,
   forced_height = dpi(45),
   forced_width = dpi(45),
@@ -363,7 +353,6 @@ end)
 
 local backward = wibox.widget {
   image = os.getenv("HOME") .. "/.config/awesome/popups/media_player/assets/15sbackward.png",
-
   resize = true,
   forced_height = dpi(45),
   forced_width = dpi(45),
@@ -380,8 +369,9 @@ end)
 
 
 -----------------------------------------------
+--Main Wibox-----------------------------------
 -----------------------------------------------
---Main Wibox
+
 local media = awful.popup {
   screen = s,
   widget = wibox.container.background,
@@ -422,7 +412,6 @@ media:setup { {
           top = dpi(10),
           bottom = dpi(35)
         },
-
         {
           {
             backward,
@@ -462,7 +451,6 @@ media:setup { {
       top = dpi(25),
       left = dpi(25),
       right = dpi(25),
-
     },
     Separator,
     layout = wibox.layout.stack

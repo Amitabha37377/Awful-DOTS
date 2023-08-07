@@ -5,6 +5,7 @@ local ruled = require("ruled")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local user = require("popups.user_profile")
 
 --Color
 local color = require("popups.color")
@@ -172,4 +173,10 @@ naughty.connect_signal("request::display", function(n)
       bg = color.background_lighter
     }
   }
+
+  --DND functionality
+  if user.dnd_status == true then
+    naughty.destroy_all_notifications(nil, 1)
+  end
 end)
+-- naughty.layout.box.visible = true

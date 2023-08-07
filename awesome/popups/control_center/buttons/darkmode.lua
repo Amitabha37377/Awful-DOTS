@@ -33,7 +33,7 @@ local text_blf = wibox.widget {
     {
       -- text = user.name,
       markup = '<span color="' ..
-          color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "Blue Light" .. '</span>',
+          color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "Night Mode" .. '</span>',
       font = "Ubuntu Nerd Font Bold 14",
       widget = wibox.widget.textbox,
       fg = color.white

@@ -13,9 +13,7 @@ local terminal = RC.vars.terminal
 --Custom Widgets
 local dock = require("layout.dock.dock")
 local control_center = require("popups.control_center.main")
--- local app_launcher = require("popups.launcher.launcher")
 local powermenu = require("popups.powermenu.main")
--- local launcher = require("popups.launcher.spotlight")
 
 local _M = {}
 
@@ -25,54 +23,12 @@ local _M = {}
 function _M.get()
   local globalkeys = gears.table.join(
 
+  -- Open List of keyboard shortcuts
+
+    awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
     awful.key {
       modifiers   = { modkey },
-      key         = 's',
-      description = 'Show Keybindings',
-      group       = 'awesome',
-      on_press    = hotkeys_popup.show_help
-    },
-
-    ----------------------------------
-    --Tag Switching-------------------
-    ----------------------------------
-
-    -- Go to next tag by index
-    awful.key {
-      modifiers   = { modkey },
-      key         = "j",
-      description = 'view previous',
-      group       = 'tag',
-      on_press    = awful.tag.viewprev
-    },
-
-    -- Go to previous tag by index
-    awful.key {
-      modifiers   = { modkey },
-      key         = "k",
-      description = 'view next',
-      group       = 'tag',
-      on_press    = awful.tag.viewnext
-    },
-
-    -- Go to previously focused tag
-    awful.key {
-      modifiers   = { modkey },
-      key         = "Escape",
-      description = 'go back',
-      group       = 'tag',
-      on_press    = awful.tag.history.restore
-    },
-
-
-    ----------------------------------
-    --Window focus switch-------------
-    ----------------------------------
-
-    -- Focus next window by index
-    awful.key {
-      modifiers   = { modkey },
-      key         = 'Right',
+      key         = 'j',
       description = 'focus next by index',
       group       = 'client',
       on_press    = function()
@@ -80,116 +36,86 @@ function _M.get()
       end,
     },
 
-    -- Focus previous window by index
-    awful.key {
-      modifiers   = { modkey },
-      key         = 'Left',
-      description = 'focus previous by index',
-      group       = 'client',
-      on_press    = function()
-        awful.client.focus.byidx(1)
-      end,
-    },
+    ----------------------------------
+    --Tag Switching-------------------
+    ----------------------------------
 
-    -- Focus urgent window
-    awful.key {
-      modifiers   = { modkey },
-      key         = 'u',
-      description = 'focus urgent window',
-      group       = 'client',
-      on_press    = awful.client.urgent.jumpto
-    },
+    -- Go to next tag by index
+    awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 
-    -- Focus previously focused window
-    awful.key {
-      modifiers   = { modkey },
-      key         = 'Tab',
-      description = 'go back',
-      group       = 'client',
-      on_press    = function()
-        awful.client.focus.history.previous()
-        if client.focus then
-          client.focus:raise()
-        end
+    -- Go to previous tag by index
+    awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
+
+    -- Go to previously focused tag
+    awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
+
+
+    ----------------------------------
+    --Window Switching----------------
+    ----------------------------------
+
+    -- Focus next window by index
+    awful.key({ modkey }, "j", function()
+      awful.client.focus.byidx(1)
+    end, { description = "focus next by index", group = "client" }),
+
+    --Focus previous window by index
+
+    -- awful.key {
+    --   modifiers   = { modkey },
+    --   key         = 'j',
+    --   description = 'focus next by index',
+    --   group       = 'client',
+    --   on_press    = function()
+    --     awful.client.focus.byidx(1)
+    --   end,
+    -- },
+
+    awful.key({ modkey }, "k", function()
+      awful.client.focus.byidx(-1)
+    end, { description = "focus previous by index", group = "client" }),
+
+    awful.key({ modkey }, "w", function()
+      RC.mainmenu:show()
+    end, { description = "show main menu", group = "awesome" }),
+
+    --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    -- Layout manipulation
+    awful.key({ modkey, "Shift" }, "j", function()
+      awful.client.swap.byidx(1)
+    end, { description = "swap with next client by index", group = "client" }),
+    awful.key({ modkey, "Shift" }, "k", function()
+      awful.client.swap.byidx(-1)
+    end, { description = "swap with previous client by index", group = "client" }),
+    awful.key({ modkey, "Control" }, "j", function()
+      awful.screen.focus_relative(1)
+    end, { description = "focus the next screen", group = "screen" }),
+
+    awful.key({ modkey, "Control" }, "k", function()
+      awful.screen.focus_relative(-1)
+    end, { description = "focus the previous screen", group = "screen" }),
+
+    awful.key(
+      { modkey },
+      "u",
+      awful.client.urgent.jumpto,
+      { description = "jump to urgent client", group = "client" }
+    ),
+
+    awful.key({ modkey }, "Tab", function()
+      awful.client.focus.history.previous()
+      if client.focus then
+        client.focus:raise()
       end
-    },
+    end, { description = "go back", group = "client" }),
 
-    -----------------------------------------
-    -- Open right click menu-----------------
-    -----------------------------------------
-    awful.key {
-      modifiers   = { modkey },
-      key         = 'w',
-      description = 'show right click menu',
-      group       = 'awesome',
-      on_press    = function()
-        RC.mainmenu:show()
-      end,
-    },
+    --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    -- Standard program
+    awful.key({ modkey }, "Return", function()
+      awful.spawn(terminal)
+    end, { description = "open a terminal", group = "launcher" }),
 
-    -----------------------------------------
-    -- Window manipulation-------------------
-    -----------------------------------------
 
-    awful.key {
-      modifiers   = { modkey, "Shift" },
-      key         = 'j',
-      description = 'Swap with next client by index',
-      group       = 'client move',
-      on_press    = function()
-        awful.client.swap.byidx(1)
-      end,
-    },
-
-    awful.key {
-      modifiers   = { modkey, "Shift" },
-      key         = 'k',
-      description = 'Swap with previous client by index',
-      group       = 'client move',
-      on_press    = function()
-        awful.client.swap.byidx(-1)
-      end,
-    },
-
-    ------------------------------------
-    --Screen Switching------------------
-    ------------------------------------
-    awful.key {
-      modifiers   = { modkey, "Control" },
-      key         = 'j',
-      description = 'Focus next screen',
-      group       = 'screen',
-      on_press    = function()
-        awful.screen.focus_relative(1)
-      end,
-    },
-
-    awful.key {
-      modifiers   = { modkey, "Control" },
-      key         = 'k',
-      description = 'Focus previous screen',
-      group       = 'screen',
-      on_press    = function()
-        awful.screen.focus_relative(-1)
-      end,
-    },
-
-    -----------------------------------------
-    -- Standard program----------------------
-    -----------------------------------------
-
-    --Open terminal
-    awful.key {
-      modifiers   = { modkey },
-      key         = 'Return',
-      description = 'Open a terminal',
-      group       = 'launcher',
-      on_press    = function()
-        awful.spawn(terminal)
-      end,
-    },
-
-    -----------------------------------------
     awful.key({ modkey, "Control" }, "r",
       function()
         awesome.restart()

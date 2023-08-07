@@ -6,6 +6,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 local color = require("layout.topbar.colors")
+-- local dashboard = require("popups.dashboard.home.main")
 
 --Main Logo
 local button1 = wibox.widget {
@@ -26,5 +27,11 @@ local button1 = wibox.widget {
   shape = gears.shape.rounded_rect,
   widget = wibox.container.background,
 }
+
+-- button1:connect_signal("button::release", function()
+--   dashboard.visible = not dashboard.visible
+-- end)
+--
+
 
 return button1
