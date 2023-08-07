@@ -17,7 +17,7 @@ Feel free to give a :star: to this repo if you liked the setup. It is much appre
 - **Alsa Utils**: Required for the volume control slider.
 - **acpi**: Required for the battery widget. You can skip that if you don't have a battery.
 - **feh**: Yes, I still use feh for wallpaper. Don't bully me :/
-- **Notrogen**: Another wallpaper setter. This is optional though.
+- **Nitrogen**: Another wallpaper setter. This is optional though.
 - **Playerctl**: Required for the music player widget located in the control center.
 - **Redshift**: Used in the bluelight filter widget.
 - **Scrot**: Used in screenshot tool
@@ -91,7 +91,7 @@ The name of some packages may vary based on your distro.
 Clone this repository:-
 
 ```bash
-git clone git@github.com:Amitabha37377/Awful-DOTS.git
+git clone https://github.com/Amitabha37377/Awful-DOTS.git
 cd Awful-DOTS
 ```
 
