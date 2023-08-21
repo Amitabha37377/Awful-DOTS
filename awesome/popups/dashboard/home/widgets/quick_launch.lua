@@ -37,14 +37,32 @@ local create_button = function(icon, command)
     end,
   }
 
+  button:connect_signal("mouse::enter", function()
+    button.bg = color.background_lighter2
+  end)
+
+  button:connect_signal("mouse::leave", function()
+    button.bg = color.background_lighter
+  end)
+
+  button:connect_signal("button::press", function()
+    button.bg = color.background_morelight
+  end)
+
+  button:connect_signal("button::release", function()
+    button.bg = color.background_lighter2
+    awful.spawn(user.browser .. command)
+  end)
+
+
   return button
 end
 
 
-local reddit = create_button(icon_path .. 'reddit.png', 'firefox')
-local github = create_button(icon_path .. 'git.png', 'firefox')
-local chess_com = create_button(icon_path .. 'chess.png', 'firefox')
-local youtube = create_button(icon_path .. 'yt.png', 'firefox')
+local reddit = create_button(icon_path .. 'reddit.png', 'https://www.reddit.com/')
+local github = create_button(icon_path .. 'git.png', 'https://github.com/')
+local chess_com = create_button(icon_path .. 'chess.png', 'https://www.chess.com/')
+local youtube = create_button(icon_path .. 'yt.png', 'https://www.youtube.com/')
 
 ---------------------------
 --Main widget--------------

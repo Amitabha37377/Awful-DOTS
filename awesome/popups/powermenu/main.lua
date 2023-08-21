@@ -86,5 +86,8 @@ awesome.connect_signal("widget::powermenu", function()
   powermenu.visible = false
 end)
 
+awesome.connect_signal("widget::powermenu2", function()
+  powermenu.visible = true
+end)
 
 return powermenu
