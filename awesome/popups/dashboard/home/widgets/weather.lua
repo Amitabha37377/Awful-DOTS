@@ -195,13 +195,13 @@ local weath_image = wibox.widget {
 
 local weather_script = "bash ~/weather.sh"
 local get_icon = weather_script .. " | awk '{print $1}'"
-local get_weather = weather_script .. " | awk '{print $2}'"
+local get_weather = weather_script .. " | awk " .. [['{print $8" "$9}']]
 local get_temp = weather_script .. " | awk '{print $3}'"
 local get_city = weather_script .. " | awk '{print $4}'"
 local get_country = weather_script .. " | awk '{print $5}'"
 local get_humidity = weather_script .. " | awk '{print $6}'"
 local get_wind = weather_script .. " | awk '{print $7}'"
-local get_feelslike = weather_script .. " | awk '{print $8}'"
+local get_feelslike = weather_script .. " | awk '{print $2}'"
 
 awful.spawn.easy_async_with_shell(get_city, function(out)
   local str = string.gsub(out, "%s+", "")

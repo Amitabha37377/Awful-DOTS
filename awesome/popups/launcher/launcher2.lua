@@ -53,7 +53,7 @@ launcherdisplay:setup {
         {
           {
             {
-              image = os.getenv("HOME") .. '/.config/awesome/popups/launcher/cheems9999.png',
+              image = os.getenv("HOME") .. '/.config/awesome/popups/launcher/kitty.jpeg',
               widget = wibox.widget.imagebox,
               resize = true,
               forced_height = dpi(140),
