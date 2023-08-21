@@ -72,7 +72,7 @@ powermenu:setup {
     layout = wibox.layout.stack
   },
   widget = wibox.container.background,
-  bg = color.background_lighter2 .. "ff"
+  bg = color.background_lighter2 .. "60"
 }
 
 powermenu:connect_signal("button::press", function(_, _, _, button)

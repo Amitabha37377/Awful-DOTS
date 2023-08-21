@@ -387,7 +387,7 @@ local media = awful.popup {
     gears.shape.rounded_rect(cr, width, height, 10)
   end,
   opacity = 1,
-  border_width = dpi(1),
+  border_width = dpi(0),
   border_color = color.blue
 }
 

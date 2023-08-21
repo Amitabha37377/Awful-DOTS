@@ -92,16 +92,16 @@ local systray = require("layout.topbar.systray")
 mywibox =
     awful.wibar({
       position = "top",
-      margins = { top = dpi(7), left = dpi(8), right = dpi(8), bottom = 0 },
-      -- margins = { top = dpi(0), left = dpi(0), right = dpi(0), bottom = 0 },
+      -- margins = { top = dpi(7), left = dpi(8), right = dpi(8), bottom = 0 },
+      margins = { top = dpi(0), left = dpi(0), right = dpi(0), bottom = 0 },
       screen = s,
       height = dpi(35),
       opacity = 1,
       fg = color.blueish_white,
       bg = color.background_dark,
       shape = function(cr, width, height)
-        -- gears.shape.rounded_rect(cr, width, height, 0)
-        gears.shape.rounded_rect(cr, width, height, 8)
+        -- gears.shape.rounded_rect(cr, width, height, 8)
+        gears.shape.rounded_rect(cr, width, height, 0)
       end,
 
     })
@@ -120,7 +120,7 @@ mywibox:setup({
       separator,
       fancy_taglist,
       separator,
-      mypromptbox,
+      -- mypromptbox,
       -- wibox.widget({
       --   image = "home/amitabha/.icons/papirus-icon-theme-20230301/Papirus/22x22/apps/launch.svg",
       --   resize_allowed = true,

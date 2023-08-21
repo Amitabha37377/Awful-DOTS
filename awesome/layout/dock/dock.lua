@@ -29,6 +29,7 @@ local config = require("layout.dock.directories.config")
 --Widgets
 local task_popup = require("layout.dock.widgets.tasklist")
 local layoutbox = require("layout.dock.widgets.layout_switcher")
+local color_picker = require("layout.dock.widgets.color_picker")
 
 --Separator line
 local vertical_separator = wibox.widget {
@@ -162,6 +163,13 @@ dock:setup {
     Separator,
     vertical_separator,
     Separator,
+
+    {
+      color_picker,
+      layout = wibox.container.place,
+    },
+    Separator,
+
 
     {
       task_popup,

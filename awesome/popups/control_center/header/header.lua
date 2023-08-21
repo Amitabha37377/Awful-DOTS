@@ -29,7 +29,8 @@ local username = wibox.widget {
 --UserImage
 local image = wibox.widget {
   {
-    image = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/user.png",
+    -- image = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/user.png",
+    image = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/Untitled.png",
     widget = wibox.widget.imagebox,
     resize = true,
     shape = function(cr, width, height)

@@ -1,4 +1,5 @@
 local color = {
+  bg_blackest          = "#151520",
   background_dark      = "#1a1b26",
   background_lighter   = "#24283b",
   background_morelight = "#36424c",

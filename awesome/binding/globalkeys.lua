@@ -2,6 +2,8 @@
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local naughty = require("naughty")
+local color = require("popups.color")
 
 -- Menubar library
 local menubar = require("menubar")
@@ -37,19 +39,19 @@ function _M.get()
     --Tag Switching-------------------
     ----------------------------------
 
-    -- Go to next tag by index
+    -- Go to previous tag by index
     awful.key {
       modifiers   = { modkey },
-      key         = "j",
+      key         = "q",
       description = 'view previous',
       group       = 'tag',
       on_press    = awful.tag.viewprev
     },
 
-    -- Go to previous tag by index
+    -- Go to next tag by index
     awful.key {
       modifiers   = { modkey },
-      key         = "k",
+      key         = "w",
       description = 'view next',
       group       = 'tag',
       on_press    = awful.tag.viewnext
@@ -119,7 +121,7 @@ function _M.get()
     -----------------------------------------
     awful.key {
       modifiers   = { modkey },
-      key         = 'w',
+      key         = 'e',
       description = 'show right click menu',
       group       = 'awesome',
       on_press    = function()
@@ -190,16 +192,32 @@ function _M.get()
     },
 
     -----------------------------------------
-    awful.key({ modkey, "Control" }, "r",
-      function()
+    -- Reload and Quit-----------------------
+    -----------------------------------------
+
+    -- Reload awesome
+    awful.key {
+      modifiers   = { modkey, "Control" },
+      key         = 'r',
+      description = 'reload awesome',
+      group       = 'awesome',
+      on_press    = function()
         awesome.restart()
       end,
-      { description = "reload awesome", group = "awesome" }),
+    },
+
+    --Toggle powermenu
+    awful.key {
+      modifiers   = { modkey, "Shift" },
+      key         = 'c',
+      description = 'Powermenu',
+      group       = 'awesome',
+      on_press    = function()
+        powermenu.visible = not powermenu.visible
+      end,
+    },
 
 
-    awful.key({ modkey, "Shift" }, "c", function()
-      powermenu.visible = true
-    end, { description = "quit awesome", group = "awesome" }),
 
 
 

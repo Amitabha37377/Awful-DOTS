@@ -1,5 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
+local gears = require("gears")
 local Gio = require("lgi").Gio
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
@@ -28,7 +29,7 @@ end
 
 local launcherdisplay = wibox {
   width = dpi(500),
-  height = dpi(560),
+  height = dpi(500),
   bg = color.background_dark,
   ontop = true,
   visible = false,
@@ -48,23 +49,64 @@ local entries = wibox.widget {
 launcherdisplay:setup {
   {
     {
-      prompt,
-      forced_height = dpi(60),
-      left = dpi(25),
-      right = dpi(25),
-      top = dpi(20),
-      bottom = dpi(20),
-      widget = wibox.container.margin
+      {
+        {
+          {
+            {
+              image = os.getenv("HOME") .. '/.config/awesome/popups/launcher/cheems9999.png',
+              widget = wibox.widget.imagebox,
+              resize = true,
+              forced_height = dpi(140),
+              -- forced_width = dpi(120)
+            },
+
+
+            {
+              {
+                {
+                  prompt,
+                  widget = wibox.container.margin,
+                  margins = dpi(6)
+                },
+                widget = wibox.container.background,
+                bg = color.background_dark .. '70',
+                shape = function(cr, width, height)
+                  gears.shape.rounded_rect(cr, width, height, 5)
+                end,
+
+              },
+              forced_height = dpi(140),
+              left = dpi(29),
+              right = dpi(29),
+              top = dpi(54),
+              bottom = dpi(54),
+              widget = wibox.container.margin
+            },
+            layout = wibox.layout.stack
+          },
+          bg = "#343b58",
+          widget = wibox.container.background,
+          shape = function(cr, width, height)
+            gears.shape.rounded_rect(cr, width, height, 5)
+          end,
+
+        },
+        widget = wibox.container.margin,
+        margins = dpi(10)
+      },
+      {
+        entries,
+        margins = dpi(10),
+        widget = wibox.container.margin
+      },
+      layout = wibox.layout.fixed.vertical
     },
-    bg = "#343b58",
-    widget = wibox.container.background
+    widget = wibox.container.margin,
+    margins = dpi(15)
   },
-  {
-    entries,
-    margins = dpi(10),
-    widget = wibox.container.margin
-  },
-  layout = wibox.layout.fixed.vertical
+  widget = wibox.container.background,
+  bg = color.background_dark
+
 }
 
 -- Functions
@@ -74,8 +116,8 @@ local function next()
     entries:get_widgets_at(entryindex, 1)[1].bg = nil
     entries:get_widgets_at(entryindex + 1, 1)[1].bg = color.background_lighter
     entryindex = entryindex + 1
-    if entryindex > startindex + 9 then
-      entries:get_widgets_at(entryindex - 10, 1)[1].visible = false
+    if entryindex > startindex + 5 then
+      entries:get_widgets_at(entryindex - 6, 1)[1].visible = false
       entries:get_widgets_at(entryindex, 1)[1].visible = true
       startindex = startindex + 1
     end
@@ -89,7 +131,7 @@ local function back()
     entries:get_widgets_at(entryindex - 1, 1)[1].bg = beautiful.background_lighter
     entryindex = entryindex - 1
     if entryindex < startindex then
-      entries:get_widgets_at(entryindex + 10, 1)[1].visible = false
+      entries:get_widgets_at(entryindex + 6, 1)[1].visible = false
       entries:get_widgets_at(entryindex, 1)[1].visible = true
       startindex = startindex - 1
     end
@@ -213,10 +255,14 @@ local function filter(cmd)
           next()
         end)
       },
-      widget = wibox.container.background
+      widget = wibox.container.background,
+      shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 5)
+      end,
+
     })
 
-    if startindex <= i and i <= startindex + 9 then
+    if startindex <= i and i <= startindex + 5 then
       widget.visible = true
     else
       widget.visible = false
@@ -247,7 +293,7 @@ local function open()
   awful.prompt.run {
     -- prompt = "Search: ",
     prompt = '<span color="' ..
-        color.white .. '" font="Ubuntu Nerd Font Bold 16">' .. 'Search: ' .. '</span>',
+        color.white .. '" font="Ubuntu Nerd Font Bold 16">' .. '  : ' .. '</span>',
     textbox = prompt,
     done_callback = function()
       launcherdisplay.visible = false

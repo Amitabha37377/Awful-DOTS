@@ -183,6 +183,22 @@ client.connect_signal("unmanage", function(c)
 end)
 
 
+awful.rules.rules = {
+	-- All clients will match this rule.
+	{
+		rule = {},
+		properties = {
+			border_width = beautiful.border_width,
+			border_color = beautiful.border_normal,
+			focus = awful.client.focus.filter,
+			raise = true,
+			keys = clientkeys,
+			buttons = clientbuttons,
+			screen = awful.screen.preferred,
+			placement = awful.placement.centered --[[ + awful.placement.no_overlap + awful.placement.no_offscreen ]]
+		}
+	},
+}
 
 --Autostart Applications
 
@@ -190,8 +206,8 @@ end)
 awful.spawn.with_shell("picom")
 
 --Wallpaper
--- awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
+awful.spawn.with_shell("nitrogen --restore")
+-- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
 -- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/hyprland_kitty.jpeg")
 
 --Other utilities

@@ -56,10 +56,10 @@ client.connect_signal("request::titlebars", function(c)
                 layout = wibox.layout.fixed.vertical()
             },
             widget = wibox.container.margin,
-            top = 1,
+            top = 2,
             bottom = 0,
-            right = 5,
-            left = 2
+            right = 6,
+            left = 3
         },
         {
             -- Middle
@@ -80,8 +80,8 @@ client.connect_signal("request::titlebars", function(c)
             widget = wibox.container.margin,
             top = 0,
             bottom = 0,
-            right = 5,
-            left = 2,
+            right = 6,
+            left = 3,
         },
         layout = wibox.layout.align.vertical
     }

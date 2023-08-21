@@ -19,16 +19,17 @@ local media = require("popups.media_player.main")
 --Battery Widget
 local batteryarc_widget = require("deco.batteryarc")
 
+local screenshot_image = wibox.widget {
+  widget = wibox.widget.imagebox,
+  image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/screenshot.png",
+  resize = true,
+  opacity = 1,
+}
 
 --Screenshot button
 local screenshot = wibox.widget {
   {
-    {
-      widget = wibox.widget.imagebox,
-      image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/screenshot.png",
-      resize = true,
-      opacity = 1,
-    },
+    screenshot_image,
     left   = dpi(6),
     right  = dpi(6),
     top    = dpi(6),
@@ -53,15 +54,33 @@ screenshot:connect_signal("button::press", function(_, _, _, button)
   end
 end)
 
+-- screenshot:connect_signal("mouse::enter", function()
+--   screenshot_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/screenshot-hover.png"
+-- end)
+--
+-- screenshot:connect_signal("mouse::leave", function()
+--   screenshot_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/screenshot.png"
+-- end)
+--
+-- screenshot:connect_signal("button::press", function()
+--   screenshot_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/screenshot-click.png"
+-- end)
+--
+-- screenshot:connect_signal("button::release", function()
+--   screenshot_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/screenshot-hover.png"
+-- end)
+
+
+local settings_image = wibox.widget {
+  widget = wibox.widget.imagebox,
+  image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/settings.png",
+  resize = true,
+  opacity = 1,
+}
 
 local settings = wibox.widget {
   {
-    {
-      widget = wibox.widget.imagebox,
-      image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/settings.png",
-      resize = true,
-      opacity = 1,
-    },
+    settings_image,
     left   = dpi(5),
     right  = dpi(5),
     top    = dpi(5),
@@ -79,15 +98,35 @@ settings:connect_signal("button::release", function()
   media.visible = false
 end)
 
+-- settings:connect_signal("mouse::enter", function()
+--   settings_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/settings-hover.png"
+-- end)
+--
+-- settings:connect_signal("mouse::leave", function()
+--   settings_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/settings.png"
+-- end)
+--
+-- settings:connect_signal("button::press", function()
+--   settings_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/settings-click.png"
+-- end)
+--
+-- settings:connect_signal("button::release", function()
+--   settings_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/settings-hover.png"
+-- end)
+
+
+
+music_image = wibox.widget {
+  widget = wibox.widget.imagebox,
+  image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/music-icon.png",
+  resize = true,
+  opacity = 1,
+}
+
 
 local music = wibox.widget {
   {
-    {
-      widget = wibox.widget.imagebox,
-      image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/music-icon.png",
-      resize = true,
-      opacity = 1,
-    },
+    music_image,
     left   = dpi(5),
     right  = dpi(5),
     top    = dpi(5),
@@ -103,6 +142,22 @@ music:connect_signal("button::release", function()
   media.visible = not media.visible
   control.visible = false
 end)
+
+-- music:connect_signal("mouse::enter", function()
+--   music_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/music-icon-hover.png"
+-- end)
+--
+-- music:connect_signal("mouse::leave", function()
+--   music_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/music-icon.png"
+-- end)
+--
+-- music:connect_signal("button::press", function()
+--   music_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/music-icon-click.png"
+-- end)
+--
+-- music:connect_signal("button::release", function()
+--   music_image.image = os.getenv("HOME") .. "/.config/awesome/layout/topbar/icons/music-icon-hover.png"
+-- end)
 
 
 

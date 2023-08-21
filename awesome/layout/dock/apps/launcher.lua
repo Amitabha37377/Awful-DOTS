@@ -73,7 +73,8 @@ local app_launcher = bling.widget.app_launcher(args)
 --Toggle App Launcher
 button1:connect_signal("button::press", function(_, _, _, button)
   if button == 1 then
-    app_launcher:toggle()
+    -- app_launcher:toggle()
+    awesome.emit_signal("widget::launcher")
   end
 end)
 

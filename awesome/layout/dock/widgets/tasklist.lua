@@ -80,7 +80,7 @@ local button = wibox.widget {
   {
     {
       widget = wibox.widget.imagebox,
-      image = os.getenv("HOME") .. "/.icons/Papirus/48x48/apps/appimagekit-dockstation.svg",
+      image = os.getenv("HOME") .. "/.icons/papirus-icon-theme-20230301/Papirus/48x48/apps/appimagekit-dockstation.svg",
       resize = true,
       opacity = 1,
     },
