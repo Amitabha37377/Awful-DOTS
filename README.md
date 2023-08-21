@@ -17,10 +17,11 @@ Feel free to give a :star: to this repo if you liked the setup. It is much appre
 - **Alsa Utils**: Required for the volume control slider.
 - **acpi**: Required for the battery widget. You can skip that if you don't have a battery.
 - **feh**: Yes, I still use feh for wallpaper. Don't bully me :/
-- **Notrogen**: Another wallpaper setter. This is optional though.
+- **Nitrogen**: Another wallpaper setter. This is optional though.
 - **Playerctl**: Required for the music player widget located in the control center.
 - **Redshift**: Used in the bluelight filter widget.
-- **Scrot**: Used in screenshot tool
+- **Scrot**: Used in screenshot tool.
+- **Gpick**: Color picker.
 - **Font**: Ubuntu Nerd font is used most of the ui, CaskaydiaCove nerd font and JetbrainsMono nerd font is also used in some place.
 - **Icon Theme**: Papirus(required)
 - **GTK Theme**: Lavanda Dark Compact Tokyonight (Thanks to <a href="https://github.com/mehedirm6244">Mebesus</a>)
@@ -175,9 +176,43 @@ Feel free to open a github issue if you face any problem. I am nowhere near an a
 ---
 
 - #### How to make the media player functional?
+
   First make sure that `plasma-browser-integration` package is installed in your system. Install `plasma integration` browser extension in firefox.
   Go to the manage extension settings of the `plasma integration` extension and uncheck `Enhanced Media Control`. Hopefully it will work.
   <i>(The media player might have some bugs/issues right now.)</i>
+  <br>
+
+- #### Setting up the Weather Widget inside dashboard
+
+  First of all make an account in https://openweathermap.org/ and generate the api key and get your city ID.
+  Then make a file names `weather.sh` in your home directory and put the below script in that file:
+
+  ```bash
+  bash -c '
+    KEY= <api key>
+    CITY= <city ID>
+    UNITS="metric"
+    weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID=$KEY&id=$CITY&units=$UNITS")
+    if [ ! -z "$weather" ]; then
+
+        weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
+        weather_icon=$(echo "$weather" | jq -r ".weather[].icon" | head -1)
+        weather_description=$(echo "$weather" | jq -r ".weather[].description" | head -1)
+        location=$(echo "$weather" | jq -r ".name")
+        country=$(echo "$weather" | jq -r ".sys.country")
+        humidity=$(echo "$weather" | jq -r ".main.humidity")
+        wind=$(echo "$weather" | jq -r ".wind.speed" |  cut -d "." -f 1)
+        feelslike=$(echo "$weather" | jq -r ".main.feels_like" | cut -d "." -f 1)
+
+        echo "$weather_icon" "$weather_description" "$weather_temp" "$location" "$country" "$humidity" "$wind" "$feelslike"
+        # echo "$weather"
+    else
+        echo "... Loading...  Earth (Probably) N/A N/A N/A"
+    fi'
+
+  ```
+
+  replace the `<api key>` with your actual openweather api key and replace `<city ID>` with your city ID in the `weather.sh` file
 
 ---
 
