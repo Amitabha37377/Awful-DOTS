@@ -8,28 +8,54 @@ local dpi = beautiful.xresources.apply_dpi
 local color = require("layout.dock.color")
 
 --Apps
-local Item1 = require("layout.dock.apps.launcher")
-local Item2 = require("layout.dock.apps.firefox")
-local Item3 = require("layout.dock.apps.kitty")
-local Item4 = require("layout.dock.apps.vs_code")
-local Item5 = require("layout.dock.apps.gimp")
-local Item6 = require("layout.dock.apps.telegram")
-local Item7 = require("layout.dock.apps.discord")
-local Item8 = require("layout.dock.apps.blender")
-local Item9 = require("layout.dock.apps.unity")
-local Item10 = require("layout.dock.apps.onlyoffice")
-local Item11 = require("layout.dock.apps.android_studio")
+-- local Item1 = require("layout.dock.apps.launcher")
+-- local Item2 = require("layout.dock.apps.firefox")
+-- local Item3 = require("layout.dock.apps.kitty")
+-- local Item4 = require("layout.dock.apps.vs_code")
+-- local Item5 = require("layout.dock.apps.gimp")
+-- local Item6 = require("layout.dock.apps.telegram")
+-- local Item7 = require("layout.dock.apps.discord")
+-- local Item8 = require("layout.dock.apps.blender")
+-- local Item9 = require("layout.dock.apps.unity")
+-- local Item10 = require("layout.dock.apps.onlyoffice")
+-- local Item11 = require("layout.dock.apps.android_studio")
+--
+-- --Directories
+-- local home = require("layout.dock.directories.home")
+-- local downloads = require("layout.dock.directories.downloads")
+-- local documents = require("layout.dock.directories.documents")
+-- local config = require("layout.dock.directories.config")
+--
+-- --Widgets
+-- local task_popup = require("layout.dock.widgets.tasklist")
+-- local layoutbox = require("layout.dock.widgets.layout_switcher")
+-- local color_picker = require("layout.dock.widgets.color_picker")
+--
 
---Directories
-local home = require("layout.dock.directories.home")
-local downloads = require("layout.dock.directories.downloads")
-local documents = require("layout.dock.directories.documents")
-local config = require("layout.dock.directories.config")
+local Item1 = require("layout.dock.widgets.launcher")
 
---Widgets
+local apps = require("layout.dock.widgets.apps")
+local Item2 = apps.firefox
+local Item3 = apps.kitty
+local Item4 = apps.vs_code
+local Item5 = apps.gimp
+local Item6 = apps.telegram
+local Item7 = apps.discord
+local Item8 = apps.blender
+local Item9 = apps.unity
+local Item10 = apps.only_office
+local Item11 = apps.android_studio
+
+local directories = require("layout.dock.widgets.directories")
+local home = directories.home
+local downloads = directories.downloads
+local documents = directories.documents
+local config = directories.config
+
 local task_popup = require("layout.dock.widgets.tasklist")
-local layoutbox = require("layout.dock.widgets.layout_switcher")
-local color_picker = require("layout.dock.widgets.color_picker")
+local layoutbox = require("layout.dock.widgets.layoutbox")
+local color_picker = apps.gpick
+
 
 --Separator line
 local vertical_separator = wibox.widget {

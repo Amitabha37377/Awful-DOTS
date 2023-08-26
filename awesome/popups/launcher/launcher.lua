@@ -7,7 +7,7 @@ local bling = require("bling")
 
 --Colors
 local color = require("layout.dock.color")
-local icon_path = require("layout.dock.icon_path")
+-- local icon_path = require("layout.dock.icon_path")
 
 
 -- App Launcher Arguments

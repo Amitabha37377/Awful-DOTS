@@ -203,7 +203,7 @@ awful.rules.rules = {
 --Autostart Applications
 
 -- Compositor
-awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom --daemon")
 
 --Wallpaper
 awful.spawn.with_shell("nitrogen --restore")

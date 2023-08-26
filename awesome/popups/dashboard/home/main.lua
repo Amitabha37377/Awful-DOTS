@@ -46,18 +46,20 @@ local dashboard_home = awful.popup {
   opacity = 1
 }
 
+local home = wibox.widget {
+  header,
+  profile,
+  calender,
+  weather,
+  launch,
+  exit,
+  layout = wibox.layout.fixed.vertical,
+}
+
 dashboard_home:setup {
   {
     {
-      {
-        header,
-        profile,
-        calender,
-        weather,
-        launch,
-        exit,
-        layout = wibox.layout.fixed.vertical,
-      },
+      home,
       Separator,
       layout = wibox.layout.stack
     },
@@ -70,5 +72,6 @@ dashboard_home:setup {
     gears.shape.rounded_rect(cr, width, height, 10)
   end,
 }
+
 
 return dashboard_home

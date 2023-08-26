@@ -8,7 +8,9 @@ local bling = require("bling")
 
 --Colors
 local color = require("layout.dock.color")
-local icon_path = require("layout.dock.icon_path")
+
+local user = require("popups.user_profile")
+local icon_path = user.icon_theme_path
 
 --Main Widget
 local button1 = wibox.widget {

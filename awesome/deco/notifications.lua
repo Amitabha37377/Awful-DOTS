@@ -15,7 +15,7 @@ local color = require("popups.color")
 naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()
 naughty.config.defaults.border_width = 0
-naughty.config.defaults.position = "top_left"
+naughty.config.defaults.position = "top_middle"
 naughty.config.defaults.title = "Notification"
 naughty.config.defaults.margin = dpi(16)
 

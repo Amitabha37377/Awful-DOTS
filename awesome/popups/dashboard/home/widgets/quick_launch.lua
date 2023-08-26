@@ -286,13 +286,15 @@ local text4 = '<span color="' ..
     color.blueish_white .. '" font="Ubuntu Nerd Font 16">' .. '  :   ' .. '2634' .. '</span>'
 local icon4 = '<span color="' .. color.red .. '" font="Ubuntu Nerd Font bold 17">' .. '󰏖' .. '</span>'
 
+local package_count = wibox.widget {
+  markup = icon4 .. text4,
+  font = "Ubuntu Nerd Font Bold 14",
+  widget = wibox.widget.textbox,
+  fg = color.white,
+}
+
 local packages_text = wibox.widget {
-  {
-    markup = icon4 .. text4,
-    font = "Ubuntu Nerd Font Bold 14",
-    widget = wibox.widget.textbox,
-    fg = color.white,
-  },
+  package_count,
   widget = wibox.container.margin,
   top = dpi(6),
   bottom = dpi(6),
@@ -301,6 +303,12 @@ local packages_text = wibox.widget {
   -- forced_height = dpi(40)
 }
 
+awful.spawn.easy_async_with_shell([[dnf list installed | wc -l]], function(out)
+  local str = string.gsub(out, "%s+", "")
+
+  package_count.markup = icon4 .. '<span color="' ..
+      color.blueish_white .. '" font="Ubuntu Nerd Font 16">' .. '  :   ' .. str .. '</span>'
+end)
 
 
 

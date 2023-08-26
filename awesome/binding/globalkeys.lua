@@ -319,7 +319,7 @@ function _M.get()
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    --Toggle Dock
+    -- Toggle Dock
     awful.key({ "Mod4" }, "z", function() dock.visible = not dock.visible end,
       { description = "Toggle Dock", group = "Custom" }),
 

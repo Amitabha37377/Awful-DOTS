@@ -7,7 +7,9 @@ local dpi = beautiful.xresources.apply_dpi
 
 --color and icons
 local color = require("layout.dock.color")
-local icon_path = require("layout.dock.icon_path")
+local user = require("popups.user_profile")
+local icon_path = user.icon_theme_path
+
 
 -- tasklist buttons
 local deco = {
