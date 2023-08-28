@@ -15,11 +15,56 @@ local terminal = RC.vars.terminal
 --Custom Widgets
 local dock = require("layout.dock.dock")
 local control_center = require("popups.control_center.main")
--- local app_launcher = require("popups.launcher.launcher")
 local powermenu = require("popups.powermenu.main")
--- local launcher = require("popups.launcher.spotlight")
+local volume_osd = require("popups.osds.volume_osd")
+local brightness_osd = require("popups.osds.brightness_osd")
 
 local _M = {}
+
+
+----------------------------
+--Volume Osd functionality--
+----------------------------
+-- timer
+local volume_timer = gears.timer {
+  timeout = 2,
+  autostart = true,
+  callback = function()
+    volume_osd.visible = false
+  end
+}
+
+volume_osd:connect_signal("mouse::enter", function()
+  volume_timer:stop()       -- Stop the timer when the mouse enters the dock
+  volume_osd.visible = true -- Show the dock immediately
+end)
+
+-- Attach the timer to a signal that triggers when the mouse leaves the dock
+volume_osd:connect_signal("mouse::leave", function()
+  volume_timer:again() -- Restart the timer when the mouse leaves the dock
+end)
+
+-------------------------------
+--Brightness Osd functionality-
+-------------------------------
+local brightness_timer = gears.timer {
+  timeout = 2,
+  autostart = true,
+  callback = function()
+    brightness_osd.visible = false
+  end
+}
+
+brightness_osd:connect_signal("mouse::enter", function()
+  brightness_timer:stop()       -- Stop the timer when the mouse enters the dock
+  brightness_osd.visible = true -- Show the dock immediately
+end)
+
+-- Attach the timer to a signal that triggers when the mouse leaves the dock
+brightness_osd:connect_signal("mouse::leave", function()
+  brightness_timer:again() -- Restart the timer when the mouse leaves the dock
+end)
+
 
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -219,7 +264,69 @@ function _M.get()
 
 
 
+    -- Brightness Control
+    awful.key {
+      modifiers   = {},
+      key         = "XF86MonBrightnessUp",
+      description = 'Brightness Up',
+      group       = 'hotkeys',
+      on_press    = function()
+        awful.spawn("light -A 5")
+        brightness_osd.visible = true
+        brightness_timer:again()
+      end,
+    },
 
+    awful.key {
+      modifiers   = {},
+      key         = "XF86MonBrightnessDown",
+      description = 'Brightness Down',
+      group       = 'hotkeys',
+      on_press    = function()
+        awful.spawn("light -U 5")
+        brightness_osd.visible = true
+        brightness_timer:again()
+      end,
+    },
+
+    ---------------------------------
+    -- Audio Controls----------------
+    ---------------------------------
+
+
+    awful.key {
+      modifiers   = {},
+      key         = "XF86AudioRaiseVolume",
+      description = 'volume up',
+      group       = 'hotkeys',
+      on_press    = function()
+        awful.spawn("amixer set Master 5%+")
+        volume_osd.visible = true
+        volume_timer:again()
+      end,
+    },
+
+    awful.key {
+      modifiers   = {},
+      key         = "XF86AudioLowerVolume",
+      description = 'volume down',
+      group       = 'hotkeys',
+      on_press    = function()
+        awful.spawn("amixer set Master 5%-")
+        volume_osd.visible = true
+        volume_timer:again()
+      end,
+    },
+
+    awful.key {
+      modifiers   = {},
+      key         = "XF86AudioMute",
+      description = 'togglemute',
+      group       = 'hotkeys',
+      on_press    = function()
+        awful.spawn("amixer -q set Master toggle")
+      end,
+    },
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Layout manipulation
@@ -297,25 +404,6 @@ function _M.get()
     awful.key({ "Mod1" }, "Print", function()
       awful.util.spawn("cd Pictures && scrot")
     end, { description = "take a screenshot", group = "screenshots" }),
-
-    -- Brightness Control
-    awful.key({}, "XF86MonBrightnessUp", function()
-      os.execute("light -A 5")
-    end, { description = "+5", group = "hotkeys" }),
-    awful.key({}, "XF86MonBrightnessDown", function()
-      os.execute("light -U 5")
-    end, { description = "-5%", group = "hotkeys" }),
-
-    -- Audio Control
-    awful.key({}, "XF86AudioRaiseVolume", function()
-      os.execute("amixer set Master 5%+")
-    end, { description = "volume up", group = "hotkeys" }),
-    awful.key({}, "XF86AudioLowerVolume", function()
-      os.execute("amixer set Master 5%-")
-    end, { description = "volume down", group = "hotkeys" }),
-    awful.key({}, "XF86AudioMute", function()
-      os.execute("amixer -q set Master toggle")
-    end, { description = "toggle mute", group = "hotkeys" }),
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 

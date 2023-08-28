@@ -53,7 +53,7 @@ launcherdisplay:setup {
         {
           {
             {
-              image = os.getenv("HOME") .. '/.config/awesome/popups/launcher/kitty.jpeg',
+              image = os.getenv("HOME") .. '/.config/awesome/popups/launcher/images/3kitty.png',
               widget = wibox.widget.imagebox,
               resize = true,
               forced_height = dpi(140),
@@ -69,7 +69,7 @@ launcherdisplay:setup {
                   margins = dpi(6)
                 },
                 widget = wibox.container.background,
-                bg = color.background_dark .. '70',
+                bg = color.background_dark .. '30',
                 shape = function(cr, width, height)
                   gears.shape.rounded_rect(cr, width, height, 5)
                 end,

@@ -92,6 +92,9 @@ require("layout.dock.dock2")
 require("popups.launcher.launcher")
 require("popups.launcher.launcher2")
 
+--Osds
+require("popups.osds.volume_osd")
+
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 

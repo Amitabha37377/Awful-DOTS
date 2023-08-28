@@ -66,9 +66,6 @@ local dock = awful.popup {
     awful.placement.bottom(c,
       { margins = { top = dpi(8), bottom = dpi(5), left = 0, right = 0 } })
   end,
-  shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 15)
-  end,
   opacity = 0
 }
 
