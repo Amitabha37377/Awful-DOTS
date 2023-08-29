@@ -127,12 +127,14 @@ local media_slider_position_timer = gears.timer({
 
 local update_media_length = function()
   awful.spawn.easy_async("timeout 0.4s playerctl -F metadata -f '{{mpris:length}}'", function(stdout)
-    if stdout == "" then
+    if stdout == "" or nil then
       local position = 100
       media_slider.maximum = position
     else
       local position = tonumber(stdout)
-      media_slider.maximum = position / 1000000
+      if position ~= nil then
+        media_slider.maximum = position / 1000000 or nil
+      end
     end
   end)
 end
@@ -180,8 +182,8 @@ local update_length_text = function()
       local text = '00:00'
       length_text:set_markup_silently('<span color="' ..
         color.blueish_white .. '" font="Ubuntu Nerd Font 11">' .. text .. '</span>')
-    else
-      local length = tonumber(stdout) / 1000000
+    elseif stdout == nil then
+      local length = 0
       local minutes = math.floor(length / 60)
       local formattedminutes = string.format("%02d", minutes)
       local seconds = math.floor(length % 60)
@@ -190,6 +192,18 @@ local update_length_text = function()
       length_text:set_markup_silently('<span color="' ..
         color.blueish_white ..
         '" font="Ubuntu Nerd Font 11">' .. formattedminutes .. ':' .. formattedseconds .. '</span>')
+    else
+      if tonumber(stdout) ~= nil then
+        local length = tonumber(stdout) / 1000000
+        local minutes = math.floor(length / 60)
+        local formattedminutes = string.format("%02d", minutes)
+        local seconds = math.floor(length % 60)
+        local formattedseconds = string.format("%02d", seconds)
+
+        length_text:set_markup_silently('<span color="' ..
+          color.blueish_white ..
+          '" font="Ubuntu Nerd Font 11">' .. formattedminutes .. ':' .. formattedseconds .. '</span>')
+      end
     end
   end)
 end
