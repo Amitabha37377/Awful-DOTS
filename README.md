@@ -92,7 +92,7 @@ The name of some packages may vary based on your distro.
 Clone this repository:-
 
 ```bash
-git clone git@github.com:Amitabha37377/Awful-DOTS.git
+git clone https://github.com/Amitabha37377/Awful-DOTS.git
 cd Awful-DOTS
 ```
 
