@@ -209,9 +209,8 @@ awful.rules.rules = {
 awful.spawn.with_shell("picom --daemon")
 
 --Wallpaper
-awful.spawn.with_shell("nitrogen --restore")
--- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/catMachup.jpg")
--- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/hyprland_kitty.jpeg")
+-- awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/3kitty.jpg")
 
 --Other utilities
 awful.util.spawn("nm-applet")
