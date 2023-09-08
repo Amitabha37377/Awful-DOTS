@@ -29,48 +29,48 @@ local sidebar = require("popups.dashboard.home.sidebar")
 
 --Main Wibox
 local dashboard_home = awful.popup {
-  screen = s,
-  widget = wibox.container.background,
-  ontop = true,
-  bg = "#00000000",
-  visible = false,
-  forced_width = 430,
-  maximum_height = 950,
-  placement = function(c)
-    awful.placement.top_left(c,
-      { margins = { top = dpi(50), bottom = dpi(8), left = dpi(8), right = dpi(8) } })
-  end,
-  shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 10)
-  end,
-  opacity = 1
+	screen = s,
+	widget = wibox.container.background,
+	ontop = true,
+	bg = "#00000000",
+	visible = false,
+	forced_width = 430,
+	maximum_height = 950,
+	placement = function(c)
+		awful.placement.top_left(c,
+			{ margins = { top = dpi(43), bottom = dpi(8), left = dpi(8), right = dpi(8) } })
+	end,
+	shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 0)
+	end,
+	opacity = 1
 }
 
 local home = wibox.widget {
-  header,
-  profile,
-  calender,
-  weather,
-  launch,
-  exit,
-  layout = wibox.layout.fixed.vertical,
+	header,
+	profile,
+	calender,
+	weather,
+	launch,
+	exit,
+	layout = wibox.layout.fixed.vertical,
 }
 
 dashboard_home:setup {
-  {
-    {
-      home,
-      Separator,
-      layout = wibox.layout.stack
-    },
-    sidebar,
-    layout = wibox.layout.fixed.horizontal
-  },
-  widget = wibox.container.background,
-  bg = color.background_dark,
-  shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 10)
-  end,
+	{
+		{
+			home,
+			Separator,
+			layout = wibox.layout.stack
+		},
+		sidebar,
+		layout = wibox.layout.fixed.horizontal
+	},
+	widget = wibox.container.background,
+	bg = color.background_dark,
+	shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 10)
+	end,
 }
 
 

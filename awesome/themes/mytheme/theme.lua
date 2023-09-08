@@ -76,7 +76,6 @@ theme.tasklist_disable_task_name             = true
 --Tasklist Themesmin
 theme.tasklist_bg_minimize                   = "#535d6c"
 theme.tasklist_bg_focus                      = "#222222"
-
 theme.tasklist_shape_border_width            = 3
 theme.tasklist_shape_border_color            = "#000000"
 
@@ -98,69 +97,41 @@ theme.layout_cornerne                        = "/usr/share/awesome/themes/defaul
 theme.layout_cornersw                        = "/usr/share/awesome/themes/default/layouts/cornersw.png"
 theme.layout_cornerse                        = "/usr/share/awesome/themes/default/layouts/cornerse.png"
 
---Taglist_improved themes
--- --Gruvbox Theme taglist
--- theme.taglist_bg_empty                          = "#00000080"
--- theme.taglist_fg_empty                          = "#928374"
--- theme.taglist_bg_occupied                       = "#504945"
--- theme.taglist_fg_occupied                       = "#EBDBB2"
--- theme.taglist_bg_focus                          = "#83A598"
--- theme.taglist_fg_focus                          = "#282828"
 
--- --Rosepine
--- theme.taglist_bg_empty    = "#2a2a2a"
--- theme.taglist_fg_empty    = "#b3b3b3"
--- theme.taglist_bg_occupied = "#404040"
--- theme.taglist_fg_occupied = "#ffffff"
--- theme.taglist_bg_focus    = "#a94c4c"
--- theme.taglist_fg_focus    = "#ffffff"
-
--- --Ayu Dark
--- theme.taglist_bg_empty    = "#2b2b2b"
--- theme.taglist_fg_empty    = "#bababa"
--- theme.taglist_bg_occupied = "#3e3e3e"
--- theme.taglist_fg_occupied = "#f0f0f0"
--- theme.taglist_bg_focus    = "#6ab0c1"
--- theme.taglist_fg_focus    = "#2b2b2b"
-
--- Catppuccino
-theme.taglist_bg_empty                       = color.background_lighter
-theme.taglist_fg_empty                       = color.white
+--Taglist
+theme.taglist_bg_empty                  = color.background_lighter
+theme.taglist_fg_empty                  = color.white
 -- theme.taglist_bg_occupied                       = "#434c5e"
-theme.taglist_bg_occupied                    = color.background_lighter
-theme.taglist_fg_occupied                    = color.white
-theme.taglist_bg_focus                       = color.background_lighter
-theme.taglist_fg_focus                       = color.cyan
+theme.taglist_bg_occupied               = color.background_lighter
+theme.taglist_fg_occupied               = color.white
+theme.taglist_bg_focus                  = color.background_lighter
+theme.taglist_fg_focus                  = color.cyan
 
 -- Other Taglist settings
 
-theme.taglist_spacing                        = 2
-theme.taglist_shape_border_width             = 0
-theme.taglist_shape_border_radius            = 20
-theme.taglist_shape_border_color             = "#00000040"
+theme.taglist_spacing                   = 2
+theme.taglist_shape_border_width        = 0
+theme.taglist_shape_border_radius       = 20
+theme.taglist_shape_border_color        = "#00000040"
 
 -- --Notifications
-theme.notification_font                      = "Ubuntu Nerd Font 14"
--- theme.notification_bg                        = "#1a1b26"
-theme.notification_fg                        = "#a9b1d6"
--- theme.notification_border_width              = 8
--- theme.notification_width                     = 500
--- theme.notification_max_width                 = 500
--- theme.notification_margin                    = 5
---
--- theme.notification_max_height                = 100
--- theme.notification_height                    = 80
+theme.notification_font                 = "Ubuntu Nerd Font 14"
+theme.notification_fg                   = "#a9b1d6"
+theme.notification_position             = 'top_right'
+theme.notification_margin               = dpi(10)
+theme.notification_border_width         = dpi(0)
+theme.notification_spacing              = dpi(15)
+theme.notification_icon_resize_strategy = 'center'
+theme.notification_icon_size            = dpi(300)
 
-theme.notification_position                  = 'top_right'
-theme.notification_margin                    = dpi(10)
-theme.notification_border_width              = dpi(0)
-theme.notification_spacing                   = dpi(15)
-theme.notification_icon_resize_strategy      = 'center'
-theme.notification_icon_size                 = dpi(300)
-
+--Shortcut key list popup theme
+theme.hotkeys_font                      = "Ubuntu Nerd font bold 12"
+theme.hotkeys_description_font          = "Ubuntu nerd font 12"
+theme.hotkeys_group_margin              = dpi(20)
+theme.hotkeys_modifiers_fg              = color.blueish_white
 
 --Theme
-theme.font               = "Ubuntu Nerd Font 14"
-theme.icon_empty_notibox = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
+theme.font                              = "Ubuntu Nerd Font 14"
+theme.icon_empty_notibox                = "~/.config/awesome/themes/mytheme/icons/mail-receive.svg"
 
 return theme

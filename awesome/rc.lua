@@ -88,6 +88,9 @@ require("layout.topbar.topbar")
 require("layout.dock.dock")
 require("layout.dock.dock2")
 
+--Wallpaper
+require("deco.wall")
+
 --Popup Launcher
 require("popups.launcher.launcher")
 require("popups.launcher.launcher2")
@@ -210,7 +213,7 @@ awful.spawn.with_shell("picom --daemon")
 
 --Wallpaper
 -- awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/3kitty.jpg")
+-- awful.spawn.with_shell("feh --bg-scale ~/.config/awesome/Wallpapers/3kitty.jpg")
 
 --Other utilities
 awful.util.spawn("nm-applet")
