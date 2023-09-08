@@ -19,7 +19,6 @@ give a :star: to this repo if you liked the setup. It is much appreciated :3
 - **Alsa Utils**: Required for the volume control slider.
 - **acpi**: Required for the battery widget. You can skip that if you don't have
   a battery.
-- **feh**: Yes, I still use feh for wallpaper. Don't bully me :/
 - **Nitrogen**: Another wallpaper setter. This is optional though.
 - **Playerctl**: Required for the music player widget located in the control
   center.
@@ -85,10 +84,16 @@ pacstall -I awesome-git
 
 Use the package manager to install the following dependencies:-
 
+**Necessary**
 ```bash
-nm-applet light alsa-utils feh nitrogen acpi playerctl redshift scrot
+nm-applet NetworkManager light alsa-utils acpi playerctl scrot
 ```
+<i>(Also `libplayerctl-dev` for ubuntu based distributions)</i><br/>
 
+**Optional but recommended for a complete experience**
+```bash
+redshift gpick nitrogen lxappearance
+```
 The name of some packages may vary based on your distro.
 <i> <b>Note</b>: For Ubuntu and ubuntu/debian based distros additional
 dependency `libplayerctl-dev` </i>
@@ -128,6 +133,7 @@ cp -r Misc/icon_packs/* ~/.icons/
 <br>
 After following all the steps restart awesome wm. Hopefully everything will work.
 Feel free to open a github issue if you face any problem. I am nowhere near an awesomewm/lua expert but I will try my best to help.
+
 ---
 
 ## Gallery
