@@ -221,8 +221,3 @@ awful.spawn.with_shell('xinput set-prop "ELAN0791:00 04F3:30FD Touchpad" "libinp
 
 --Lock Screen With i3lock
 awful.spawn.with_shell("sleep 1s && xss-lock i3lock")
-
-
-
-
--- require("popups.control_center.main")
