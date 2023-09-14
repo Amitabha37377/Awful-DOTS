@@ -81,14 +81,29 @@ removenotif = function(box)
 	end
 end
 
-awesome.connect_signal("widget::swap_notifs", function()
-	removenotif()
-end)
 
 
 
 local createnotif = function(n)
-	local time = os.date("%I:%M %p")
+	local time = os.date("%H:%M")
+
+	local clear = wibox.widget
+		{ {
+			{
+				widget = wibox.widget.textbox,
+				markup = '<span color="' ..
+					"#e36f84" .. '" font="Ubuntu Nerd Font bold 15">' .. "󰅙" .. '</span>',
+			},
+			widget = wibox.container.margin,
+			top = dpi(10),
+			bottom = dpi(10),
+			right = dpi(15),
+			left = dpi(15),
+			forced_width = dpi(52)
+		},
+			widget = wibox.container.background,
+			bg = "#1f1f2f" }
+
 	local box = wibox.widget {
 		{
 			{
@@ -97,31 +112,37 @@ local createnotif = function(n)
 						{
 							{
 								{
-									markup = n.title,
-									align = "left",
+									{
+										markup = '<span color="#a9b1d6" font="Ubuntu nerd font 14 bold">' ..
+											n.title .. '</span>',
+										align = "left",
+										widget = wibox.widget.textbox
+									},
+									strategy = "exact",
+									width = dpi(230),
+									height = dpi(20),
+									widget = wibox.container.constraint
+								},
+								nil,
+								{
+									markup = '<span color="#a9b1d6">' .. time .. '</span>',
+									align = "right",
 									widget = wibox.widget.textbox
 								},
-								strategy = "exact",
-								width = dpi(230),
-								height = dpi(20),
-								widget = wibox.container.constraint
+								layout = wibox.layout.align.horizontal
 							},
-							nil,
-							{
-								text = time,
-								align = "right",
-								widget = wibox.widget.textbox
-							},
-							layout = wibox.layout.align.horizontal
+							widget = wibox.container.margin,
+							top = dpi(10),
+							bottom = dpi(10),
+							left = dpi(15),
+							right = dpi(15),
+							forced_width = dpi(365)
 						},
-						widget = wibox.container.margin,
-						top = dpi(10),
-						bottom = dpi(10),
-						left = dpi(15),
-						right = dpi(15)
+						widget = wibox.container.background,
+						bg = "#222236"
 					},
-					widget = wibox.container.background,
-					bg = "#1f1f2f"
+					clear,
+					layout = wibox.layout.fixed.horizontal
 				},
 				{
 					{
@@ -142,7 +163,7 @@ local createnotif = function(n)
 
 							},
 							{
-								markup = n.message,
+								markup = '<span color="#a9b1d6">' .. n.message .. '</span>',
 								align = "left",
 								widget = wibox.widget.textbox
 							},
@@ -150,17 +171,76 @@ local createnotif = function(n)
 							layout = wibox.layout.fixed.horizontal
 						},
 						widget = wibox.container.margin,
-						margins = dpi(15)
+						-- margins = dpi(15)
+						top = dpi(15),
+						left = dpi(15),
+						right = dpi(15),
+						bottom = dpi(10),
+						forced_height = dpi(70)
 					},
 					widget = wibox.container.background,
 					bg = color.background_lighter
+				},
+				{
+					{
+						notification = n,
+						base_layout = wibox.widget {
+							spacing = dpi(1),
+							-- spacing_widget = wibox.widget {
+							-- 	orientation = "horizontal",
+							-- 	widget      = wibox.widget.separator,
+							-- },
+							layout  = wibox.layout.flex.horizontal,
+							-- widget  = wibox.container.margin,
+							-- right   = dpi(15)
+						},
+						style = {
+							underline_normal   = false,
+							underline_selected = false,
+							fg_normal          = color.white,
+							fg_selected        = color.blue,
+						},
+						widget_template = {
+							{
+								{
+									{
+										{
+											id     = "text_role",
+											widget = wibox.widget.textbox
+										},
+										widget = wibox.container.place
+									},
+									widget = wibox.container.margin,
+									top = dpi(3),
+									bottom = dpi(3),
+									left = dpi(3),
+									right = dpi(3)
+								},
+								shape              = gears.shape.rounded_rect,
+								shape_border_width = 2,
+								shape_border_color = beautiful.bg_normal,
+								forced_height      = 36,
+								widget             = wibox.container.background,
+								bg                 = "#1f1f2f"
+							},
+							top    = dpi(0),
+							left   = dpi(3),
+							right  = dpi(3),
+							bottom = dpi(9),
+							widget = wibox.container.margin,
+						},
+						widget = naughty.list.actions,
+					},
+					widget = wibox.container.margin,
+					left = dpi(11),
+					right = dpi(11)
 				},
 				spacing = dpi(0),
 				layout = wibox.layout.fixed.vertical
 			},
 			margins = dpi(0),
 			widget = wibox.container.margin,
-			maximum_height = dpi(150)
+			maximum_height = dpi(160)
 		},
 		bg = color.background_lighter,
 		widget = wibox.container.background,
@@ -170,7 +250,7 @@ local createnotif = function(n)
 
 	}
 
-	box:buttons(
+	clear:buttons(
 		gears.table.join(
 			awful.button({}, 1, function()
 				_G.removenotif(box)
@@ -204,6 +284,8 @@ notifscontainer:buttons(
 -- Notification center setup
 
 notifscontainer:insert(1, notifsempty)
+
+
 
 naughty.connect_signal("request::display", function(n)
 	if #notifscontainer.children == 1 and notifsemptyvisible then
@@ -280,6 +362,13 @@ notif_center_popup:setup { {
 
 awesome.connect_signal("widget::notif_close", function()
 	notif_center_popup.visible = not notif_center_popup.visible
+end)
+
+
+awesome.connect_signal("notif::clearall", function()
+	notifscontainer:reset(notifscontainer)
+	notifsemptyvisible = true
+	notifscontainer:insert(1, notifsempty)
 end)
 
 
