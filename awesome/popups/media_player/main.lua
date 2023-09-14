@@ -146,6 +146,13 @@ local media_length_slider_timer = gears.timer({
 	callback = update_media_length,
 })
 
+-- media_slider:connect_signal("property::value", function(slider)
+-- 	local position = math.floor(slider.value)
+-- 	awful.spawn.easy_async("playerctl position " .. position, function()
+-- 	end)
+-- end)
+
+
 ----------------------------------
 -- length and position text-------
 ----------------------------------

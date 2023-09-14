@@ -81,7 +81,6 @@ local fancy_taglist = wibox.widget {
 }
 
 local awesome_logo = require("layout.topbar.awesome_logo")
-local power_button = require("layout.topbar.power_button")
 local top_left = require("layout.topbar.top_left")
 local systray = require("layout.topbar.systray")
 

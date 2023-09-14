@@ -7,31 +7,6 @@ local dpi = beautiful.xresources.apply_dpi
 --Color
 local color = require("layout.dock.color")
 
---Apps
--- local Item1 = require("layout.dock.apps.launcher")
--- local Item2 = require("layout.dock.apps.firefox")
--- local Item3 = require("layout.dock.apps.kitty")
--- local Item4 = require("layout.dock.apps.vs_code")
--- local Item5 = require("layout.dock.apps.gimp")
--- local Item6 = require("layout.dock.apps.telegram")
--- local Item7 = require("layout.dock.apps.discord")
--- local Item8 = require("layout.dock.apps.blender")
--- local Item9 = require("layout.dock.apps.unity")
--- local Item10 = require("layout.dock.apps.onlyoffice")
--- local Item11 = require("layout.dock.apps.android_studio")
---
--- --Directories
--- local home = require("layout.dock.directories.home")
--- local downloads = require("layout.dock.directories.downloads")
--- local documents = require("layout.dock.directories.documents")
--- local config = require("layout.dock.directories.config")
---
--- --Widgets
--- local task_popup = require("layout.dock.widgets.tasklist")
--- local layoutbox = require("layout.dock.widgets.layout_switcher")
--- local color_picker = require("layout.dock.widgets.color_picker")
---
-
 local Item1 = require("layout.dock.widgets.launcher")
 
 local apps = require("layout.dock.widgets.apps")
@@ -59,14 +34,14 @@ local color_picker = apps.gpick
 
 --Separator line
 local vertical_separator = wibox.widget {
-  orientation = 'vertical',
-  forced_height = dpi(1.5),
-  forced_width = dpi(1.5),
-  span_ratio = 0.55,
-  widget = wibox.widget.separator,
-  color = "#a9b1d6",
-  border_color = "#a9b1d6",
-  opacity = 0.55
+	orientation = 'vertical',
+	forced_height = dpi(1.5),
+	forced_width = dpi(1.5),
+	span_ratio = 0.55,
+	widget = wibox.widget.separator,
+	color = "#a9b1d6",
+	border_color = "#a9b1d6",
+	opacity = 0.55
 }
 
 --Separator
@@ -77,144 +52,144 @@ local Separator2 = wibox.widget.textbox(" ")
 
 --Main dock
 local dock = awful.popup {
-  screen = s,
-  widget = wibox.container.background,
-  ontop = true,
-  bg = "#00000000",
-  visible = true,
-  maximum_height = dpi(60),
-  placement = function(c)
-    awful.placement.bottom(c,
-      { margins = { top = dpi(8), bottom = dpi(5), left = 0, right = 0 } })
-  end,
-  type = "dock"
+	screen = s,
+	widget = wibox.container.background,
+	ontop = true,
+	bg = "#00000000",
+	visible = true,
+	maximum_height = dpi(60),
+	placement = function(c)
+		awful.placement.bottom(c,
+			{ margins = { top = dpi(8), bottom = dpi(5), left = 0, right = 0 } })
+	end,
+	type = "dock"
 }
 
 dock:struts {
-  bottom = dpi(64)
+	bottom = dpi(64)
 }
 
 dock:setup {
-  {
-    Separator2,
-    Separator2,
-    Separator2,
-    Separator,
-    {
-      Item1,
-      layout = wibox.container.place
-    },
-    Separator,
-    vertical_separator,
-    Separator,
-    {
-      Item2,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item3,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item4,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item5,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item6,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item7,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item8,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item9,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      Item10,
-      layout = wibox.container.place
-    },
-    Separator,
+	{
+		Separator2,
+		Separator2,
+		Separator2,
+		Separator,
+		{
+			Item1,
+			layout = wibox.container.place
+		},
+		Separator,
+		vertical_separator,
+		Separator,
+		{
+			Item2,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item3,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item4,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item5,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item6,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item7,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item8,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item9,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			Item10,
+			layout = wibox.container.place
+		},
+		Separator,
 
-    {
-      Item11,
-      layout = wibox.container.place
-    },
+		{
+			Item11,
+			layout = wibox.container.place
+		},
 
-    Separator,
-    vertical_separator,
-    Separator,
+		Separator,
+		vertical_separator,
+		Separator,
 
-    {
-      home,
-      layout = wibox.container.place
-    },
-    Separator,
+		{
+			home,
+			layout = wibox.container.place
+		},
+		Separator,
 
-    {
-      downloads,
-      layout = wibox.container.place
-    },
-    Separator,
-    {
-      documents,
-      layout = wibox.container.place
-    },
+		{
+			downloads,
+			layout = wibox.container.place
+		},
+		Separator,
+		{
+			documents,
+			layout = wibox.container.place
+		},
 
-    Separator,
-    {
-      config,
-      layout = wibox.container.place,
-    },
-    Separator,
-    vertical_separator,
-    Separator,
+		Separator,
+		{
+			config,
+			layout = wibox.container.place,
+		},
+		Separator,
+		vertical_separator,
+		Separator,
 
-    {
-      color_picker,
-      layout = wibox.container.place,
-    },
-    Separator,
+		{
+			color_picker,
+			layout = wibox.container.place,
+		},
+		Separator,
 
 
-    {
-      task_popup,
-      layout = wibox.container.place,
-    },
-    Separator,
+		{
+			task_popup,
+			layout = wibox.container.place,
+		},
+		Separator,
 
-    {
-      layoutbox,
-      layout = wibox.container.place,
-    },
-    Separator,
-    Separator2,
+		{
+			layoutbox,
+			layout = wibox.container.place,
+		},
+		Separator,
+		Separator2,
 
-    layout = wibox.layout.fixed.horizontal,
-  },
-  widget = wibox.container.background,
-  -- bg = color.background_dark,
-  bg = color.background_dark,
-  shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 15)
-  end,
+		layout = wibox.layout.fixed.horizontal,
+	},
+	widget = wibox.container.background,
+	-- bg = color.background_dark,
+	bg = color.background_dark,
+	shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 15)
+	end,
 }
 
 return dock

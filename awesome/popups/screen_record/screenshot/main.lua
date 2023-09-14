@@ -8,9 +8,13 @@ local naughty = require("naughty")
 local color = require("popups.color")
 local titlebar = require("popups.screen_record.screenshot.titlebar")
 
-local timer_button = require("popups.screen_record.screenshot.buttons.timed_ss")
-local fullscreen = require("popups.screen_record.screenshot.buttons.fullscreen")
-local selection = require("popups.screen_record.screenshot.buttons.selection")
+local ss_buttons = require('popups.screen_record.screenshot.buttons')
+local timer_button = ss_buttons.timed
+local fullscreen = ss_buttons.full
+local selection = ss_buttons.selection
+-- local timer_button = require("popups.screen_record.screenshot.buttons.timed_ss")
+-- local fullscreen = require("popups.screen_record.screenshot.buttons.fullscreen")
+-- local selection = require("popups.screen_record.screenshot.buttons.selection")
 
 local Separator = wibox.widget.textbox("    ")
 Separator.forced_height = 330

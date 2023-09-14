@@ -87,7 +87,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 require("layout.topbar.topbar")
 require("layout.dock.dock")
 require("layout.dock.dock2")
-
 --Wallpaper
 require("deco.wall")
 

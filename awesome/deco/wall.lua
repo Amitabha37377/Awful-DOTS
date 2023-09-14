@@ -3,6 +3,7 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 local gears = require("gears")
 local dpi = beautiful.xresources.apply_dpi
+local user = require("popups.user_profile")
 
 local global_wallpaper = awful.wallpaper {
 	screen = s,
@@ -12,7 +13,7 @@ local global_wallpaper = awful.wallpaper {
 		{
 			{
 				{
-					image                 = os.getenv("HOME") .. '/.config/awesome/Wallpapers/catMachup.jpg',
+					image                 = user.wallpaper,
 					resize                = true,
 					widget                = wibox.widget.imagebox,
 					forced_height         = dpi(1080 - 35),
