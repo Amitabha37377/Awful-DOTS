@@ -4,7 +4,6 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local naughty = require("naughty")
 
 --Custom Modules
 local user = require("popups.user_profile")
@@ -15,281 +14,122 @@ local Separator = wibox.widget.textbox("    ")
 Separator.forced_height = dpi(4)
 
 --Conatiners
-local wifi = require("popups.control_center.buttons.containers.wifi")
-local bluetooth = require("popups.control_center.buttons.containers.bluetooth")
-local dnd = require("popups.control_center.buttons.containers.dnd")
+local container = require("popups.control_center.buttons.container")
 
-
---Wifi button functionality
-local wifi_on = true
-
-wifi:connect_signal("button::press", function()
-	wifi_on = not wifi_on
-	if wifi_on then
-		wifi:set_bg(color.blue)
-		awful.spawn("nmcli radio wifi on")
-	else
-		wifi:set_bg(color.grey)
-		awful.spawn("nmcli radio wifi off")
+--Function for creating button
+local create_button = function(container_widget, text, on_status, bg_click, command1, command2)
+	local on_off = function()
+		if on_status == true then
+			return "on"
+		else
+			return "off"
+		end
 	end
-end)
 
+	local text_status = wibox.widget {
+		markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font 11">' .. on_off() .. '</span>',
+		font = "Ubuntu Nerd Font Bold 14",
+		widget = wibox.widget.textbox,
+		fg = color.white
+	}
 
------------------------------------------
---Wifi Button
------------------------------------------
-local wifi_status = wibox.widget {
-	-- text = user.name,
-	markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>',
-	font = "Ubuntu Nerd Font Bold 14",
-	widget = wibox.widget.textbox,
-	fg = color.white
-}
-
---text
-local text_wifi = wibox.widget {
-	{
-		{
-			-- text = user.name,
-			markup = '<span color="' ..
-				color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "Wifi" .. '</span>',
-			font = "Ubuntu Nerd Font Bold 14",
-			widget = wibox.widget.textbox,
-			fg = color.white
-		},
-		Separator,
-		wifi_status,
-		layout = wibox.layout.fixed.vertical,
-		id = "wifi",
-	},
-	widget = wibox.container.margin,
-	top = dpi(8),
-	bottom = dpi(8),
-	right = dpi(8),
-	left = dpi(8),
-	forced_height = dpi(56),
-	id = "wifi_margin",
-}
-
---UserImage
-local image_wifi = wibox.widget {
-	wifi,
-	widget = wibox.container.margin,
-	top = 3,
-	bottom = 3,
-	right = 10,
-	left = 7,
-	forced_height = dpi(56)
-}
-
-
---Wifi button functionality
-local wifi_on = true
-
-wifi:connect_signal("button::press", function()
-	wifi_on = not wifi_on
-	if wifi_on then
-		wifi:set_bg(color.blue)
-		wifi_status:set_markup_silently('<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
-		awful.spawn("nmcli radio wifi on")
-	else
-		wifi:set_bg(color.grey)
-		awful.spawn("nmcli radio wifi off")
-		wifi_status:set_markup_silently('<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
-	end
-end)
-
-
-
------------------------------------------
---Bluetooth Button
------------------------------------------
-local bluetooth_status = wibox.widget {
-	-- text = user.name,
-	markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>',
-	font = "Ubuntu Nerd Font Bold 14",
-	widget = wibox.widget.textbox,
-	fg = color.white
-}
-
---text
-local text_bluetooth = wibox.widget {
-	{
-		{
-			-- text= user.name,
-			markup = '<span color="' ..
-				color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "Bluetooth" .. '</span>',
-			font = "Ubuntu Nerd Font Bold 14",
-			widget = wibox.widget.textbox,
-			fg = color.white
-		},
-		Separator,
-		bluetooth_status,
-		layout = wibox.layout.fixed.vertical
-
-	},
-	widget = wibox.container.margin,
-	top = dpi(6),
-	bottom = dpi(8),
-	right = dpi(8),
-	left = dpi(8),
-	forced_height = dpi(56)
-}
-
---UserImage
-local image_bluetooth = wibox.widget {
-	bluetooth,
-	widget = wibox.container.margin,
-	top = 3,
-	bottom = 3,
-	right = 10,
-	left = 7,
-	forced_height = dpi(56)
-}
-
---Button Functionality
-local bluetooth_on = false
-
-bluetooth:connect_signal("button::press", function()
-	bluetooth_on = not bluetooth_on
-	if bluetooth_on then
-		bluetooth:set_bg(color.magenta)
-		bluetooth_status:set_markup_silently('<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
-	else
-		bluetooth:set_bg(color.grey)
-		bluetooth_status:set_markup_silently('<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
-	end
-end)
-
----------------------------------------
---Do not Disturb-----------------------
-----------------------------------------
-
-local dnd_status = wibox.widget {
-	-- text = user.name,
-	markup = '<span color="' .. color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>',
-	font = "Ubuntu Nerd Font Bold 14",
-	widget = wibox.widget.textbox,
-	fg = color.white
-}
-
---text
-local text_dnd = wibox.widget {
-	{
-		{
-			-- text = user.name,
-			markup = '<span color="' ..
-				color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. "DND" .. '</span>',
-			font = "Ubuntu Nerd Font Bold 14",
-			widget = wibox.widget.textbox,
-			fg = color.white
-		},
-		Separator,
-		dnd_status,
-		layout = wibox.layout.fixed.vertical
-
-	},
-	widget = wibox.container.margin,
-	top = dpi(6),
-	bottom = dpi(8),
-	right = dpi(8),
-	left = dpi(8),
-	forced_height = dpi(56)
-}
-
---UserImage
-local image_dnd = wibox.widget {
-	dnd,
-	widget = wibox.container.margin,
-	top = dpi(3),
-	bottom = dpi(3),
-	right = dpi(10),
-	left = dpi(7),
-	forced_height = dpi(56)
-}
-
-
---Button Functionality
-local dnd_on = false
-
-dnd:connect_signal("button::press", function()
-	dnd_on = not dnd_on
-	if dnd_on then
-		dnd:set_bg(color.yellow)
-		dnd_status:set_markup_silently('<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
-		user.dnd_status = true
-	else
-		dnd:set_bg(color.grey)
-		dnd_status:set_markup_silently('<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
-		user.dnd_status = false
-	end
-end)
-
-if dnd_on then
-	naughty.destroy_all_notifications(nil, 1)
-end
-
---------------------------------
---Final container
---------------------------------
-
---Main Widget
-local button = wibox.widget {
-	{
+	local text_button = wibox.widget {
 		{
 			{
-				{
-					image_wifi,
-					text_wifi,
-					layout = wibox.layout.fixed.horizontal,
-				},
-				widget = wibox.container.margin,
-				top = dpi(6),
-				bottom = dpi(3),
-				left = dpi(2),
-				right = 0,
+				markup = '<span color="' ..
+					color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. text .. '</span>',
+				font = "Ubuntu Nerd Font Bold 14",
+				widget = wibox.widget.textbox,
+				fg = color.white
 			},
-			{
-				{
-					image_bluetooth,
-					text_bluetooth,
-					layout = wibox.layout.fixed.horizontal,
-				},
-				widget = wibox.container.margin,
-				top = dpi(3),
-				bottom = dpi(3),
-				left = dpi(2),
-				right = 0,
-			},
-			{
-				{
-					image_dnd,
-					text_dnd,
-					layout = wibox.layout.fixed.horizontal,
-				},
-				widget = wibox.container.margin,
-				top = dpi(3),
-				bottom = dpi(6),
-				left = dpi(2),
-				right = 0,
-			},
-			layout = wibox.layout.fixed.vertical
+			Separator,
+			text_status,
+			layout = wibox.layout.fixed.vertical,
+			id = "wifi",
+		},
+		widget = wibox.container.margin,
+		top = dpi(8),
+		bottom = dpi(8),
+		right = dpi(8),
+		left = dpi(8),
+		forced_height = dpi(56),
+	}
+
+	local button_container = wibox.widget {
+		container_widget,
+		widget = wibox.container.margin,
+		top = 3,
+		bottom = 3,
+		right = 10,
+		left = 7,
+		forced_height = dpi(56)
+	}
+
+	--Functionality
+	button_container:connect_signal("button::press", function()
+		on_status = not on_status
+		if on_status then
+			container_widget:set_bg(bg_click)
+			text_status:set_markup_silently('<span color="' ..
+				color.white .. '" font="Ubuntu Nerd Font 11">' .. "on" .. '</span>')
+			awful.spawn(command1)
+		else
+			container_widget:set_bg(color.grey)
+			awful.spawn(command2)
+			text_status:set_markup_silently('<span color="' ..
+				color.white .. '" font="Ubuntu Nerd Font 11">' .. "off" .. '</span>')
+		end
+	end)
+
+	local final_container = wibox.widget {
+		{
+			button_container,
+			text_button,
+			layout = wibox.layout.fixed.horizontal,
 		},
 		widget = wibox.container.margin,
 		top = dpi(3),
 		bottom = dpi(3),
+		left = dpi(2),
+		right = 0,
+	}
+
+	return final_container
+end
+
+local buttons = {
+	wifi = create_button(container.wifi, 'Wifi', true, color.blue, "nmcli radio wifi on", "nmcli radio wifi off"),
+	bluetooth = create_button(container.bluetooth, "Bluetooth", false, color.magenta, "", ""),
+	dnd = create_button(container.dnd, "DND", false, color.yellow, "", "")
+}
+
+--DND Button Functionality
+local dnd_on = false
+container.dnd:connect_signal("button::press", function()
+	dnd_on = not dnd_on
+	if dnd_on then
+		user.dnd_status = true
+	else
+		user.dnd_status = false
+	end
+end)
+
+local button = wibox.widget {
+	{
+		{
+			buttons.wifi,
+			buttons.bluetooth,
+			buttons.dnd,
+			layout = wibox.layout.fixed.vertical
+		},
+		widget = wibox.container.margin,
+		top = dpi(6),
+		bottom = dpi(6),
 		right = dpi(3),
 		left = dpi(3),
 	},
 	widget = wibox.container.background,
 	bg = color.background_lighter,
-	-- forced_height = 60,
 	forced_width = dpi(202),
 	shape = function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, 10)

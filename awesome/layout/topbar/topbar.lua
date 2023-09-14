@@ -88,7 +88,7 @@ local systray = require("layout.topbar.systray")
 -- the wibar
 -------------------------------------------
 
-mywibox =
+local mywibox =
 	awful.wibar({
 		position = "top",
 		-- margins = { top = dpi(7), left = dpi(8), right = dpi(8), bottom = 0 },
@@ -120,12 +120,6 @@ mywibox:setup {
 				separator,
 				fancy_taglist,
 				separator,
-				-- mypromptbox,
-				-- wibox.widget({
-				--   image = "home/amitabha/.icons/papirus-icon-theme-20230301/Papirus/22x22/apps/launch.svg",
-				--   resize_allowed = true,
-				--   widget = wibox.widget.imagebox,
-				-- }),
 			},
 			nil,
 			{

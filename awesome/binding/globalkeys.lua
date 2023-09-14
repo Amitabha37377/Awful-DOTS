@@ -2,8 +2,6 @@
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
-local naughty = require("naughty")
-local color = require("popups.color")
 
 -- Menubar library
 local menubar = require("menubar")
@@ -410,11 +408,11 @@ function _M.get()
 
 		-- Toggle Dock
 		awful.key({ "Mod4" }, "z", function() dock.visible = not dock.visible end,
-			{ description = "Toggle Dock", group = "Custom" }),
+			{ description = "Toggle Dock", group = "custom" }),
 
 		--Toggle control_center
 		awful.key({ "Mod4" }, "x", function() control_center.visible = not control_center.visible end,
-			{ description = "Open Control Center", group = "Custom" }),
+			{ description = "Open Control Center", group = "custom" }),
 
 
 		-- Menubar

@@ -17,11 +17,9 @@ local profile = require("popups.control_center.header.header")
 local buttons = require("popups.control_center.header.button")
 
 local left_buttons = require("popups.control_center.buttons.left")
-local silent = require("popups.control_center.buttons.silent")
-local dark = require("popups.control_center.buttons.darkmode")
+local right_buttons = require("popups.control_center.buttons.right")
 
-local brightness = require("popups.control_center.sliders.brightness")
-local volume = require("popups.control_center.sliders.volume")
+local slider = require("popups.control_center.sliders.sliders")
 
 local music_player = require("popups.control_center.music.music")
 
@@ -63,9 +61,9 @@ control:setup {
 				left_buttons,
 				Separator,
 				{
-					silent,
+					right_buttons.silent,
 					Separator,
-					dark,
+					right_buttons.nightmode,
 					layout = wibox.layout.fixed.vertical
 				},
 				layout = wibox.layout.fixed.horizontal
@@ -77,7 +75,7 @@ control:setup {
 			left = dpi(11),
 		},
 		{
-			brightness,
+			slider.brightness,
 			widget = wibox.container.margin,
 			top = 0,
 			bottom = dpi(11),
@@ -85,7 +83,7 @@ control:setup {
 			left = dpi(11),
 		},
 		{
-			volume,
+			slider.volume,
 			widget = wibox.container.margin,
 			top = 0,
 			bottom = dpi(11),

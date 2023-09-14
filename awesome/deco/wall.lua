@@ -26,7 +26,7 @@ local global_wallpaper = awful.wallpaper {
 				shape = function(cr, width, height)
 					gears.shape.partially_rounded_rect(cr, width, height, true, true, false, false, 12)
 				end,
-				forced_height = dpi(1080 - 35),
+				forced_height = dpi(1045),
 
 			},
 			widget = wibox.container.background,
