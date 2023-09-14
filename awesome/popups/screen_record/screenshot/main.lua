@@ -12,9 +12,6 @@ local ss_buttons = require('popups.screen_record.screenshot.buttons')
 local timer_button = ss_buttons.timed
 local fullscreen = ss_buttons.full
 local selection = ss_buttons.selection
--- local timer_button = require("popups.screen_record.screenshot.buttons.timed_ss")
--- local fullscreen = require("popups.screen_record.screenshot.buttons.fullscreen")
--- local selection = require("popups.screen_record.screenshot.buttons.selection")
 
 local Separator = wibox.widget.textbox("    ")
 Separator.forced_height = 330
@@ -326,12 +323,17 @@ end)
 local ss_index = tonumber(io.popen("cat ~/.config/awesome/ss_index.txt"):read("*all"))
 
 local open_pictures = naughty.action {
-	name = 'Open Pictures',
+	name = 'Pictures',
 	icon_only = false,
 }
 
 local delete_ss = naughty.action {
 	name = 'Delete',
+	icon_only = false,
+}
+
+local open_image = naughty.action {
+	name = 'Open',
 	icon_only = false,
 }
 
@@ -345,7 +347,14 @@ open_pictures:connect_signal(
 delete_ss:connect_signal(
 	'invoked',
 	function()
-		awful.spawn.with_shell('rm ' .. 'Pictures/' .. ss_index .. '.png', false)
+		awful.spawn.with_shell('rm ' .. 'Pictures/' .. ss_index - 1 .. '.png', false)
+	end
+)
+
+open_image:connect_signal(
+	'invoked',
+	function()
+		awful.spawn.with_shell('feh Pictures/' .. ss_index - 1 .. '.png --scale-down', false)
 	end
 )
 
@@ -362,7 +371,7 @@ fullscreen:connect_signal("button::release", function(_, _, _, button)
 						text = '<span color="' .. color.white .. '"> Screenshot Captured!</span>',
 						timeout = 5,
 						icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
-						actions = { open_pictures, delete_ss }
+						actions = { open_image, open_pictures, delete_ss }
 					}
 				)
 				ss_index = ss_index + 1
@@ -385,7 +394,7 @@ timer_button:connect_signal("button::release", function(_, _, _, button)
 
 						timeout = 5,
 						icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
-						actions = { open_pictures, delete_ss }
+						actions = { open_image, open_pictures, delete_ss }
 					}
 				)
 				ss_index = ss_index + 1
@@ -409,7 +418,7 @@ selection:connect_signal("button::release", function(_, _, _, button)
 						-- text = "Screen Captured!",
 						timeout = 5,
 						icon = os.getenv("HOME") .. "/Pictures/" .. ss_index .. ".png",
-						actions = { open_pictures, delete_ss }
+						actions = { open_image, open_pictures, delete_ss }
 					}
 				)
 				ss_index = ss_index + 1
