@@ -24,56 +24,60 @@ local tasklist_buttons = deco.tasklist()
 
 --Tasklist Popup box
 local popup = awful.popup({
-	widget = awful.widget.tasklist({
-		screen = screen[1],
-		filter = awful.widget.tasklist.filter.allscreen,
-		buttons = tasklist_buttons,
-		margins = {
-			top = dpi(10),
-			bottom = dpi(10),
-			left = dpi(10),
-			right = dpi(10),
-		},
-		style = {
-			shape = gears.shape.rounded_rect,
-		},
-		layout = {
-			margins = dpi(5),
-			spacing = dpi(5),
-			forced_num_rows = 2,
-			layout = wibox.layout.grid.horizontal,
-		},
-		widget_template = {
-			{
-				{
-					id = "clienticon",
-					widget = awful.widget.clienticon,
-					margins = dpi(4),
-					resize = false,
+	widget = {
+		{
+			awful.widget.tasklist({
+				screen = screen[1],
+				filter = awful.widget.tasklist.filter.allscreen,
+				buttons = tasklist_buttons,
+				margins = {
+					top = dpi(20),
+					bottom = dpi(20),
+					left = dpi(20),
+					right = dpi(20),
 				},
-				margins = dpi(4),
-				widget = wibox.container.margin,
-			},
-			id = "background_role",
-			forced_width = dpi(58),
-			forced_height = dpi(58),
-			widget = wibox.container.background,
-			create_callback = function(self, c, index, objects) --luacheck: no unused
-				self:get_children_by_id("clienticon")[1].client = c
-			end,
+				style = {
+					shape = gears.shape.rounded_rect,
+				},
+				layout = {
+					margins = dpi(5),
+					spacing = dpi(15),
+					forced_num_rows = 2,
+					layout = wibox.layout.grid.horizontal,
+				},
+				widget_template = {
+					{
+						{
+							id = "clienticon",
+							widget = awful.widget.clienticon,
+							resize = true,
+						},
+						margins = dpi(10),
+						widget = wibox.container.margin,
+					},
+					id = "background_role",
+					forced_width = dpi(68),
+					forced_height = dpi(68),
+					widget = wibox.container.background,
+					create_callback = function(self, c, index, objects)
+						self:get_children_by_id("clienticon")[1].client = c
+					end,
+				},
+			}),
+			widget = wibox.container.margin,
+			margins = dpi(15)
 		},
-	}),
-	bg = "#1a1b26",
-	border_color = "#1a1b26",
-	border_width = dpi(10),
+		widget = wibox.container.background,
+		bg = "#151520",
+		shape = function(cr, width, height)
+			gears.shape.rounded_rect(cr, width, height, 8)
+		end,
+	},
+	bg = "#00000000",
 	ontop = true,
-	-- placement    = awful.placement.bottom_left + awful.placement.no_offscreen,
 	placement = function(c)
-		local screen_geometry = awful.screen.focused().geometry
 		return awful.placement.bottom(c, { margins = { bottom = dpi(75), left = dpi(800) } })
 	end,
-	geometry = { x = 10, y = -10 },
-	shape = gears.shape.rounded_rect,
 	visible = false,
 })
 
@@ -101,11 +105,15 @@ local button = wibox.widget {
 
 --Hover highlight effects
 button:connect_signal("mouse::enter", function()
-	button.bg = color.background_lighter
+	if not popup.visible then
+		button.bg = color.background_lighter
+	end
 end)
 
 button:connect_signal("mouse::leave", function()
-	button.bg = color.background_dark
+	if not popup.visible then
+		button.bg = color.background_dark
+	end
 end)
 
 button:connect_signal("button::press", function()
@@ -113,12 +121,17 @@ button:connect_signal("button::press", function()
 end)
 
 button:connect_signal("button::release", function()
-	button.bg = color.background_lighter
+	if not popup.visible then
+		button.bg = color.background_lighter
+	end
 end)
 
 --Open popup box on click
 button:connect_signal("button::release", function()
 	popup.visible = not popup.visible
+	if popup.visible then
+		button.bg = color.background_morelight
+	end
 end)
 
 return button

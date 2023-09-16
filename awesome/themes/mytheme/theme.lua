@@ -74,47 +74,56 @@ theme.titlebar_sticky_button_focus_active    = "~/.config/awesome/themes/mytheme
 theme.tasklist_disable_task_name             = true
 
 --Tasklist Themesmin
-theme.tasklist_bg_minimize                   = "#535d6c"
-theme.tasklist_bg_focus                      = "#222222"
+theme.tasklist_bg_minimize                   = color.background_lighter
+theme.tasklist_bg_focus                      = color.background_lighter
 theme.tasklist_shape_border_width            = 3
-theme.tasklist_shape_border_color            = "#000000"
+theme.tasklist_shape_border_color            = color.background_lighter
+theme.tasklist_shape_border_color_focus      = color.cyan
+theme.tasklist_shape_border_color_minimized  = color.magenta
+theme.tasklist_shape_border_color_urgent     = color.yellow
+
 
 -- Default layout icons
-theme.layout_fairh                           = "/usr/share/awesome/themes/default/layouts/fairhw.png"
-theme.layout_fairv                           = "/usr/share/awesome/themes/default/layouts/fairvw.png"
-theme.layout_floating                        = "/usr/share/awesome/themes/default/layouts/floatingw.png"
-theme.layout_magnifier                       = "/usr/share/awesome/themes/default/layouts/magnifierw.png"
-theme.layout_max                             = "/usr/share/awesome/themes/default/layouts/maxw.png"
-theme.layout_fullscreen                      = "/usr/share/awesome/themes/default/layouts/fullscreenw.png"
-theme.layout_tilebottom                      = "/usr/share/awesome/themes/default/layouts/tilebottomw.png"
-theme.layout_tileleft                        = "/usr/share/awesome/themes/default/layouts/tileleftw.png"
-theme.layout_tile                            = "/usr/share/awesome/themes/default/layouts/tilew.png"
-theme.layout_tiletop                         = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
-theme.layout_spiral                          = "/usr/share/awesome/themes/default/layouts/spiralw.png"
-theme.layout_dwindle                         = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
-theme.layout_cornernw                        = "/usr/share/awesome/themes/default/layouts/cornernw.png"
-theme.layout_cornerne                        = "/usr/share/awesome/themes/default/layouts/cornerne.png"
-theme.layout_cornersw                        = "/usr/share/awesome/themes/default/layouts/cornersw.png"
-theme.layout_cornerse                        = "/usr/share/awesome/themes/default/layouts/cornerse.png"
+theme.layout_fairh                = "/usr/share/awesome/themes/default/layouts/fairhw.png"
+theme.layout_fairv                = "/usr/share/awesome/themes/default/layouts/fairvw.png"
+theme.layout_floating             = "/usr/share/awesome/themes/default/layouts/floatingw.png"
+theme.layout_magnifier            = "/usr/share/awesome/themes/default/layouts/magnifierw.png"
+theme.layout_max                  = "/usr/share/awesome/themes/default/layouts/maxw.png"
+theme.layout_fullscreen           = "/usr/share/awesome/themes/default/layouts/fullscreenw.png"
+theme.layout_tilebottom           = "/usr/share/awesome/themes/default/layouts/tilebottomw.png"
+theme.layout_tileleft             = "/usr/share/awesome/themes/default/layouts/tileleftw.png"
+theme.layout_tile                 = "/usr/share/awesome/themes/default/layouts/tilew.png"
+theme.layout_tiletop              = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
+theme.layout_spiral               = "/usr/share/awesome/themes/default/layouts/spiralw.png"
+theme.layout_dwindle              = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
+theme.layout_cornernw             = "/usr/share/awesome/themes/default/layouts/cornernw.png"
+theme.layout_cornerne             = "/usr/share/awesome/themes/default/layouts/cornerne.png"
+theme.layout_cornersw             = "/usr/share/awesome/themes/default/layouts/cornersw.png"
+theme.layout_cornerse             = "/usr/share/awesome/themes/default/layouts/cornerse.png"
 
-
---Taglist
-theme.taglist_bg_empty                  = color.background_lighter
-theme.taglist_fg_empty                  = color.white
+--------------------------------
+--Taglist-----------------------
+--------------------------------
+theme.taglist_bg_empty            = color.background_lighter
+theme.taglist_fg_empty            = color.white
 -- theme.taglist_bg_occupied                       = "#434c5e"
-theme.taglist_bg_occupied               = color.background_lighter
-theme.taglist_fg_occupied               = color.white
-theme.taglist_bg_focus                  = color.background_lighter
-theme.taglist_fg_focus                  = color.cyan
-
+theme.taglist_bg_occupied         = color.background_lighter
+theme.taglist_fg_occupied         = color.white
+theme.taglist_bg_focus            = color.background_lighter
+theme.taglist_fg_focus            = color.cyan
+theme.taglist_fg_urgent           = color.yellow
 -- Other Taglist settings
+theme.taglist_spacing             = 2
+theme.taglist_shape_border_width  = 0
+theme.taglist_shape_border_radius = 20
+theme.taglist_shape_border_color  = "#00000040"
 
-theme.taglist_spacing                   = 2
-theme.taglist_shape_border_width        = 0
-theme.taglist_shape_border_radius       = 20
-theme.taglist_shape_border_color        = "#00000040"
 
--- --Notifications
+
+
+---------------------------------------
+-----Notifications---------------------
+---------------------------------------
 theme.notification_font                 = "Ubuntu Nerd Font 14"
 theme.notification_fg                   = "#a9b1d6"
 theme.notification_position             = 'top_right'
