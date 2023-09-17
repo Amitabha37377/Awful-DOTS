@@ -153,14 +153,15 @@ local createnotif = function(n)
 									image = n.icon,
 									align = "right",
 									resize = true,
+									resize_strategy = "center"
 								},
 								widget = wibox.container.margin,
 								top = dpi(5),
 								bottom = dpi(5),
 								left = dpi(0),
 								right = dpi(15),
-								forced_height = dpi(50)
-
+								forced_height = dpi(50),
+								-- forced_width = dpi(100)
 							},
 							{
 								markup = '<span color="#a9b1d6">' .. n.message .. '</span>',
@@ -176,7 +177,7 @@ local createnotif = function(n)
 						left = dpi(15),
 						right = dpi(15),
 						bottom = dpi(10),
-						forced_height = dpi(70)
+						forced_height = dpi(80)
 					},
 					widget = wibox.container.background,
 					bg = color.background_lighter
@@ -250,13 +251,30 @@ local createnotif = function(n)
 
 	}
 
-	clear:buttons(
-		gears.table.join(
-			awful.button({}, 1, function()
-				_G.removenotif(box)
-			end)
-		)
-	)
+	-- clear:buttons(
+	-- 	gears.table.join(
+	-- 		awful.button({}, 1, function()
+	-- 			_G.removenotif(box)
+	-- 		end)
+	-- 	)
+	-- )
+	clear:connect_signal("mouse::enter", function()
+		clear.bg = "#272736"
+	end)
+
+	clear:connect_signal("mouse::leave", function()
+		clear.bg = '#1f1f2f'
+	end)
+
+	clear:connect_signal("button::press", function()
+		clear.bg = "#323242"
+	end)
+
+	clear:connect_signal("button::release", function()
+		clear.bg = "#272736"
+		_G.removenotif(box)
+	end)
+
 
 	return box
 end

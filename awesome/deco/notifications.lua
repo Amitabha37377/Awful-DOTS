@@ -28,21 +28,36 @@ ruled.notification.connect_signal('request::rules', function()
 
 	ruled.notification.append_rule {
 		rule       = { urgency = 'critical' },
-		properties = { bg = beautiful.bg_normal, fg = color.white, timeout = 0 }
+		properties = {
+			bg = beautiful.bg_normal,
+			fg = color.white,
+			timeout = 0,
+			-- icon = os.getenv("HOME") .. '/.config/awesome/deco/icons/notif.png'
+		}
 	}
 
 	-- Normal
 
 	ruled.notification.append_rule {
 		rule       = { urgency = 'normal' },
-		properties = { bg = beautiful.bg_normal, fg = color.white, timeout = 5 }
+		properties = {
+			bg = beautiful.bg_normal,
+			fg = color.white,
+			timeout = 5,
+			-- icon = os.getenv("HOME") .. '/.config/awesome/deco/icons/notif.png'
+		}
 	}
 
 	-- Low
 
 	ruled.notification.append_rule {
 		rule       = { urgency = 'low' },
-		properties = { bg = beautiful.bg_normal, fg = color.white, timeout = 5 }
+		properties = {
+			bg = beautiful.bg_normal,
+			fg = color.white,
+			timeout = 5,
+			-- icon = os.getenv("HOME") .. '/.config/awesome/deco/icons/notif.png'
+		}
 	}
 end)
 
@@ -123,7 +138,8 @@ naughty.connect_signal("request::display", function(n)
 						{
 							{
 								resize_strategy = 'center',
-								widget = naughty.widget.icon,
+								widget = naughty.widget.icon or
+									os.getenv("HOME") .. '/.config/awesome/deco/icons/notif.png'
 							},
 							margins       = beautiful.notification_margin,
 							widget        = wibox.container.margin,

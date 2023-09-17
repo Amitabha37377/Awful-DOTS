@@ -138,60 +138,50 @@ Feel free to open a github issue if you face any problem. I am nowhere near an a
 
 ## Gallery
 
-- #### Control Center & Calendar
+|Control Center, Dashboard & Notification theme|
+---
+ | <p align="center"><img src="assets/129.png" ></p>|
 
-  <i>(Yes I copied from apple)</i>
-  <p align="center"><img src="assets/128.png" ></p>
+|Notification Center|
+---
+|<p align="center">
+<img src="assets/notif_center.png" /></p>|
 
-- #### Notification Center
 
-<p align="center">
-<img src="assets/notif_center_empty.png" height="430" width="350">
-<img src="assets/notif_center_busy.png" height="430" width="350">
-</p>
+|Screenshot Tool|
+---
+|<p align="center">
+<img src="assets/757.png" /></p>|
 
-- #### Screenshot Tool
+|Powermenu|
+---
+|<p align="center"><img src="assets/powermenu.gif"></p>|
 
-<p align="center"><img src="assets/screenshot.png" height="400"></p>
+|App Launcher|
+---
+|<p align="center"><img src="assets/759.png" ></p>|
 
-- #### Powermenu
+| Media Player (Supports Youtube, Idk what else it supports)|
+---
+|<p align="center"><img src="assets/mplayer.png" ></p>|
 
-<p align="center"><img src="assets/powermenu.gif"></p>
-
-- #### App Launcher(Bling)
-
-<p align="center"><img src="assets/launcher.jpg" ></p>
-
-- #### Media Player (Supports Youtube, Idk what else it supports)
-
-<p align="center"><img src="assets/mplayer.png" ></p>
-
+|Tasklist popup box|
+---
+|<p align="center"><img src="assets/762.png"/></p>|
 ---
 
-## Featured and Widgets
-
-- Dock with always visible and auto hide mode interchangable by pressing mod+z
-- Control Center
-- Notification Center
-- Fancy taglist for tag+tasklist preview
-- Bling app launcher
-- Non bling app launcher
-- Screenshot tool(WIP)
-- Lots of bugs
-- Lots of incomplete stuffs
-
 ## To Do
-
+- Implementing global search in app launcher
 - Screen recording widget
-- A good looking Dashboard
+- <s>Dashboard</s>
 - System monitor widget
 - To do widget
 - <s>Music player widget outside the control center</s>
 - Improve animations (maybe)
-- Remove the last feature
+- Preference setting widget
+- Inbuilt wallpaper switcher
 
 ---
-
 - #### How to make the media player functional?
 
   First make sure that `plasma-browser-integration` package is installed in your

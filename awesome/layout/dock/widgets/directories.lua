@@ -61,7 +61,7 @@ local create_button = function(icon, launch_directory, mleft, mright, mtop, mbot
 end
 
 local directories = {
-	home = create_button('user-home.svg', ' ', 3, 0, 0, 1),
+	home = create_button('user-home.svg', ' ', 2, 0, 0, 2),
 	documents = create_button('folder-documents.svg', '~/Documents/', 0, 0, 0, 2),
 	downloads = create_button('folder-downloads.svg', '~/Downloads/', 0, 0, 0, 2),
 	config = create_button('folder-development.svg', '~/.config', 0, 0, 0, 2),
