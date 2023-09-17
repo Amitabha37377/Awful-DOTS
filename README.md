@@ -139,34 +139,34 @@ Feel free to open a github issue if you face any problem. I am nowhere near an a
 ## Gallery
 
 |Control Center, Dashboard & Notification theme|
----
- | <p align="center"><img src="assets/129.png" ></p>|
+|---|
+| <p align="center"><img src="assets/129.png" ></p>|
 
 |Notification Center|
----
+|---|
 |<p align="center">
 <img src="assets/notif_center.png" /></p>|
 
 
 |Screenshot Tool|
----
+|---|
 |<p align="center">
 <img src="assets/757.png" /></p>|
 
 |Powermenu|
----
+|---|
 |<p align="center"><img src="assets/powermenu.gif"></p>|
 
 |App Launcher|
----
+|---|
 |<p align="center"><img src="assets/759.png" ></p>|
 
 | Media Player (Supports Youtube, Idk what else it supports)|
----
+|---|
 |<p align="center"><img src="assets/mplayer.png" ></p>|
 
 |Tasklist popup box|
----
+|---|
 |<p align="center"><img src="assets/762.png"/></p>|
 ---
 
