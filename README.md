@@ -86,7 +86,7 @@ Use the package manager to install the following dependencies:-
 
 **Necessary**
 ```bash
-nm-applet NetworkManager light alsa-utils acpi playerctl scrot
+nm-applet NetworkManager light alsa-utils acpi playerctl scrot picom
 ```
 <i>(Also `libplayerctl-dev` for ubuntu based distributions)</i><br/>
 
