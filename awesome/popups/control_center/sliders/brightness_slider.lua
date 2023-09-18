@@ -60,7 +60,7 @@ local brightness_container = {
 		{
 			id = "brightness",
 			widget = wibox.widget.imagebox,
-			image = os.getenv("HOME") .. "/.icons/papirus-icon-theme-20230301/Papirus/brightness2.png",
+			image = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/brightness2.png",
 			resize = true,
 			opacity = 1,
 		},

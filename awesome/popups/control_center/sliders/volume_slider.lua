@@ -7,7 +7,6 @@ local color = require("popups.color")
 local dpi = beautiful.xresources.apply_dpi
 
 --Spacer
-local separator = wibox.widget.textbox("    ")
 
 -----------------------------
 --Volume Slider Widget
@@ -57,7 +56,7 @@ local volume_container = {
 		{
 			id = "volume",
 			widget = wibox.widget.imagebox,
-			image = os.getenv("HOME") .. "/.icons/papirus-icon-theme-20230301/Papirus/audio2.png",
+			image = os.getenv("HOME") .. "/.config/awesome/popups/control_center/assets/audio2.png",
 			resize = true,
 			opacity = 1,
 		},
