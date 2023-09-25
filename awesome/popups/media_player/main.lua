@@ -104,53 +104,83 @@ local media_slider = wibox.widget({
 })
 
 
+local previous_value = 0
+local internal_update = false
 
---Update position value
-local update_media_position = function()
-	awful.spawn.easy_async("playerctl position", function(stdout)
-		if stdout == "" then
-			local position = 0
-			media_slider.value = position
-		else
-			local position = tonumber(stdout)
-			media_slider.value = position
-		end
-	end)
-end
+media_slider:connect_signal("property::value", function(_, new_value)
+	if internal_update and new_value ~= previous_value then
+		playerctl:set_position(new_value)
+		previous_value = new_value
+	end
+end)
 
-local media_slider_position_timer = gears.timer({
-	timeout = 1,
-	call_now = true,
-	autostart = true,
-	callback = update_media_position,
-})
 
-local update_media_length = function()
-	awful.spawn.easy_async("timeout 0.4s playerctl -F metadata -f '{{mpris:length}}'", function(stdout)
-		if stdout == "" or nil then
+----Update position value
+--local update_media_position = function()
+--	awful.spawn.easy_async("playerctl position", function(stdout)
+--		if stdout == "" then
+--			local position = 0
+--			media_slidevalr.value = position
+--		else
+--			local position = tonumber(stdout)
+--			media_slider.value = position
+--			previous_position = position
+--		end
+--	end)
+--end
+
+-- local media_slider_position_timer = gears.timer({
+-- 	timeout = 1,
+-- 	call_now = true,
+-- 	autostart = true,
+-- 	callback = update_media_position,
+-- })
+
+
+playerctl:connect_signal(
+	"position", function(_, interval_sec, length_sec)
+		internal_update = true
+		previous_value = interval_sec
+		media_slider.value = interval_sec
+	end
+)
+
+
+
+
+-- local update_media_length = function()
+awful.spawn.with_line_callback("playerctl -F metadata -f '{{mpris:length}}'", {
+	stdout = function(line)
+		if line == " " then
 			local position = 100
 			media_slider.maximum = position
 		else
-			local position = tonumber(stdout)
+			local position = tonumber(line)
 			if position ~= nil then
 				media_slider.maximum = position / 1000000 or nil
 			end
 		end
-	end)
-end
-
-local media_length_slider_timer = gears.timer({
-	timeout = 1,
-	call_now = true,
-	autostart = true,
-	callback = update_media_length,
+	end
 })
-
--- media_slider:connect_signal("property::value", function(slider)
--- 	local position = math.floor(slider.value)
--- 	awful.spawn.easy_async("playerctl position " .. position, function()
--- 	end)
+-- end
+-- awful.spawn.easy_async("timeout 0.4s playerctl -F metadata -f '{{mpris:length}}'", function(stdout)
+-- 	if stdout == "" or nil then
+-- 		local position = 100
+-- 		media_slider.maximum = position
+-- 	else
+-- 		local position = tonumber(stdout)
+-- 		if position ~= nil then
+-- 			media_slider.maximum = position / 1000000 or nil
+-- 		end
+-- 	end
 -- end)
+
+-- local media_length_slider_timer = gears.timer({
+-- 	timeout = 1,
+-- 	call_now = true,
+-- 	autostart = true,
+-- 	callback = update_media_length,
+-- })
 
 
 ----------------------------------
