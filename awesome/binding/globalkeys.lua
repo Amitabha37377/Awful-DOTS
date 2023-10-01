@@ -17,6 +17,7 @@ local control_center = require("popups.control_center.main")
 local powermenu = require("popups.powermenu.main")
 local volume_osd = require("popups.osds.volume_osd")
 local brightness_osd = require("popups.osds.brightness_osd")
+local lockscreen = require("popups.lockscreen")
 
 local _M = {}
 
@@ -34,7 +35,7 @@ local volume_timer = gears.timer {
 }
 
 volume_osd:connect_signal("mouse::enter", function()
-	volume_timer:stop()    -- Stop the timer when the mouse enters the dock
+	volume_timer:stop()      -- Stop the timer when the mouse enters the dock
 	volume_osd.visible = true -- Show the dock immediately
 end)
 
@@ -55,7 +56,7 @@ local brightness_timer = gears.timer {
 }
 
 brightness_osd:connect_signal("mouse::enter", function()
-	brightness_timer:stop()    -- Stop the timer when the mouse enters the dock
+	brightness_timer:stop()      -- Stop the timer when the mouse enters the dock
 	brightness_osd.visible = true -- Show the dock immediately
 end)
 
@@ -259,6 +260,17 @@ function _M.get()
 			group       = 'awesome',
 			on_press    = function()
 				powermenu.visible = not powermenu.visible
+			end,
+		},
+
+		--Lock Screen
+		awful.key {
+			modifiers   = { modkey, "Shift" },
+			key         = 's',
+			description = 'Lockscreen',
+			group       = 'awesome',
+			on_press    = function()
+				awesome.emit_signal("screen::lock")
 			end,
 		},
 

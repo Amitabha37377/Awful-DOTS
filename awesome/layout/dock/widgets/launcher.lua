@@ -14,59 +14,59 @@ local icon_path = user.icon_theme_path
 
 --Main Widget
 local button1 = wibox.widget {
-  {
-    {
-      widget = wibox.widget.imagebox,
-      image = os.getenv("HOME") .. icon_path .. "launch.svg",
-      resize = true,
-      opacity = 1,
-    },
-    left   = dpi(1),
-    right  = dpi(1),
-    top    = dpi(2),
-    bottom = dpi(2),
-    widget = wibox.container.margin
-  },
-  bg = color.background_dark,
-  shape = gears.shape.rounded_rect,
-  widget = wibox.container.background,
-  forced_height = dpi(48),
-  forced_width = dpi(48),
+	{
+		{
+			widget = wibox.widget.imagebox,
+			image = os.getenv("HOME") .. icon_path .. "launch.svg",
+			resize = true,
+			opacity = 1,
+		},
+		left   = dpi(1),
+		right  = dpi(1),
+		top    = dpi(2),
+		bottom = dpi(2),
+		widget = wibox.container.margin
+	},
+	bg = color.background_dark,
+	shape = gears.shape.rounded_rect,
+	widget = wibox.container.background,
+	forced_height = dpi(48),
+	forced_width = dpi(48),
 }
 
 -- App Launcher Arguments
 local args = {
-  apps_per_column = 5,
-  terminal = "kitty",
-  favorites = { "firefox", "thunar", "kitty", "vokoscreenNG", "wezterm", "vlc", "lxappearance" },
-  sort_alphabetically = true,
-  reverse_sort_alphabetically = false,
-  background = color.background_dark,
-  shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 10)
-  end,
-  app_shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 10)
-  end,
-  app_normal_color = color.background_lighter,         -- App normal color
-  app_normal_hover_color = color.background_morelight, -- App normal hover color
-  app_selected_color = color.white,                    -- App selected color
-  app_selected_hover_color = color.blueish_white,      -- App selected hover color
-  app_name_font = "Ubuntu Nerd Font 12",
-  app_name_normal_color = color.white,
-  prompt_icon = "",
-  prompt_icon_font = "Ubuntu Nerd Font Bold 14",
-  prompt_icon_color = color.blue,
-  prompt_font = "Ubuntu Nerd Font 18",
-  prompt_text_color = color.white,
-  prompt_color = "#343b58",
-  prompt_cursor_color = color.blueish_white,
-  prompt_padding = dpi(15),
-  border_width = dpi(2),
-  border_color = color.blue,
-  wrap_page_scrolling = true,
-  wrap_app_scrolling = true,
-  search_commands = true
+	apps_per_column = 5,
+	terminal = "kitty",
+	favorites = { "firefox", "thunar", "kitty", "vokoscreenNG", "wezterm", "vlc", "lxappearance" },
+	sort_alphabetically = true,
+	reverse_sort_alphabetically = false,
+	background = color.background_dark,
+	shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 10)
+	end,
+	app_shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 10)
+	end,
+	app_normal_color = color.background_lighter,         -- App normal color
+	app_normal_hover_color = color.background_morelight, -- App normal hover color
+	app_selected_color = color.white,                    -- App selected color
+	app_selected_hover_color = color.blueish_white,      -- App selected hover color
+	app_name_font = "Ubuntu Nerd Font 12",
+	app_name_normal_color = color.white,
+	prompt_icon = "",
+	prompt_icon_font = "Ubuntu Nerd Font Bold 14",
+	prompt_icon_color = color.blue,
+	prompt_font = "Ubuntu Nerd Font 18",
+	prompt_text_color = color.white,
+	prompt_color = "#343b58",
+	prompt_cursor_color = color.blueish_white,
+	prompt_padding = dpi(15),
+	border_width = dpi(2),
+	border_color = color.blue,
+	wrap_page_scrolling = true,
+	wrap_app_scrolling = true,
+	search_commands = true
 }
 
 --App Launcher
@@ -74,35 +74,27 @@ local app_launcher = bling.widget.app_launcher(args)
 
 --Toggle App Launcher
 button1:connect_signal("button::press", function(_, _, _, button)
-  if button == 1 then
-    app_launcher:toggle()
-    -- awesome.emit_signal("widget::launcher")
-  end
+	if button == 1 then
+		app_launcher:toggle()
+		-- awesome.emit_signal("widget::launcher")
+	end
 end)
-
---Open app on click
--- button:connect_signal("button::press", function(_, _, _, button)
---   if button == 1 then
---     awful.spawn.with_shell("rofi -show drun")
---   end
--- end)
---
 
 --Hover highlight effects
 button1:connect_signal("mouse::enter", function()
-  button1.bg = color.background_lighter
+	button1.bg = color.background_lighter
 end)
 
 button1:connect_signal("mouse::leave", function()
-  button1.bg = color.background_dark
+	button1.bg = color.background_dark
 end)
 
 button1:connect_signal("button::press", function()
-  button1.bg = color.background_morelight
+	button1.bg = color.background_morelight
 end)
 
 button1:connect_signal("button::release", function()
-  button1.bg = color.background_lighter
+	button1.bg = color.background_lighter
 end)
 
 

@@ -7,7 +7,6 @@ local dpi = beautiful.xresources.apply_dpi
 
 --Custom Modules
 local color = require("popups.color")
-local user = require("popups.user_profile")
 
 --Widgets
 local header = require("popups.dashboard.home.widgets.header")
