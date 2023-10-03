@@ -158,12 +158,10 @@ set_time = function()
 			final_input = input_entered
 			local seconds = tonumber(string.sub(final_input, 6, 7))
 			local minutes = tonumber(string.sub(final_input, 1, 2))
-
 			if seconds > 60 then
 				seconds = 60
 			end
-
-			final_input = minutes .. " : " .. seconds
+			final_input = string.format("%02d", minutes) .. " : " .. string.format("%02d", seconds)
 
 			time.markup = '<span color="' ..
 					color.green ..
@@ -197,7 +195,7 @@ local timer_running = function()
 	second_input = tonumber(string.sub(final_input, 6, 7))
 	total_time = minute_input * 60 + second_input
 	total_time = total_time - 1
-	if total_time > 0 then
+	if total_time >= 0 then
 		local new_minute = math.floor(total_time / 60)
 		local new_second = total_time % 60
 		final_input = string.format("%02d", new_minute) .. " : " .. string.format("%02d", new_second)
