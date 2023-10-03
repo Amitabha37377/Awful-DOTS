@@ -1,4 +1,5 @@
 --Standard Modules
+local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
@@ -14,7 +15,7 @@ local user = require("popups.user_profile")
 
 local textbox = wibox.widget {
 	markup = '<span color="' ..
-			color.blueish_white .. '" font="Ubuntu Nerd Font bold 16">' .. "  Hello " .. user.name .. ' !' .. '</span>',
+			color.blueish_white .. '" font="Ubuntu Nerd Font bold 16">' .. "To Do" .. '</span>',
 	font = "Ubuntu Nerd Font 14",
 	widget = wibox.widget.textbox,
 	fg = color.white
@@ -45,8 +46,6 @@ local header = wibox.widget {
 	left = dpi(12),
 	right = dpi(12),
 	forced_height = dpi(61),
-
-
 }
 
 return header

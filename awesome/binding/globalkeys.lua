@@ -274,8 +274,6 @@ function _M.get()
 			end,
 		},
 
-
-
 		-- Brightness Control
 		awful.key {
 			modifiers   = {},

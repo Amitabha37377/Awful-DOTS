@@ -5,7 +5,8 @@ local user_profile = {
 	browser = 'firefox ',
 	file_manager = 'thunar ',
 	icon_theme_path = "/.icons/Papirus/32x32/apps/",
-	wallpaper = os.getenv("HOME") .. '/.config/awesome/Wallpapers/catMachup.jpg'
+	wallpaper = os.getenv("HOME") .. '/.config/awesome/Wallpapers/catMachup.jpg',
+	fallback_password = "1234"
 }
 
 return user_profile

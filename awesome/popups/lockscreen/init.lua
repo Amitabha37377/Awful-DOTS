@@ -7,7 +7,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 --Custom Modules
 local color = require("popups.color")
-
+local user = require("popups.user_profile")
 
 local Separator = wibox.widget.textbox("    ")
 Separator.forced_height = dpi(1080)
@@ -60,7 +60,7 @@ local create_textbox = function(text, fg)
 	return text_box
 end
 
-local text1 = create_textbox("awesome wm", color.yellow)
+local text1 = create_textbox("  " .. user.name, color.yellow)
 local text2 = create_textbox("󰌆  ", color.green)
 
 local create_text_container = function(textbox)
@@ -272,7 +272,7 @@ local function passwd()
 		},
 
 		exe_callback        = function(input)
-			if input == "1234" then
+			if input == user.fallback_password then
 				correct_passwd()
 			else
 				incorrect_passwd()
