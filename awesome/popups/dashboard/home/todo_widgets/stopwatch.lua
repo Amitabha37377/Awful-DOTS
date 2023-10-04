@@ -3,7 +3,7 @@ local gears             = require("gears")
 local beautiful         = require("beautiful")
 local wibox             = require("wibox")
 local dpi               = beautiful.xresources.apply_dpi
-
+local naughty           = require("naughty")
 local color             = require("popups.color")
 
 local create_textbox    = function(font, text, fg_color)
@@ -201,6 +201,20 @@ local timer_running = function()
 		final_input = string.format("%02d", new_minute) .. " : " .. string.format("%02d", new_second)
 		time.markup = '<span color="' ..
 				color.green .. '" font="' .. "Ubuntu nerd font bold 66" .. '">' .. final_input .. '</span>'
+	end
+
+	if total_time == 1 then
+		naughty.notify
+		(
+			{
+				title = '<span color="' ..
+						color.white .. '" font="Ubuntu Nerd Font Bold 14">󱎫 Timer Widget</span>',
+				text = '<span color="' .. color.white .. '"> The timer has ended! . Hope that was a productive time </span>',
+
+				timeout = 5,
+				icon = os.getenv("HOME") .. "/.config/awesome/popups/dashboard/home/todo_widgets/icons/clock2.png"
+			}
+		)
 	end
 end
 
