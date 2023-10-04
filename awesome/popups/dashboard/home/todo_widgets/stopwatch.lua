@@ -209,7 +209,7 @@ local timer_running = function()
 			{
 				title = '<span color="' ..
 						color.white .. '" font="Ubuntu Nerd Font Bold 14">󱎫 Timer Widget</span>',
-				text = '<span color="' .. color.white .. '"> The timer has ended! . Hope that was a productive time </span>',
+				text = '<span color="' .. color.white .. '">The timer has ended! . Hope that was a productive time </span>',
 
 				timeout = 5,
 				icon = os.getenv("HOME") .. "/.config/awesome/popups/dashboard/home/todo_widgets/icons/clock2.png"

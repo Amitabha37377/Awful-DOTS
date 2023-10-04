@@ -19,6 +19,7 @@ local exit = require("popups.dashboard.home.widgets.exit")
 
 --Todo Widgets
 local timer = require("popups.dashboard.home.todo_widgets.stopwatch")
+local todo = require("popups.dashboard.home.todo_widgets.todo")
 
 --Separator/Background
 local Separator = wibox.widget.textbox("    ")
@@ -60,6 +61,7 @@ local home = wibox.widget {
 local todo = wibox.widget {
 	header.todo,
 	timer,
+	todo,
 	layout = wibox.layout.fixed.vertical,
 	visible = false
 }
