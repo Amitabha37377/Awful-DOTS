@@ -132,7 +132,8 @@ cp -r Misc/icon_packs/* ~/.icons/
 </details>
 <br>
 After following all the steps restart awesome wm. Hopefully everything will work.
-Feel free to open a github issue if you face any problem. I am nowhere near an awesomewm/lua expert but I will try my best to help.
+To change the default apps and username/profile picture go to the `~/.config/awesome/popups/user_profile.lua` file and make changes.
+
 
 ---
 
