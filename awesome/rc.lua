@@ -82,10 +82,10 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 require("layout.topbar.topbar")
 require("layout.dock.dock")
 require("layout.dock.dock2")
-
+require("popups.lockscreen")
 --Wallpaper
--- require("deco.wall")
-gears.wallpaper.maximized("/home/amitabha/.config/awesome/Wallpapers/catMachup.jpg", s)
+require("deco.wall")
+-- gears.wallpaper.maximized("/home/amitabha/.config/awesome/Wallpapers/catMachup.jpg", s)
 
 --Popup Launcher
 require("popups.launcher.launcher")
@@ -113,4 +113,5 @@ require("main.client")
 awful.spawn.with_shell("picom --daemon")
 awful.util.spawn("nm-applet")
 awful.spawn.with_shell('xinput set-prop "ELAN0791:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1')
-awful.spawn.with_shell("sleep 1s && xss-lock i3lock")
+awful.spawn.with_shell([[sleep 1s && xss-lock  awesome-client 'awesome.emit_signal("screen::lock")']])
+-- awful.spawn.with_shell("sleep 1s && xss-lock i3lock")

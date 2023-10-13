@@ -12,14 +12,14 @@ local Item1 = require("layout.dock.widgets.launcher")
 local apps = require("layout.dock.widgets.apps")
 local Item2 = apps.firefox
 local Item3 = apps.kitty
-local Item4 = apps.vs_code
+local Item4 = apps.wezterm
 local Item5 = apps.gimp
 local Item6 = apps.telegram
 local Item7 = apps.discord
-local Item8 = apps.blender
+local Item8 = apps.vokoscreenNG
 local Item9 = apps.unity
 local Item10 = apps.only_office
-local Item11 = apps.android_studio
+local Item11 = apps.keepassxc
 
 local directories = require("layout.dock.widgets.directories")
 local home = directories.home

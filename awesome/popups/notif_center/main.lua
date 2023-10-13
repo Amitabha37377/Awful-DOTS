@@ -54,7 +54,7 @@ local notifsempty = wibox.widget {
 				{
 					-- text = "No Notifications",
 					markup = '<span color="' ..
-						color.blueish_white .. '" font="Ubuntu Nerd Font Bold 16">' .. 'NO NOTIFICATION YET' .. '</span>',
+							color.blueish_white .. '" font="Ubuntu Nerd Font Bold 16">' .. 'NO NOTIFICATION YET' .. '</span>',
 					align = "center",
 					valign = "center",
 					widget = wibox.widget.textbox
@@ -88,21 +88,21 @@ local createnotif = function(n)
 	local time = os.date("%H:%M")
 
 	local clear = wibox.widget
-		{ {
-			{
-				widget = wibox.widget.textbox,
-				markup = '<span color="' ..
-					"#e36f84" .. '" font="Ubuntu Nerd Font bold 15">' .. "󰅙" .. '</span>',
+			{ {
+				{
+					widget = wibox.widget.textbox,
+					markup = '<span color="' ..
+							"#e36f84" .. '" font="Ubuntu Nerd Font bold 15">' .. "󰅙" .. '</span>',
+				},
+				widget = wibox.container.margin,
+				top = dpi(10),
+				bottom = dpi(10),
+				right = dpi(15),
+				left = dpi(15),
+				forced_width = dpi(52)
 			},
-			widget = wibox.container.margin,
-			top = dpi(10),
-			bottom = dpi(10),
-			right = dpi(15),
-			left = dpi(15),
-			forced_width = dpi(52)
-		},
-			widget = wibox.container.background,
-			bg = "#1f1f2f" }
+				widget = wibox.container.background,
+				bg = "#1f1f2f" }
 
 	local box = wibox.widget {
 		{
@@ -114,7 +114,7 @@ local createnotif = function(n)
 								{
 									{
 										markup = '<span color="#a9b1d6" font="Ubuntu nerd font 14 bold">' ..
-											n.title .. '</span>',
+												n.title .. '</span>',
 										align = "left",
 										widget = wibox.widget.textbox
 									},

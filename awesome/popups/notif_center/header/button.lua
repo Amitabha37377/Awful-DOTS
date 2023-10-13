@@ -1,4 +1,3 @@
-local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
@@ -6,10 +5,6 @@ local dpi = beautiful.xresources.apply_dpi
 
 local color = require("popups.color")
 local icon_path = os.getenv("HOME") .. "/.config/awesome/popups/notif_center/assets/"
-
--- local powermenu = require("popups.powermenu.main")
--- local notif_center = require("popups.notif_center.main")
-
 --Powerbutton
 local clear = wibox.widget { {
 	{
@@ -58,16 +53,6 @@ clear:connect_signal("button::press", function(_, _, _, button)
 		awesome.emit_signal("notif::clearall")
 	end
 end)
-
-
--- power:connect_signal("button::press", function(_, _, _, button)
---   if button == 1 then
---     powermenu.visible = not powermenu.visible
---     awesome.emit_signal("widget::control")
---   end
--- end)
---
-
 
 --notification button
 local close = wibox.widget { {
@@ -118,15 +103,6 @@ close:connect_signal("button::press", function(_, _, _, button)
 	end
 end)
 
-
--- notifications:connect_signal("button::press", function(_, _, _, button)
---   if button == 1 then
---     notif_center.visible = not notif_center.visible
---     awesome.emit_signal("widget::control")
---   end
--- end)
-
-
 --Separator
 local vertical_separator = wibox.widget {
 	orientation = 'vertical',
@@ -156,9 +132,7 @@ local buttons = wibox.widget {
 	},
 	widget = wibox.container.background,
 	bg = color.background_lighter,
-	-- forced_height = 60,
 	forced_width = dpi(104),
-	-- halign = 'center',
 	shape = function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, 10)
 	end,

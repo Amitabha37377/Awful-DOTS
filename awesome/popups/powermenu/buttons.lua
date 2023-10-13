@@ -62,7 +62,7 @@ local function create_button(img, hover_img, description, command, hover_color)
 end
 
 local powermenu_buttons = {
-	lock = create_button('lock', 'lock-hover', 'Lock Screen', 'i3lock', color.green),
+	lock = create_button('lock', 'lock-hover', 'Lock Screen', ' ', color.green),
 	logout = create_button('logout', 'logout-hover', 'Logout', '', color.magenta),
 	reboot = create_button('restart', 'restart-hover', 'Reboot', 'reboot', color.yellow),
 	shutdown = create_button('power', 'power-hover', 'Power Off', 'shutdown -h now', color.red),
@@ -74,6 +74,21 @@ powermenu_buttons.logout:connect_signal("button::press", function(_, _, _, butto
 		awesome.quit()
 	end
 end)
+
+powermenu_buttons.lock:connect_signal("button::press", function(_, _, _, button)
+	if button == 1 then
+		awesome.emit_signal("screen::lock")
+	end
+end)
+
+powermenu_buttons.sleep:connect_signal("button::press", function(_, _, _, button)
+	if button == 1 then
+		awesome.emit_signal("screen::lock")
+		awful.spawn("systemctl suspend")
+	end
+end)
+
+
 
 
 return powermenu_buttons
