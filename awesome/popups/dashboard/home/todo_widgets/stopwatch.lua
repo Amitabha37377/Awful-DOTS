@@ -1,12 +1,12 @@
-local awful             = require("awful")
-local gears             = require("gears")
-local beautiful         = require("beautiful")
-local wibox             = require("wibox")
-local dpi               = beautiful.xresources.apply_dpi
-local naughty           = require("naughty")
-local color             = require("popups.color")
+local awful            = require("awful")
+local gears            = require("gears")
+local beautiful        = require("beautiful")
+local wibox            = require("wibox")
+local dpi              = beautiful.xresources.apply_dpi
+local naughty          = require("naughty")
+local color            = require("popups.color")
 
-local create_textbox    = function(font, text, fg_color)
+local create_textbox   = function(font, text, fg_color)
 	local textbox = wibox.widget {
 		markup = '<span color="' ..
 				fg_color .. '" font="' .. font .. '">' .. text .. '</span>',
@@ -17,16 +17,15 @@ local create_textbox    = function(font, text, fg_color)
 	return textbox
 end
 
-local time              = create_textbox("Ubuntu Nerd Font bold 66", "00 : 00", color.green)
-local add_timer         = create_textbox("Ubuntu Nerd Font bold 16", "  Add timer", color.magenta)
-local set_timer_button  = create_textbox("Ubuntu Nerd Font bold 16", "  󱎫  ", color.magenta)
+local time             = create_textbox("Ubuntu Nerd Font bold 66", "00 : 00", color.green)
+local add_timer        = create_textbox("Ubuntu Nerd Font bold 16", "  Add timer", color.magenta)
+local set_timer_button = create_textbox("Ubuntu Nerd Font bold 16", "  󱎫  ", color.magenta)
 
-local create_button     = function(icon, icon_color)
-	local button_text = create_textbox("Ubuntu Nerd Font bold 20", icon, icon_color)
 
+local create_button     = function(icon)
 	local button_bg = wibox.widget {
 		{
-			button_text,
+			icon,
 			widget = wibox.container.margin,
 			margins = dpi(3)
 		},
@@ -61,11 +60,16 @@ local create_button     = function(icon, icon_color)
 	return button
 end
 
+local play_pause        = create_textbox("Ubuntu nerd font  bold 20", "  ", color.yellow)
+local reset             = create_textbox("Ubuntu nerd font  bold 20", "  ", color.red)
+local forward           = create_textbox("Ubuntu nerd font  bold 20", "  ", color.blue)
+local backward          = create_textbox("Ubuntu nerd font  bold 20", "  ", color.blue)
+
 local stopwatch_buttons = {
-	play_pause = create_button(" 󰐎 ", color.yellow),
-	reset = create_button("  ", color.red),
-	forward = create_button("  ", color.blue),
-	backward = create_button("  ", color.blue)
+	play_pause = create_button(play_pause),
+	reset = create_button(reset),
+	forward = create_button(forward),
+	backward = create_button(backward)
 }
 
 local buttons           = wibox.widget {
@@ -171,6 +175,9 @@ set_time = function()
 			input_entered = "-- : --"
 			input_2 = "----"
 			character_entered = 0
+			timer_isrunning = false
+			play_pause.markup = '<span color="' ..
+					color.yellow .. '" font="' .. "Ubuntu nerd font bold 20" .. '">' .. "  " .. '</span>'
 		end,
 		keypressed_callback = function(mod, key, cmd)
 			if character_entered <= 4 then
@@ -258,13 +265,17 @@ stopwatch_buttons.reset:connect_signal("button::release", function()
 end)
 
 
-local timer_isrunning = false
+timer_isrunning = false
 stopwatch_buttons.play_pause:connect_signal("button::release", function()
 	timer_isrunning = not timer_isrunning
 	if timer_isrunning then
 		timer_main:start()
+		play_pause.markup = '<span color="' ..
+				color.yellow .. '" font="' .. "Ubuntu nerd font bold 20" .. '">' .. "  " .. '</span>'
 	else
 		timer_main:stop()
+		play_pause.markup = '<span color="' ..
+				color.yellow .. '" font="' .. "Ubuntu nerd font bold 20" .. '">' .. "  " .. '</span>'
 	end
 end)
 

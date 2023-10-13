@@ -7,7 +7,6 @@ local dpi            = beautiful.xresources.apply_dpi
 
 --Custom Modules
 local color          = require("popups.color")
-local user           = require("popups.user_profile")
 
 -----------------------
 --Header text----------
@@ -71,26 +70,49 @@ local prompt_box     = wibox.widget {
 local todocontainer  = wibox.widget {
 	spacing = dpi(0),
 	layout = wibox.layout.fixed.vertical,
+	forced_height = dpi(540)
 }
 
+local todo_empty     = wibox.widget {
+	{
+		nil,
+		{
+			{
+				image = os.getenv("HOME") .. "/.config/awesome/popups/dashboard/home/todo_widgets/icons/todo.png",
+				widget = wibox.widget.imagebox,
+				forced_height = dpi(160),
+				forced_width = dpi(160),
+				resize = true
+			},
+			create_textbox("Ubuntu nerd font bold 20", "\nNo tasks to do", color.blueish_white),
+			layout = wibox.layout.fixed.vertical
+		},
+		nil,
+		layout = wibox.layout.align.vertical
+	},
+	widget = wibox.container.place,
+	forced_height = dpi(540)
+}
 
-local final_widget = wibox.widget {
+local final_widget   = wibox.widget {
 	{
 		top_header,
 		{
 			todocontainer,
-			widget = wibox.container.constraint,
-			height = dpi(500)
+			widget = wibox.container.background,
+			bg = color.background_lighter
 		},
 		prompt_box,
 		layout = wibox.layout.fixed.vertical
 	},
 	widget = wibox.container.margin,
-	top = dpi(14),
+	top = dpi(2),
 	bottom = dpi(12),
 	left = dpi(12),
 	right = dpi(12)
 }
+
+todocontainer:insert(1, todo_empty)
 
 -- Make todo tasks
 local create_todo = function(text)
@@ -149,43 +171,55 @@ local create_todo = function(text)
 		border_color = color.background_lighter
 	}
 
-	local hover_effects = function(button)
-		button:connect_signal("mouse::enter", function()
-			button.bg = "#26303b"
+	local hover_effects = function(buttons)
+		buttons:connect_signal("mouse::enter", function()
+			buttons.bg = "#26303b"
 		end)
-		button:connect_signal("mouse::leave", function()
-			button.bg = color.background_lighter
+		buttons:connect_signal("mouse::leave", function()
+			buttons.bg = color.background_lighter
 		end)
-		button:connect_signal("mouse::release", function()
-			button.bg = color.background_lighter2
+		buttons:connect_signal("mouse::release", function(_, _, _, button)
+			if button == 1 then
+				buttons.bg = color.background_lighter2
+			end
 		end)
-		button:connect_signal("button::press", function()
-			button.bg = "#30425c"
+		buttons:connect_signal("button::press", function(_, _, _, button)
+			if button == 1 then
+				buttons.bg = "#30425c"
+			end
 		end)
 	end
 
 	hover_effects(remove_button)
 	hover_effects(complete_button)
 
-	remove_button:connect_signal("button::release", function()
-		todocontainer:remove_widgets(todo_template)
+	remove_button:connect_signal("button::release", function(_, _, _, button)
+		if button == 1 then
+			todocontainer:remove_widgets(todo_template)
+			if #todocontainer.children == 0 then
+				todocontainer:insert(1, todo_empty)
+			end
+		end
 	end)
 
-	complete_button:connect_signal("button::release", function()
-		todo_text.markup = '<span color="' ..
-				color.blueish_white ..
-				'" font="' .. "Ubuntu nerd font 15" .. '">' .. "<s>" .. text .. "</s>" .. '</span>'
+	complete_button:connect_signal("button::release", function(_, _, _, button)
+		if button == 1 then
+			todo_text.markup = '<span color="' ..
+					color.blueish_white ..
+					'" font="' .. "Ubuntu nerd font 15" .. '">' .. "<s>" .. text .. "</s>" .. '</span>'
+		end
 	end)
 
 	return todo_template
 end
 
 -- Prompt run function
-local add_todo = function()
+local add_todo    = function()
 	awful.prompt.run {
 		textbox = prompt_textbox,
 		exe_callback = function(input)
 			local new_todo = create_todo(input)
+			todocontainer:remove_widgets(todo_empty)
 			todocontainer:insert(1, new_todo)
 			prompt_textbox.markup = '<span color="' ..
 					color.grey .. '" font="' .. "Ubuntu nerd font bold 16" .. '">' .. "   Add task" .. '</span>'
@@ -194,14 +228,46 @@ local add_todo = function()
 end
 
 -- Add todo
-prompt_box:connect_signal("button::release", function()
-	add_todo()
+prompt_box:connect_signal("button::release", function(_, _, _, button)
+	if button == 1 then
+		add_todo()
+	end
+end)
+
+add_task:connect_signal("button::release", function(_, _, _, button)
+	if button == 1 then
+		add_todo()
+	end
 end)
 
 --CLear all todo
-remove_all:connect_signal("button::release", function()
-	todocontainer:reset(todocontainer)
+remove_all:connect_signal("button::release", function(_, _, _, button)
+	if button == 1 then
+		todocontainer:reset(todocontainer)
+		todocontainer:insert(1, todo_empty)
+	end
 end)
+
+--Scroll
+todocontainer:buttons(
+	gears.table.join(
+		awful.button({}, 4, nil, function()
+			if #todocontainer.children == 1 then
+				return
+			end
+			todocontainer:insert(1, todocontainer.children[#todocontainer.children])
+			todocontainer:remove(#todocontainer.children)
+		end),
+
+		awful.button({}, 5, nil, function()
+			if #todocontainer.children == 1 then
+				return
+			end
+			todocontainer:insert(#todocontainer.children + 1, todocontainer.children[1])
+			todocontainer:remove(1)
+		end)
+	)
+)
 
 
 

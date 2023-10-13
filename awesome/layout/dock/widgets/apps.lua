@@ -63,12 +63,12 @@ end
 local apps = {
 	firefox = create_button('firefox.svg', 'firefox', 1, 1, 3, 3),
 	vokoscreenNG = create_button('vokoscreenNG.svg', 'vokoscreenNG', 3, 3, 3, 3),
-	discord = create_button('discord.svg', "Discord", 1, 1, 1, 1),
+	discord = create_button('discord.svg', "flatpak run com.discordapp.Discord", 1, 1, 1, 1),
 	gimp = create_button('gimp.svg', 'gimp', 1, 1, 3, 3),
 	kitty = create_button('kitty.svg', 'kitty', 1, 1, 3, 3),
 	only_office = create_button('onlyoffice-desktopeditors.svg', 'flatpak run org.onlyoffice.desktopeditors', 2, 2, 3, 3),
 	telegram = create_button('telegram.svg', 'telegram-desktop', 1, 1, 1, 1),
-	vs_code = create_button('code.svg', 'code', 2, 2, 3, 3),
+	wezterm = create_button('terminal.svg', 'wezterm', 2, 2, 3, 3),
 	unity = create_button('unityhub.svg', 'unityhub', 1, 1, 1, 1),
 	keepassxc = create_button('keepassxc.svg', 'keepassxc', 1, 1, 2, 2),
 	gpick = create_button('gpick.svg', 'gpick', 4, 0, 4, 4)

@@ -5,6 +5,8 @@ local gears = require("gears")
 local dpi = beautiful.xresources.apply_dpi
 local user = require("popups.user_profile")
 
+
+
 local global_wallpaper = awful.wallpaper {
 	screen = s,
 	widget = {
