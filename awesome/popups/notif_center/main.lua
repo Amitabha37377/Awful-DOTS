@@ -177,7 +177,7 @@ local createnotif = function(n)
 						left = dpi(15),
 						right = dpi(15),
 						bottom = dpi(10),
-						forced_height = dpi(80)
+						-- forced_height = dpi(80)
 					},
 					widget = wibox.container.background,
 					bg = color.background_lighter

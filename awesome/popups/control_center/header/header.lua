@@ -1,5 +1,4 @@
 --Standard Modules
-local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
@@ -61,7 +60,6 @@ local profile = wibox.widget {
 	},
 	widget = wibox.container.background,
 	bg = color.background_lighter,
-	-- forced_height = 60,
 	forced_width = dpi(300),
 	shape = function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, 10)

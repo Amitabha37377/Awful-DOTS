@@ -29,7 +29,7 @@ local create_button = function(container_widget, text, command1, command2, bg_cl
 		{
 			{
 				markup = '<span color="' ..
-					color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. text .. '</span>',
+						color.blueish_white .. '" font="Ubuntu Nerd Font bold 11">' .. text .. '</span>',
 				font = "Ubuntu Nerd Font Bold 14",
 				widget = wibox.widget.textbox,
 				fg = color.white

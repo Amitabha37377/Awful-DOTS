@@ -8,6 +8,19 @@ local color = require("popups.color")
 local iconTheme = require("lgi").require("Gtk", "3.0").IconTheme.get_default()
 -- Widgets
 
+local noa = 5 --Number of apps to be shown at once
+
+local horizonta_separator = wibox.widget {
+	orientation = 'horizontal',
+	forced_height = dpi(1.5),
+	forced_width = dpi(1.5),
+	span_ratio = 0.95,
+	widget = wibox.widget.separator,
+	color = "#a9b1d6",
+	border_color = "#a9b1d6",
+	opacity = 0.55
+}
+
 
 function hovercursor(widget)
 	local oldcursor, oldwibox
@@ -27,8 +40,8 @@ function hovercursor(widget)
 end
 
 local launcherdisplay = wibox {
-	width = dpi(500),
-	height = dpi(500),
+	width = dpi(550),
+	height = dpi(620),
 	bg = color.background_dark,
 	ontop = true,
 	visible = false,
@@ -83,7 +96,7 @@ launcherdisplay:setup {
 						},
 						layout = wibox.layout.stack
 					},
-					bg = "#343b58",
+					bg = "#265069",
 					widget = wibox.container.background,
 					shape = function(cr, width, height)
 						gears.shape.rounded_rect(cr, width, height, 5)
@@ -94,7 +107,12 @@ launcherdisplay:setup {
 				margins = dpi(10)
 			},
 			{
-				entries,
+
+				{
+					horizonta_separator,
+					entries,
+					layout = wibox.layout.fixed.vertical
+				},
 				margins = dpi(10),
 				widget = wibox.container.margin
 			},
@@ -115,8 +133,8 @@ local function next()
 		entries:get_widgets_at(entryindex, 1)[1].bg = nil
 		entries:get_widgets_at(entryindex + 1, 1)[1].bg = color.background_lighter
 		entryindex = entryindex + 1
-		if entryindex > startindex + 5 then
-			entries:get_widgets_at(entryindex - 6, 1)[1].visible = false
+		if entryindex > startindex + (noa - 1) then
+			entries:get_widgets_at(entryindex - noa, 1)[1].visible = false
 			entries:get_widgets_at(entryindex, 1)[1].visible = true
 			startindex = startindex + 1
 		end
@@ -130,7 +148,7 @@ local function back()
 		entries:get_widgets_at(entryindex - 1, 1)[1].bg = beautiful.background_lighter
 		entryindex = entryindex - 1
 		if entryindex < startindex then
-			entries:get_widgets_at(entryindex + 6, 1)[1].visible = false
+			entries:get_widgets_at(entryindex + noa, 1)[1].visible = false
 			entries:get_widgets_at(entryindex, 1)[1].visible = true
 			startindex = startindex - 1
 		end
@@ -153,13 +171,13 @@ local function gen()
 					path = p
 				end
 			end
-
+			local description = entry:get_description()
 			table.insert(
 				entries,
-				{ name = name, appinfo = entry, icon = path or '' }
+				{ name = name, appinfo = entry, description = description, icon = path or '' }
 			)
 
-			-- table.insert(
+			-- table.insert(, description
 			--   entries,
 			--   { name = name, appinfo = entry }
 			-- )
@@ -208,29 +226,52 @@ local function filter(cmd)
 			{
 				{
 					{
-						image = entry.icon,
-						clip_shape = function(cr, width, height)
-							gears.shape.rounded_rect(cr, width, height, 10)
-						end,
-						forced_height = dpi(50),
-						forced_width = dpi(50),
-						valign = 'center',
-						widget = wibox.widget.imagebox
+						{
+							image = entry.icon,
+							clip_shape = function(cr, width, height)
+								gears.shape.rounded_rect(cr, width, height, 10)
+							end,
+							forced_height = dpi(50),
+							forced_width = dpi(50),
+							valign = 'center',
+							widget = wibox.widget.imagebox
+						},
+
+						{
+							{
+								{
+									-- text = entry.name,
+									markup = '<span color="' ..
+											color.blueish_white .. '" font="Ubuntu Nerd Font 15 bold">' .. entry.name .. '</span>',
+
+									widget = wibox.widget.textbox,
+									forced_height = dpi(30)
+								},
+								{
+									markup = '<span color="' ..
+											color.white .. '" font="Ubuntu Nerd Font 13">' .. entry.description .. '</span>',
+									widget = wibox.widget.textbox,
+									-- forced_height = dpi(50)
+								},
+
+								layout = wibox.layout.fixed.vertical,
+							},
+							widget = wibox.container.margin,
+							left = dpi(15)
+						},
+						layout = wibox.layout.fixed.horizontal
 					},
 
-					{
-						-- text = entry.name,
-						markup = '<span color="' ..
-							color.white .. '" font="Ubuntu Nerd Font 15">' .. entry.name .. '</span>',
-
-						widget = wibox.widget.textbox,
-						forced_height = dpi(42)
-					},
-					layout = wibox.layout.fixed.horizontal
+					margins = dpi(10),
+					forced_height = dpi(77),
+					widget = wibox.container.margin
 				},
-				margins = dpi(10),
-				forced_height = dpi(60),
-				widget = wibox.container.margin
+				{
+					horizonta_separator,
+					widget = wibox.container.margin,
+					-- margins = dpi(5),
+				},
+				layout = wibox.layout.fixed.vertical
 			},
 			buttons = {
 				awful.button({}, 1, function()
@@ -263,7 +304,7 @@ local function filter(cmd)
 
 		})
 
-		if startindex <= i and i <= startindex + 5 then
+		if startindex <= i and i <= startindex + (noa - 1) then
 			widget.visible = true
 		else
 			widget.visible = false
@@ -294,7 +335,7 @@ local function open()
 	awful.prompt.run {
 		-- prompt = "Search: ",
 		prompt = '<span color="' ..
-			color.white .. '" font="Ubuntu Nerd Font Bold 16">' .. '  : ' .. '</span>',
+				color.white .. '" font="Ubuntu Nerd Font Bold 16">' .. '  : ' .. '</span>',
 		textbox = prompt,
 		done_callback = function()
 			launcherdisplay.visible = false

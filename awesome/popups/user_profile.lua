@@ -7,7 +7,7 @@ local user_profile = {
 	terminal = 'wezterm',
 	icon_theme_path = "/.icons/Papirus/32x32/apps/",
 	wallpaper = os.getenv("HOME") .. '/.config/awesome/Wallpapers/catMachup.jpg',
-	fallback_password = "1234"
+	fallback_password = "1234",
 }
 
 return user_profile

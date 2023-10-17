@@ -11,8 +11,8 @@ local Item1 = require("layout.dock.widgets.launcher")
 
 local apps = require("layout.dock.widgets.apps")
 local Item2 = apps.firefox
-local Item3 = apps.kitty
-local Item4 = apps.wezterm
+local Item3 = apps.vscode
+local Item4 = apps.term
 local Item5 = apps.gimp
 local Item6 = apps.telegram
 local Item7 = apps.discord

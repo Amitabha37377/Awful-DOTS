@@ -10,6 +10,7 @@ local color = require("layout.dock.color")
 local user = require("popups.user_profile")
 local icon_path = user.icon_theme_path
 
+
 local create_button = function(icon, launch_app, mleft, mright, mtop, mbottom)
 	local button = wibox.widget {
 		{
@@ -65,13 +66,18 @@ local apps = {
 	vokoscreenNG = create_button('vokoscreenNG.svg', 'vokoscreenNG', 3, 3, 3, 3),
 	discord = create_button('discord.svg', "flatpak run com.discordapp.Discord", 1, 1, 1, 1),
 	gimp = create_button('gimp.svg', 'gimp', 1, 1, 3, 3),
-	kitty = create_button('kitty.svg', 'kitty', 1, 1, 3, 3),
+	vscode = create_button('code.svg', 'code', 1, 1, 3, 3),
 	only_office = create_button('onlyoffice-desktopeditors.svg', 'flatpak run org.onlyoffice.desktopeditors', 2, 2, 3, 3),
 	telegram = create_button('telegram.svg', 'telegram-desktop', 1, 1, 1, 1),
-	wezterm = create_button('terminal.svg', 'wezterm', 2, 2, 3, 3),
+	term = create_button('terminal.svg', user.terminal, 2, 2, 3, 3),
 	unity = create_button('unityhub.svg', 'unityhub', 1, 1, 1, 1),
 	keepassxc = create_button('keepassxc.svg', 'keepassxc', 1, 1, 2, 2),
-	gpick = create_button('gpick.svg', 'gpick', 4, 0, 4, 4)
+	gpick = require("popups.color_picker")
+	-- gpick = create_button('gpick.svg', 'gpick', 4, 0, 4, 4)
 }
+
+-- apps.gpick:connect_signal("button::release", function()
+-- 	colorpicker.visible = not colorpicker.visible
+-- end)
 
 return apps

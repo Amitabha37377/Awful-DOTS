@@ -145,14 +145,12 @@ To change the default apps and username/profile picture go to the `~/.config/awe
 
 |Notification Center|
 |---|
-|<p align="center">
-<img src="assets/notif_center.png" /></p>|
+|<p align="center"><img src="assets/notif_center.png" /></p>|
 
 
 |Screenshot Tool|
 |---|
-|<p align="center">
-<img src="assets/757.png" /></p>|
+|<p align="center"><img src="assets/757.png" /></p>|
 
 |Powermenu|
 |---|
