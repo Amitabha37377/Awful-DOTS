@@ -1,0 +1,8 @@
+gimp
+telegram
+discord
+vokoscreenNG
+unity
+onlyoffice
+keepassxc
+

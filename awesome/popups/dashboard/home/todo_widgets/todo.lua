@@ -70,7 +70,11 @@ local prompt_box     = wibox.widget {
 local todocontainer  = wibox.widget {
 	spacing = dpi(0),
 	layout = wibox.layout.fixed.vertical,
-	forced_height = dpi(540)
+	-- layout = require("overflow").vertical,
+	visible = true,
+	step = 50,
+	scrollbar_enabled = true,
+	forced_height = dpi(500)
 }
 
 local todo_empty     = wibox.widget {
@@ -213,8 +217,10 @@ local create_todo = function(text)
 	return todo_template
 end
 
+
+
 -- Prompt run function
-local add_todo    = function()
+local add_todo = function()
 	awful.prompt.run {
 		textbox = prompt_textbox,
 		exe_callback = function(input)

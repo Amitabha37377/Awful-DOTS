@@ -139,7 +139,7 @@ naughty.connect_signal("request::display", function(n)
 							{
 								resize_strategy = 'center',
 								widget = naughty.widget.icon or
-									os.getenv("HOME") .. '/.config/awesome/deco/icons/notif.png'
+										os.getenv("HOME") .. '/.config/awesome/deco/icons/notif.png'
 							},
 							margins       = beautiful.notification_margin,
 							widget        = wibox.container.margin,

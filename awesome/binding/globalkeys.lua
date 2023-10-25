@@ -171,7 +171,8 @@ function _M.get()
 			description = 'show right click menu',
 			group       = 'awesome',
 			on_press    = function()
-				RC.mainmenu:show()
+				-- RC.mainmenu:show()
+				-- awful.spawn("gpick -s -o")
 			end,
 		},
 

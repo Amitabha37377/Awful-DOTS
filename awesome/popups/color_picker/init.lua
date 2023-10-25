@@ -104,9 +104,9 @@ local create_colorbox = function(pickedcolor)
 		end
 	end)
 
-
 	return colorbox
 end
+
 
 --------------------------------
 --Main popup window-------------
@@ -182,7 +182,7 @@ toggleButton:connect_signal("button::release", function(_, _, _, button)
 	if button == 1 then
 		window.visible = not window.visible
 	elseif button == 3 then
-		awful.spawn.easy_async("colorpicker -doq", function(out)
+		awful.spawn.easy_async("gpick -s -o", function(out)
 			if out:len() > 0 then
 				awful.spawn.with_shell("xclip -r -sel c << EOF\n" .. out .. "EOF")
 
@@ -219,6 +219,5 @@ awesome.connect_signal("clear::colors", function()
 	end
 	empty_box.visible = true
 end)
-
 
 return toggleButton
