@@ -52,7 +52,7 @@ local notifsempty        = wibox.widget {
 		},
 		layout = wibox.layout.align.horizontal
 	},
-	forced_height = dpi(560), --fix this?
+	forced_height = dpi(550), --fix this?
 	forced_width = dpi(410),
 	layout = wibox.layout.align.vertical
 }

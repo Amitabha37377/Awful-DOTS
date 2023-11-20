@@ -12,18 +12,21 @@ local user = {
 	editor       = "nvim",
 
 	wallpaper    = os.getenv("HOME") .. "/.config/awesome/assets/wave.png",
-	icon_path    = os.getenv("HOME") .. '/.icons/Tela/scalable/apps/',
-	-- icon_path    = os.getenv("HOME") .. '/.icons/Papirus/48x48/apps/',
+	-- icon_path    = os.getenv("HOME") .. '/.icons/Tela/scalable/apps/',
+	icon_path    = os.getenv("HOME") .. '/.icons/Papirus/48x48/apps/',
 	theme        = "tokyonight", --[[available_themes:tokyonight, biscuit_dark, adwaita, oxocarbon, yoru]]
 	bar_floating = false,
+}
 
-	-- dock_elements = {
-	-- 	{ 'telegram',    'telegram-desktop' },
-	-- 	{ 'discord',     'flatpak run com.discordapp.Discord' },
-	-- 	{ 'gimp' },
-	-- 	{ 'code' },
-	-- 	{ 'vokoscreenNG' }
-	-- }
+user.dock_elements = {
+	{ 'terminal',    user.terminal },
+	{ user.browser,  user.browser },
+	{ 'thunar',      user.file_manager },
+	{ 'telegram',    'telegram-desktop' },
+	{ 'discord',     'flatpak run com.discordapp.Discord' },
+	{ 'gimp' },
+	{ 'code' },
+	{ 'vokoscreenNG' }
 }
 
 return user

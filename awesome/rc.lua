@@ -17,16 +17,9 @@ require 'config.autostart'
 --ui
 require 'layout.bar'
 require 'layout.notifs'
--- require 'layout.dock'
+require 'layout.dock'
 
 --widgets
 require 'popups.launcher'
 require 'popups.menu'
--- require 'ui.bar'
--- require 'ui.launcher'
--- require 'ui.menu'
--- require 'ui.control_center'
--- require 'ui.notifs'
-
---widgets
--- require 'widgets.ss_tool'
+require 'popups.tasklist'
