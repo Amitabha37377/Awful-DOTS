@@ -9,11 +9,11 @@ local rubato = require('modules.rubato')
 
 local sep = wibox.widget.textbox(" ")
 sep.forced_width = dpi(50)
-sep.forced_height = dpi(1080)
+sep.forced_height = awful.screen.focused().workarea.height
 
 local sep2 = wibox.widget.textbox(" ")
 sep2.forced_width = dpi(450)
-sep2.forced_height = dpi(1080)
+sep2.forced_height = awful.screen.focused().workarea.height
 
 -------------------------
 --Bar Modules------------
@@ -62,10 +62,11 @@ awful.screen.connect_for_each_screen(function(s)
 	--------------------
 	--Bar---------------
 	--------------------
-	s.bar = awful.popup {
+	s.bar = awful.wibar {
 		width = dpi(50),
 		screen = s,
-		height = dpi(1080),
+		position = "left",
+		height = awful.screen.focused().workarea.height,
 		bg = "#000000",
 		widget = wibox.container.background,
 		x = dpi(00),
@@ -95,7 +96,7 @@ awful.screen.connect_for_each_screen(function(s)
 	}
 	)
 
-	s.bar:struts({ left = 50 })
+	-- s.bar:struts({ left = 50 })
 
 	--------------------------
 	--Side panel--------------
@@ -103,7 +104,7 @@ awful.screen.connect_for_each_screen(function(s)
 	s.bar2 = awful.popup {
 		width = dpi(450),
 		screen = s,
-		height = dpi(1920),
+		height = awful.screen.focused().workarea.height,
 		ontop = true,
 		bg = "#000000",
 		widget = wibox.container.background,

@@ -13,9 +13,7 @@ local widgets = require('layout.dock.widgets')
 local layoutbox = require('layout.dock.layoutbox')
 
 local dock = awful.popup {
-	width = dpi(50),
-	screen = s,
-	height = dpi(1080),
+	-- screen = s,
 	bg = "#00000000",
 	widget = wibox.container.background,
 	x = dpi((1920 / 2) - (60 * 6)),
@@ -57,7 +55,7 @@ fakedock:setup {
 	widget = wibox.container.background,
 	bg = "#00000000",
 	forced_height = dpi(5),
-	forced_width = dpi(720)
+	forced_width = dpi(724)
 }
 
 timer = gears.timer {

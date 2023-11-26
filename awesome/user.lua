@@ -14,6 +14,7 @@ local user = {
 	wallpaper    = os.getenv("HOME") .. "/.config/awesome/assets/wave.png",
 	-- icon_path    = os.getenv("HOME") .. '/.icons/Tela/scalable/apps/',
 	icon_path    = os.getenv("HOME") .. '/.icons/Papirus/48x48/apps/',
+	-- icon_path    = os.getenv("HOME") .. '/.icons/Zafiro-Icons-Dark-Blue-f/apps/scalable/',
 	theme        = "tokyonight", --[[available_themes:tokyonight, biscuit_dark, adwaita, oxocarbon, yoru]]
 	bar_floating = false,
 }
@@ -21,7 +22,7 @@ local user = {
 user.dock_elements = {
 	{ 'terminal',    user.terminal },
 	{ user.browser,  user.browser },
-	{ 'thunar',      user.file_manager },
+	{ 'Thunar',      user.file_manager },
 	{ 'telegram',    'telegram-desktop' },
 	{ 'discord',     'flatpak run com.discordapp.Discord' },
 	{ 'gimp' },

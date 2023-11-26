@@ -7,6 +7,7 @@ local colorschemes = {
 	yoru = require("themes.colors.yoru"),
 	tokyonight = require("themes.colors.tokyonight"),
 	oxocarbon = require("themes.colors.oxocarbon"),
+	rosepine_dawn = require("themes.colors.rosepine_dawn")
 }
 
 if user.theme == 'biscuit_dark' then
@@ -17,6 +18,8 @@ elseif user.theme == 'yoru' then
 	color = colorschemes.yoru
 elseif user.theme == 'oxocarbon' then
 	color = colorschemes.oxocarbon
+elseif user.theme == 'rosepine_dawn' then
+	color = colorschemes.rosepine_dawn
 else
 	color = colorschemes.tokyonight
 end

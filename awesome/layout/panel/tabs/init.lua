@@ -58,7 +58,7 @@ local tabs = wibox.widget {
 	forced_width = dpi(450)
 }
 
-local select = function(btn)
+local select = function(btn, signal)
 	btn:connect_signal("button::release", function()
 		control.bg = color.bg_normal
 		weather.bg = color.bg_normal
@@ -80,12 +80,14 @@ local select = function(btn)
 		elseif btn.txt_wgt == settings_txt then
 			settings_txt.markup = helpers.mtext(color.bg_dark, "Ubuntu nerd font bold 20", stngs)
 		end
+
+		awesome.emit_signal(signal)
 	end)
 end
 
-select(control)
-select(weather)
-select(todo)
-select(settings)
+select(control, 'panel::control')
+select(weather, 'panel::calendar')
+select(todo, 'panel::todo')
+select(settings, 'panel::control')
 
 return tabs

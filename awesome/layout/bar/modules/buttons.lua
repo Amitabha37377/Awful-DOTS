@@ -16,14 +16,14 @@ local create_button = function(icon, fg)
 end
 
 local control_center = create_button('', color.green)
-local notifi_center = create_button('󰂚', color.orange)
+local mplayer = create_button('󰋋', color.orange)
 local screenshot = create_button('󰄄', color.cyan)
 
 local bottom = wibox.widget {
 	{
 		{
+			mplayer,
 			control_center,
-			notifi_center,
 			screenshot,
 			layout = wibox.layout.fixed.vertical
 		},
@@ -33,5 +33,9 @@ local bottom = wibox.widget {
 	widget = wibox.container.margin,
 	margins = dpi(5)
 }
+
+mplayer:connect_signal("button::release", function()
+	awesome.emit_signal("mplayer::toggle")
+end)
 
 return bottom

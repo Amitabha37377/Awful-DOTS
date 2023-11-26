@@ -32,8 +32,8 @@ local notifsempty        = wibox.widget {
 						widget = wibox.widget.imagebox,
 						image = os.getenv("HOME") .. '/.config/awesome/assets/control_center/bell.png',
 						resize = true,
-						forced_height = dpi(100),
-						forced_width = dpi(100)
+						forced_height = dpi(160),
+						forced_width = dpi(160)
 					},
 					widget = wibox.container.place
 				},
@@ -41,7 +41,7 @@ local notifsempty        = wibox.widget {
 				{
 					-- text = "No Notifications",
 					markup = '<span color="' ..
-							color.lightblue .. '" font="Ubuntu Nerd Font Bold 16">' .. 'NO NOTIFICATION YET' .. '</span>',
+							color.lightblue .. '" font="Ubuntu Nerd Font Bold 20">' .. 'No Notification Yet\n\n' .. '</span>',
 					align = "center",
 					valign = "center",
 					widget = wibox.widget.textbox
@@ -84,7 +84,12 @@ local createnotif        = function(Notifications)
 						layout = wibox.layout.fixed.vertical,
 					},
 					widget = wibox.container.place,
-					forced_height = dpi(80)
+					forced_height = dpi(80),
+					forced_width = Notifications.icon == nil and dpi(410)
+							or Notifications.title == "Connection Established" and dpi(410)
+							or Notifications.title == "Disconnected" and dpi(410)
+							or dpi(250),
+					halign = 'left'
 				},
 				nil,
 				{
@@ -92,11 +97,10 @@ local createnotif        = function(Notifications)
 						widget        = wibox.widget.imagebox,
 						image         = Notifications.icon,
 						-- forced_height = dpi(60),
-						-- forced_width  = dpi(100),
-						forced_height = dpi(50)
+						forced_height = dpi(50),
 					},
 					widget = wibox.container.margin,
-					left = 0,
+					left = 10,
 					right = dpi(20),
 					top = dpi(10),
 					bottom = dpi(10)
