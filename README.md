@@ -1,12 +1,14 @@
 <p align="center"><img src="assets/text_logo.png"></p>
 <h3 align="center">Featuring AwesomeWM</h3><br/>
 
+<div align="center">
+
 ![Cool](https://img.shields.io/badge/WM-Awesome-da696f?style=for-the-badge&labelColor=555555)
 [![Build Status](https://img.shields.io/github/forks/Amitabha37377/Awful-DOTS.svg?style=for-the-badge)](https://github.com/Amitabha37377/Awful-DOTS)
 [![Build Status](https://img.shields.io/github/stars/Amitabha37377/Awful-DOTS.svg?style=for-the-badge)](https://github.com/Amitabha37377/Awful-DOTS)
 [![License](https://img.shields.io/github/license/Amitabha37377/Awful-DOTS.svg?style=for-the-badge)](https://github.com/Amitabha37377/Awful-DOTS)
-
-<p align="center">Welcome to my stash of dotfiles of my AwesomeWM setups and config files for some other programmes I use. Note that I am a pro procrastinator and not a pro programmer, so there may be some broken code and incomplete stuff in the dotfiles. </p>
+</div>
+<p align="center">Welcome to my stash of dotfiles of my AwesomeWM setups and config files for some other programmes I use. Note that I am a pro procrastinator and a not pro programmer, so there may be some broken code and incomplete stuff in the dotfiles. </p>
 
 ---
 
