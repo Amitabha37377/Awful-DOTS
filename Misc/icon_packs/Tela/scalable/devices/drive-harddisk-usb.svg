@@ -1,6 +1,0 @@
-<svg width="64" height="64" version="1.0" xmlns="http://www.w3.org/2000/svg">
- <rect transform="matrix(0,-1,-1,0,0,0)" x="-58" y="-53" width="52" height="42" rx="3" ry="3" fill="#666"/>
- <circle cx="32" cy="31" r="16" fill="#fff" paint-order="markers stroke fill"/>
- <circle cx="32" cy="31" r="14" fill="#7297ba" paint-order="markers stroke fill"/>
- <path d="m25 34h14v3h-14zm7-10 7 7h-14z" fill="#fff"/>
-</svg>
