@@ -1,0 +1,9 @@
+<svg width="32" height="32" version="1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <rect transform="matrix(0,-1,-1,0,0,0)" x="-30.001" y="-30.001" width="28" height="28" rx="3.0007" ry="3.0007" fill="#4f4f4f" stroke-width=".99992"/>
+ <path d="m18 23c-0.554 0-1 0.446-1 1v1 2 1c0 0.554 0.446 1 1 1h1 5 3c1.108 0 2-0.892 2-2v-2c0-1.108-0.892-2-2-2h-3-5-1z" opacity=".4" stroke-width="3.6024"/>
+ <path d="m14 23c0.554 0 1 0.446 1 1v4c0 0.554-0.446 1-1 1h-9c-1.108 0-2-0.892-2-2v-2c0-1.108 0.892-2 2-2h8z" opacity=".4" stroke-width="3.6024"/>
+ <rect x="24" y="17" width="4" height="1" fill="#000000" fill-rule="evenodd" opacity=".25" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <rect x="24" y="14" width="4" height="1" fill="#000000" fill-rule="evenodd" opacity=".25" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <rect x="24" y="11" width="4" height="1" fill="#000000" fill-rule="evenodd" opacity=".25" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <rect x="24" y="8" width="4" height="1" fill="#000000" fill-rule="evenodd" opacity=".25" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+</svg>

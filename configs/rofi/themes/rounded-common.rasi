@@ -1,0 +1,103 @@
+* {
+    font:   "CaskaydiaCove Nerd Font 13";
+    background-color:   transparent;
+    text-color:         @fg1;
+    margin:     0px;
+    padding:    0px;
+    highlight: bold;
+    spacing:    0px;
+    width: 90%;
+    height: 70%;
+}
+
+window {
+    border-radius:  24px;
+    background-color:   @bg02;
+    // background-color:   transparent;
+
+}
+
+mainbox {
+    padding:    12px;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    background-color:   @bg1;
+    border-color:       @bg3;
+    margin: 4% 15% 5% 15 %;
+    border:         2px;
+    border-radius:  16px;
+
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
+}
+
+
+#scrollbar {
+    //width:        10px ;
+    //border:       0;
+    //handle-color: @normal-foreground;
+    //handle-width: 8px ;
+    //padding:      0;
+    background-color:   #00000080   ;
+	  handle-color:   #0000f0                ;
+}
+
+
+prompt {
+    text-color: @fg2;
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @fg3;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      16px;
+    border-color:       @bg2;
+    background-color:   @bg2;
+}
+
+textbox {
+    padding:    8px 24px;
+}
+
+listview {
+    background-color:   transparent;
+    margin:     15px  0;
+    lines:      5;
+    columns:    5;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    padding:        12px 19px;
+    spacing:        15px;
+    background-color: transparent;
+    border-radius:  16px;
+    orientation: vertical;
+}
+
+element normal active {
+    text-color: @bg3;
+}
+
+element selected normal, element selected active {
+    background-color:   @bg3;
+}
+
+element-icon {
+    size:           64px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+    horizontal-align: 0.5;
+}
+
