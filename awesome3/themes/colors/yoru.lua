@@ -1,0 +1,20 @@
+local colors = {
+	bg_dark    = "#161819",
+	bg_dim     = "#1f2122",
+	bg_normal  = "#27292a",
+	bg_light   = "#343637",
+	mid_dark   = "#484a4b",
+	mid_normal = "#505253",
+	mid_light  = "#a1a2a3",
+	fg_normal  = "#d3d5d6",
+	red        = "#f26e74",
+	orange     = "#e79881",
+	yellow     = "#ecd28b",
+	green      = "#78b892",
+	cyan       = "#82c29c",
+	lightblue  = "#709ad2",
+	blue       = "#6791c9",
+	purple     = "#c58cec",
+	magenta    = "#e8646a",
+}
+return colors
