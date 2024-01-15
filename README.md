@@ -31,3 +31,13 @@
 <p align="center"><img src="./assets/bottombar.png"/></p>
 
 <p>AwesomeWM setup containing bottom bar. The design was inspired from the design of chrome os and Windows 11. This config is kinda abandoned at this point though.</p>
+
+---
+### Thanks to
+- [Tsukki](https://github.com/tsukki9696) <i>For making beautiful mockups and biscuit colorscheme </i>
+- [Stardust kyun](https://github.com/Stardust-kyun) <i>For amazing beginner friendly dotfiles, great resource to learn awesomewm</i>
+- [Streetturtle](https://github.com/streetturtle) <i>For <a href="https://github.com/streetturtle/awesome-wm-widgets">awesomewm widgets</a></i>
+- [Bling](https://github.com/BlingCorp/bling) <i>For so many useful awesomewm modules which made my life easier</i>
+- [Rubato](https://github.com/andOrlando/rubato) <i>the animation library for awesomewm</i>
+
+And many more cool people ...
